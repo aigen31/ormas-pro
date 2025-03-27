@@ -20,7 +20,7 @@
 					<div class="poopup__description">Наш администратор вскоре с Вами свяжется!</div>
 				</div>
 				<div class="footer__top-line-column-title">Остались вопросы?</div>
-				<form action="SendMailSmtpClass.php" method="POST" class="site-inputs footer__top-line-column-inputs-material">
+				<form action="" method="POST" class="site-inputs footer__top-line-column-inputs-material">
 					<input type="text" placeholder="Ваше имя" class="site-input footer__top-line-column-inputs-input" name="firstname">
 					<input type="email" placeholder="Email" class="site-input footer__top-line-column-inputs-input" name="email">
 					<textarea type="textarea" placeholder="Коментрарий" class="site-input footer__top-line-column-inputs-textarea" name="text"></textarea>

@@ -58,7 +58,7 @@
 					<div class="banner_form_title">
 						Записаться на консультацию
 					</div>
-					<form action="/SendMailSmtpClass.php" method="POST" class="site-inputs">
+					<form action="" method="POST" class="site-inputs">
 						<input type="text" placeholder="Ваше имя" class="site-input" name="firstname">
 						<input type="email" placeholder="Email" class="site-input" name="email">
 						<input type="text" placeholder="Ваш номер телефона" class="site-input" id="phone-mask2" name="phone">

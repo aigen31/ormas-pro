@@ -96,7 +96,7 @@
 				<div class="poopup__title">Записаться</div>
 				<div class="poopup__description">Оставьте ваши контактные данные, и наш администратор вскоре с Вами свяжется!
 				</div>
-				<form action="<?= get_template_directory_uri(); ?>/SendMailSmtpClass.php" method="POST" class="site-inputs services__inputs poopup__inputs">
+				<form action="" method="POST" class="site-inputs services__inputs poopup__inputs">
 					<input type="text" placeholder="Ваше имя" class="site-input poopup__inputs-input" name="firstname">
 					<input type="text" placeholder="Ваша фамилия" class="site-input poopup__inputs-input" name="lastname">
 					<input type="email" placeholder="Email" class="site-input poopup__inputs-input" name="email">
