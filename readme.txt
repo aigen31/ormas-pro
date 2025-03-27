@@ -6,7 +6,7 @@ Tags: custom-fields
 Requires at least: 4.5
 Tested up to: 6.7.2
 Requires PHP: 8.1
-Stable tag: 1.0.0
+Stable tag: 0.0.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
