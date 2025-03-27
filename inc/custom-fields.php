@@ -35,18 +35,18 @@ function ormas_register_fields()
     ];
   }
 
-  /**
-   * Include fields
-   */
-  require get_template_directory() . '/inc/custom-fields/company-info.php';
-  require get_template_directory() . '/inc/custom-fields/theme-settings.php';
-  require get_template_directory() . '/inc/custom-fields/specialists.php';
-  require get_template_directory() . '/inc/custom-fields/main-page.php';
-  require get_template_directory() . '/inc/custom-fields/neuropsychology.php';
-  require get_template_directory() . '/inc/custom-fields/speech.php';
-  require get_template_directory() . '/inc/custom-fields/psychological-support.php';
-  require get_template_directory() . '/inc/custom-fields/bos-therapy.php';
-  require get_template_directory() . '/inc/custom-fields/neurocorrecrion.php';
-  require get_template_directory() . '/inc/custom-fields/neuro-diagnostic.php';
-  require get_template_directory() . '/inc/custom-fields/services.php';
+  require_parts([
+    'company-info',
+    'theme-settings',
+    'specialists',
+    'main-page',
+    'neuropsychology',
+    'speech',
+    'psychological-support',
+    'bos-therapy',
+    'neurocorrecrion',
+    'neuro-diagnostic',
+    'services',
+    'materials'
+  ], 'inc/custom-fields');
 }

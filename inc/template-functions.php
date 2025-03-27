@@ -69,3 +69,15 @@ function is_service_page($target)
 
 	return false;
 }
+
+/**
+ * Include array of parts
+ * @param array $parts Array of parts to include
+ * @param string $path Path to the parts
+ */
+function require_parts($parts, $path)
+{
+	foreach ($parts as $part) {
+		require get_template_directory() . "/{$path}/{$part}.php";
+	}
+}
