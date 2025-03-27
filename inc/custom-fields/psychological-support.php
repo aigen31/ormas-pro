@@ -4,7 +4,7 @@ use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
 Container::make('post_meta', 'Психологическая поддержка')
-  ->where('post_id', '=', get_service_page_by_slug('psychological-support')->ID)
+  ->where('post_id', '=', get_post_by_slug('psychological-support')->ID)
   ->add_fields([
     Field::make('complex', 'psychological_support_children', 'С ребенком')
       ->set_layout('tabbed-horizontal')

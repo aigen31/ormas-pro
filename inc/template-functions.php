@@ -40,13 +40,13 @@ function ormas_pro_pingback_header()
 add_action('wp_head', 'ormas_pro_pingback_header');
 
 /**
- * Get service page template by slug
+ * Get post by slug
  */
-function get_service_page_by_slug($slug)
+function get_post_by_slug($slug)
 {
 	$posts = get_posts([
 		'name'        => $slug,
-		'post_type'   => 'service_pages',
+		// 'post_type'   => 'service_pages',
 		'post_status' => 'publish',
 		'numberposts' => 1
 	]);

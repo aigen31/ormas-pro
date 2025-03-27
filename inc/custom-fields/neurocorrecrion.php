@@ -4,7 +4,7 @@ use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
 Container::make('post_meta', 'Нейрокоррекция')
-  ->where('post_id', '=', get_service_page_by_slug('nejrokorrekcziya')->ID)
+  ->where('post_id', '=', get_post_by_slug('nejrokorrekcziya')->ID)
   ->add_fields([
     Field::make('complex', 'cards', 'Карточки')
       ->set_layout('tabbed-horizontal')
