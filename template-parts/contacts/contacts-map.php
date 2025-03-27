@@ -6,16 +6,25 @@
 
 		<div class="contacts_item">
 			<div class="contacts_icon"><img src="<?php bloginfo('template_directory') ?>/assets/img/general/metro_icon.svg" alt=""></div>
-			<span><b><?php echo carbon_get_theme_option('options_address'); ?></b></span>
+			<?php $options_address = carbon_get_theme_option('options_address'); ?>
+			<?php if (!empty($options_address)): ?>
+				<span><b><?php echo $options_address; ?></b></span>
+			<?php endif; ?>
 		</div>
 
 		<div class="contacts_banner_wrapper">
 			<div class="contacts_left">
-				<?php echo carbon_get_theme_option('options_map_description'); ?>
+				<?php $options_map_description = carbon_get_theme_option('options_map_description'); ?>
+				<?php if (!empty($options_map_description)): ?>
+					<?php echo $options_map_description; ?>
+				<?php endif; ?>
 			</div>
 
 			<div class="contacts_right">
-				<?php echo carbon_get_theme_option('options_map_script'); ?>
+				<?php $options_map_script = carbon_get_theme_option('options_map_script'); ?>
+				<?php if (!empty($options_map_script)): ?>
+					<?php echo $options_map_script; ?>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
@@ -27,35 +36,59 @@
 
 		<div class="contacts_wrapper">
 			<div class="contacts_left">
-				<p><?php echo carbon_get_theme_option('ip_info'); ?></p>
-				<p><?php echo carbon_get_theme_option('inn_info'); ?></p>
-				<p><?php echo carbon_get_theme_option('ogrnip_info'); ?></p>
+				<?php $ip_info = carbon_get_theme_option('ip_info'); ?>
+				<?php if (!empty($ip_info)): ?>
+					<p><?php echo $ip_info; ?></p>
+				<?php endif; ?>
+				<?php $inn_info = carbon_get_theme_option('inn_info'); ?>
+				<?php if (!empty($inn_info)): ?>
+					<p><?php echo $inn_info; ?></p>
+				<?php endif; ?>
+				<?php $ogrnip_info = carbon_get_theme_option('ogrnip_info'); ?>
+				<?php if (!empty($ogrnip_info)): ?>
+					<p><?php echo $ogrnip_info; ?></p>
+				<?php endif; ?>
 			</div>
 
 			<div class="contacts_right">
-				<p><?php echo carbon_get_theme_option('options_bank_account'); ?></p>
-				<p><?php echo carbon_get_theme_option('options_bank_name'); ?></p>
-				<p><?php echo carbon_get_theme_option('options_correspondent_account'); ?></p>
-				<p><?php echo carbon_get_theme_option('options_bik'); ?></p>
+				<?php $options_bank_account = carbon_get_theme_option('options_bank_account'); ?>
+				<?php if (!empty($options_bank_account)): ?>
+					<p><?php echo $options_bank_account; ?></p>
+				<?php endif; ?>
+				<?php $options_bank_name = carbon_get_theme_option('options_bank_name'); ?>
+				<?php if (!empty($options_bank_name)): ?>
+					<p><?php echo $options_bank_name; ?></p>
+				<?php endif; ?>
+				<?php $options_correspondent_account = carbon_get_theme_option('options_correspondent_account'); ?>
+				<?php if (!empty($options_correspondent_account)): ?>
+					<p><?php echo $options_correspondent_account; ?></p>
+				<?php endif; ?>
+				<?php $options_bik = carbon_get_theme_option('options_bik'); ?>
+				<?php if (!empty($options_bik)): ?>
+					<p><?php echo $options_bik; ?></p>
+				<?php endif; ?>
 			</div>
 		</div>
 
 		<div class="site-title small_title half_title">Подписывайтесь на наши социальные сети:</div>
 		<div class="contacts_socials">
-			<?php if (carbon_get_theme_option('options_vk')): ?>
-				<a href="<?php echo carbon_get_theme_option('options_vk'); ?>">
+			<?php $options_vk = carbon_get_theme_option('options_vk'); ?>
+			<?php if (!empty($options_vk)): ?>
+				<a href="<?php echo $options_vk; ?>">
 					<img src="<?php bloginfo('template_directory') ?>/assets/img/general/logos_vk.svg" alt="VK">
 				</a>
 			<?php endif; ?>
 
-			<?php if (carbon_get_theme_option('options_telegram')): ?>
-				<a href="<?php echo carbon_get_theme_option('options_telegram'); ?>">
+			<?php $options_telegram = carbon_get_theme_option('options_telegram'); ?>
+			<?php if (!empty($options_telegram)): ?>
+				<a href="<?php echo $options_telegram; ?>">
 					<img src="<?php bloginfo('template_directory') ?>/assets/img/general/logos_telegram.svg" alt="Telegram">
 				</a>
 			<?php endif; ?>
 
-			<?php if (carbon_get_theme_option('options_dzen')): ?>
-				<a href="<?php echo carbon_get_theme_option('options_dzen'); ?>">
+			<?php $options_dzen = carbon_get_theme_option('options_dzen'); ?>
+			<?php if (!empty($options_dzen)): ?>
+				<a href="<?php echo $options_dzen; ?>">
 					<img src="<?php bloginfo('template_directory') ?>/assets/img/general/logos_dzen.svg" alt="Дзен">
 				</a>
 			<?php endif; ?>
