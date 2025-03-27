@@ -1,4 +1,4 @@
-<?php get_header('neuropsychology'); ?>
+<?php get_header(); ?>
 <section class="main materials-page">
 	<?php get_template_part('template-parts/materials/about'); ?>
 	<?php get_template_part('template-parts/materials/useful'); ?>
