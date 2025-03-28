@@ -11389,7 +11389,7 @@ screen and (max-width:800px) and (orientation:landscape) {
 
 .s-neuropsychology__item {
   background-color: #fff;
-  background-image: url(../img/item-1.65dbaf0b.svg);
+  background-image: url(../img/general/item-1.svg);
   background-position: 100% 0;
   background-repeat: no-repeat;
   background-size: 105px 105px;
@@ -11418,7 +11418,7 @@ screen and (max-width:800px) and (orientation:landscape) {
   }
 
   .s-neuropsychology__item:nth-child(n+4) {
-    background-image: url(../img/item-4.svg);
+    background-image: url(../img/general/item-4.svg);
   }
 }
 
@@ -11529,7 +11529,7 @@ screen and (max-width:800px) and (orientation:landscape) {
 
 .s-what-is-neuropsychology__item--arrow:nth-child(n):before {
   content: "";
-  background-image: url(../img/arrow-1.6aa091c3.svg);
+  background-image: url(../img/general/arrow-1-1.svg);
   width: 208px;
   height: 104px;
   top: 105%;
@@ -11544,7 +11544,7 @@ screen and (max-width:800px) and (orientation:landscape) {
 
 .s-what-is-neuropsychology__item--arrow:nth-child(2n):before {
   content: "";
-  background-image: url(../img/arrow-2.f0f6ec7e.svg);
+  background-image: url(../img/general/arrow-2-1.svg);
   width: 223px;
   height: 81px;
   top: 110%;
@@ -11572,7 +11572,7 @@ screen and (max-width:800px) and (orientation:landscape) {
 
 .s-what-is-neuropsychology__item--arrow:nth-child(3n):before {
   content: "";
-  background-image: url(../img/arrow-3.4e9f36be.svg);
+  background-image: url(../img/general/arrow-3-1.svg);
   width: 154px;
   height: 105px;
   top: 115%;
@@ -11633,7 +11633,7 @@ screen and (max-width:800px) and (orientation:landscape) {
 }
 
 .s-what-is-neuropsychology__item--attention {
-  background-image: url(../img/attention.e9fb9e79.svg);
+  background-image: url(../img/general/attention.svg);
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: auto 149px;
@@ -11660,27 +11660,27 @@ screen and (max-width:800px) and (orientation:landscape) {
 }
 
 .s-contact-with-problem__card:first-child .s-contact-with-problem__img--figure {
-  background-image: url(../img/1.f7d5f445.svg)
+  background-image: url(../img/general/1.f7d5f445.svg)
 }
 
 .s-contact-with-problem__card:nth-child(2) .s-contact-with-problem__img--figure {
-  background-image: url(../img/2.9de4f778.svg)
+  background-image: url(../img/general/2.9de4f778.svg)
 }
 
 .s-contact-with-problem__card:nth-child(3) .s-contact-with-problem__img--figure {
-  background-image: url(../img/3.722eed38.svg)
+  background-image: url(../img/general/3.722eed38.svg)
 }
 
 .s-contact-with-problem__card:nth-child(4) .s-contact-with-problem__img--figure {
-  background-image: url(../img/4.e33a8a5c.svg)
+  background-image: url(../img/general/4.e33a8a5c.svg)
 }
 
 .s-contact-with-problem__card:nth-child(5) .s-contact-with-problem__img--figure {
-  background-image: url(../img/5.45e24677.svg)
+  background-image: url(../img/general/5.45e24677.svg)
 }
 
 .s-contact-with-problem__card:nth-child(6) .s-contact-with-problem__img--figure {
-  background-image: url(../img/6.18fc5bd6.svg)
+  background-image: url(../img/general/6.18fc5bd6.svg)
 }
 
 .s-neurocorrection-work {
@@ -11691,7 +11691,7 @@ screen and (max-width:800px) and (orientation:landscape) {
 
 @media screen and (width>=1024px) {
   .s-neurocorrection-work {
-    background-image: url(../img/s-neurocorrection-work.svg);
+    background-image: url(../img/general/s-neurocorrection-work.svg);
   }
 }
 
@@ -11790,7 +11790,7 @@ screen and (max-width:800px) and (orientation:landscape) {
 }
 
 .s-neurocorrection-work__item:first-child:before {
-  background-image: url(../img/arrow-1.04ddb355.svg);
+  background-image: url(../img/general/arrow-1.svg);
   width: 98px;
   height: 43px;
   top: 0;
@@ -11810,7 +11810,7 @@ screen and (max-width:800px) and (orientation:landscape) {
 }
 
 .s-neurocorrection-work__item:nth-child(2n):before {
-  background-image: url(../img/arrow-2.21f7744a.svg);
+  background-image: url(../img/general/arrow-2.svg);
   width: 171px;
   height: 74px;
   bottom: -35%;
@@ -11831,7 +11831,7 @@ screen and (max-width:800px) and (orientation:landscape) {
 }
 
 .s-neurocorrection-work__item:nth-child(3n):before {
-  background-image: url(../img/arrow-3.2a4d799f.svg);
+  background-image: url(../img/general/arrow-3.svg);
   width: 120px;
   height: 30px;
   bottom: -5%;
