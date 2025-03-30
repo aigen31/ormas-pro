@@ -6442,7 +6442,8 @@ screen and (max-width:800px) and (orientation:landscape) {
 
 .certificates__list-item-image img {
   height: 319px;
-  width: 100%
+  width: 100%;
+  object-fit: cover;
 }
 
 @media screen and (max-width:1024px) {
