@@ -30,7 +30,6 @@
 				<img class="useful__image" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_url($image['alt']); ?>" width="465" height="448" loading="lazy">
 			<?php endif; ?>
 		</div>
-		<?php die(var_dump($meta_fields)) ?>
 		<form action="" method="POST" class="useful__right useful-main-form">
 			<div class="useful__right-title"><?php echo $material_title; ?></div>
 			<div class="useful__right-description" data-type="<?php echo $count + 9; ?>">
