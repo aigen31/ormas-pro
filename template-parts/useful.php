@@ -18,9 +18,8 @@
 	<div class="container">
 		<div class="useful__left">
 			<?php
-			$image_id = $meta_fields['material_image'];
-			$image = get_image_data($image_id, 'large');
-			
+			$image = get_image_data($material_image, 'large');
+
 			if ($material_position_top || $material_position_left) :
 				$style = '';
 				if ($material_position_top) $style .= "bottom: {$material_position_top}px;";
@@ -28,11 +27,12 @@
 			?>
 				<img style="<?php echo $style; ?>" class="useful__image" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" width="465" height="448" loading="lazy">
 			<?php else : ?>
-				<img class="useful__image" src="<?php echo esc_url($image['url']); ?>" alt="" width="465" height="448" loading="lazy">
+				<img class="useful__image" src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_url($image['alt']); ?>" width="465" height="448" loading="lazy">
 			<?php endif; ?>
 		</div>
+		<?php die(var_dump($meta_fields)) ?>
 		<form action="" method="POST" class="useful__right useful-main-form">
-			<div class="useful__right-title"><?php echo the_title(); ?></div>
+			<div class="useful__right-title"><?php echo $material_title; ?></div>
 			<div class="useful__right-description" data-type="<?php echo $count + 9; ?>">
 				<?php echo $material_description; ?>
 			</div>
