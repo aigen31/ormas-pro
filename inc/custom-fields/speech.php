@@ -4,7 +4,7 @@ use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
 Container::make('post_meta', 'Речь')
-  ->where('post_id', '=', get_post_by_slug('logoped-defektolog')->ID)
+  ->where('post_id', '=', get_service_page_by_slug('logoped-defektolog')->ID)
   ->add_fields([
     Field::make('complex', 's_contact_with_problem', 'С чем можно обратиться')
       ->set_layout('tabbed-horizontal')

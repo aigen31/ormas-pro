@@ -4,7 +4,7 @@ use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
 Container::make('post_meta', 'БОС-терапия')
-  ->where('post_id', '=', get_post_by_slug('bos-therapy')->ID)
+  ->where('post_id', '=', get_service_page_by_slug('bos-therapy')->ID)
   ->add_fields([
     Field::make('rich_text', 'bos_about_method', 'Параграф')->set_width(100),
     Field::make('complex', 'bos_advantages', 'Преимущества БОС-терапии')
