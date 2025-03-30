@@ -5,7 +5,7 @@ use Carbon_Fields\Field;
 
 Container::make('post_meta', 'Главная страница')
   ->where('post_type', '=', 'page')
-  ->where('post_id', '=', carbon_get_theme_option('main_page_id'))
+  ->where('post_id', '=', get_option('page_for_posts'))
   ->add_fields([
     Field::make('complex', 'home_services', 'Услуги')
       ->set_layout('tabbed-horizontal')
