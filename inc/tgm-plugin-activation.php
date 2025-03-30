@@ -25,6 +25,11 @@ function ormas_register_required_plugins() {
       'name' => 'Cyr-To-Lat',
       'slug' => 'cyr2lat',
       'required' => true,
+		],
+    [
+      'name' => 'SVG Support',
+      'slug' => 'svg-support',
+      'required' => true,
     ]
 	];
 
