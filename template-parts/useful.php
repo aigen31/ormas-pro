@@ -1,7 +1,7 @@
 <div class="useful inwork" id="useful">
 	<img class="wave-first" src="<?php bloginfo('template_directory') ?>/assets/img/general/wave1.png">
 	<?php
-	$main_page_id = carbon_get_theme_option('main_page_id');
+	$main_page_id = get_option('page_for_posts');
 	$material = get_carbon_page_meta($main_page_id, [
 		'material_image',
 		'material_position_top',

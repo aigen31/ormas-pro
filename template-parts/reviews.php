@@ -3,7 +3,7 @@
         <h2 class="site-title reviews__title">Отзывы</h2>
         <div class="reviews__list">
             <?php
-            $main_page_id = carbon_get_theme_option('main_page_id');
+            $main_page_id = get_option('page_for_posts');
             $reviews = carbon_get_post_meta($main_page_id, 'reviews_list');
             foreach ($reviews as $review) :
                 $image_id = $review['review_image'];

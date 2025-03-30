@@ -4,7 +4,7 @@
       <h2 class="site-title certificates__title">Дипломы и сертификаты</h2>
       <div class="certificates__list">
         <?php
-        $main_page_id = carbon_get_theme_option('main_page_id');
+        $main_page_id = get_option('page_for_posts');
         $certificates = carbon_get_post_meta($main_page_id, 'certificates_gallery');
         if (!empty($certificates)) :
           foreach ($certificates as $certificate) :

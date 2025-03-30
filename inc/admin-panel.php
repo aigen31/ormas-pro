@@ -2,7 +2,7 @@
 // Disable content editor on the homepage
 function ormas_remove_editor_from_homepage()
 {
-  $main_page_id = carbon_get_theme_option('main_page_id');
+  $main_page_id = get_option('page_for_posts');
   if (isset($_GET['post']) && $_GET['post'] == $main_page_id) {
     remove_post_type_support('page', 'editor');
   }

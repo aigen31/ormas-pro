@@ -4,7 +4,7 @@
 		<h2 class="site-title services__title">Наши услуги</h2>
 		<div class="services__list">
 			<?php
-			$main_page_id = carbon_get_theme_option('main_page_id');
+			$main_page_id = get_option('page_for_posts');
 			$services = carbon_get_post_meta($main_page_id, 'home_services');
 			foreach ($services as $service) :
 				$image_id = $service['service_image']; // Assuming this is the image ID
