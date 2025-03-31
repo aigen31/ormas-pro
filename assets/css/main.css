@@ -9201,7 +9201,8 @@ screen and (max-width:800px) and (orientation:landscape) {
   position: absolute;
   right: -24px;
   top: -70px;
-  width: 256px
+  width: 256px;
+  object-fit: cover;
 }
 
 @media screen and (max-width:1024px) {
@@ -11661,27 +11662,27 @@ screen and (max-width:800px) and (orientation:landscape) {
 }
 
 .s-contact-with-problem__card:first-child .s-contact-with-problem__img--figure {
-  background-image: url(../img/general/1.f7d5f445.svg)
+  background-image: url(../img/general/number-1.svg)
 }
 
 .s-contact-with-problem__card:nth-child(2) .s-contact-with-problem__img--figure {
-  background-image: url(../img/general/2.9de4f778.svg)
+  background-image: url(../img/general/number-2.svg)
 }
 
 .s-contact-with-problem__card:nth-child(3) .s-contact-with-problem__img--figure {
-  background-image: url(../img/general/3.722eed38.svg)
+  background-image: url(../img/general/number-3.svg)
 }
 
 .s-contact-with-problem__card:nth-child(4) .s-contact-with-problem__img--figure {
-  background-image: url(../img/general/4.e33a8a5c.svg)
+  background-image: url(../img/general/number-4.svg)
 }
 
 .s-contact-with-problem__card:nth-child(5) .s-contact-with-problem__img--figure {
-  background-image: url(../img/general/5.45e24677.svg)
+  background-image: url(../img/general/number-5.svg)
 }
 
 .s-contact-with-problem__card:nth-child(6) .s-contact-with-problem__img--figure {
-  background-image: url(../img/general/6.18fc5bd6.svg)
+  background-image: url(../img/general/number-6.svg)
 }
 
 .s-neurocorrection-work {
