@@ -8,7 +8,7 @@ if (!empty($problems)) :
 			<ul class="can-ask-for__list">
 				<?php
 				foreach ($problems as $problem):
-					$image = get_image_data($problem['image'], 'thumbnail');
+					$image = get_image_data($problem['image'], 'medium');
 				?>
 					<li class="can-ask-for__item">
 						<?php if (!empty($problem['title'])): ?>
