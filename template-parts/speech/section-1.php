@@ -3,8 +3,8 @@ $problems = carbon_get_post_meta(get_the_ID(), 's_contact_with_problem');
 if (!empty($problems)) :
 ?>
 	<section class="s s-contact-with-problem">
-		<img class="how-work__bird" src="https://dev.ormas.pro/wp-content/themes/ormas/assets/img/general/bird-how-work.svg">
-		<img class="wave-nine" src="https://dev.ormas.pro/wp-content/themes/ormas/assets/img/general/wave-9.svg">
+		<img class="how-work__bird" src="<?php bloginfo('template_directory') ?>/assets/img/general/bird-how-work.svg">
+		<img class="wave-nine" src="<?php bloginfo('template_directory') ?>/assets/img/general/wave-9.svg">
 		<div class="container">
 			<h2 class="site-title s-contact-with-problem__title">
 				С чем можно<br class="--only-sm"> обратиться
