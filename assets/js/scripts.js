@@ -1,5 +1,4 @@
 jQuery(document).ready(function ($) {
-	// Проверяем .post__list и инициализируем slick
 	if ($(".post__list")[0]) {
 		$(".post__list").not(".slick-initialized").slick({
 			infinite: true,
