@@ -10,7 +10,7 @@ if (!empty($steps)) :
 				<?php
 
 				foreach ($steps as $step):
-					$image = get_image_data($step['image'], 'thumbnail');
+					$image = get_image_data($step['image'], 'large');
 				?>
 					<div class="how_work_slide">
 						<div>
@@ -194,34 +194,3 @@ if (!empty($steps)) :
 		background: #fff;
 	}
 </style>
-<script>
-	$(document).ready(function() {
-		if ($(".how_work_slider")) {
-			$(".how_work_slider").slick({
-				infinite: false,
-				slidesToShow: 2,
-				slidesToScroll: 1,
-				arrows: true,
-				variableWidth: true,
-				dots: false,
-				prevArrow: document.querySelector('.how_work2 .slick-prev'),
-				nextArrow: document.querySelector('.how_work2 .slick-next'),
-				responsive: [{
-						breakpoint: 1024,
-						settings: {
-							variableWidth: false,
-						}
-					},
-					{
-						breakpoint: 768,
-						settings: {
-							slidesToShow: 1,
-							slidesToScroll: 1,
-						}
-					},
-				]
-			});
-		}
-
-	});
-</script>
