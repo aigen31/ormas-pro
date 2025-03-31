@@ -22,5 +22,4 @@ Container::make('post_meta', 'Нейродиагностика')
       ]),
     Field::make('text', 'warning_title', 'Заголовок блока предупреждения')->set_width(30),
     Field::make('rich_text', 'warning_text', 'Текст блока предупреждения')->set_width(70),
-    Field::make('text', 'button_text_1', 'Текст кнопки второй секции'),
   ]);
