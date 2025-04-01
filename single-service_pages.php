@@ -19,6 +19,9 @@ switch ($post->post_name) {
   case 'nejropsihologicheskaya-diagnostika':
     get_template_part('templates/neuro-diagnostic');
     break;
+  case 'our-services':
+    get_template_part('templates/our-services');
+    break;
   default:
     break;
 }

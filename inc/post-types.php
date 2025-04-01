@@ -86,6 +86,34 @@ function register_post_types() {
     'query_var'           => true,
   ]);
 
+  register_post_type('service_list', [
+    'label'  => null,
+    'labels' => [
+      'name'               => 'Список услуг',
+      'singular_name'      => 'Список услуг',
+      'add_new'            => 'Добавить услугу',
+      'add_new_item'       => 'Добавление услуги в список',
+      'edit_item'          => 'Редактирование услуги',
+      'new_item'           => 'Новая услуга',
+      'view_item'          => 'Смотреть услугу',
+      'search_items'       => 'Искать услугу',
+      'not_found'          => 'Не найдено',
+      'not_found_in_trash' => 'Не найдено в корзине',
+      'parent_item_colon'  => '',
+      'menu_name'          => 'Список услуг',
+    ],
+    'description'            => '',
+    'public'                 => true,
+    'show_in_rest'           => false,
+    'menu_position'          => 12,
+    'menu_icon'              => 'dashicons-list-view',
+    'supports'               => ['title', 'editor'],
+    'taxonomies'             => [],
+    'has_archive'            => false,
+    'rewrite'                => true,
+    'query_var'              => true,
+  ]);
+
   register_taxonomy('direction', ['specialists'], [
     'label' => 'Направления',
     'labels' => [

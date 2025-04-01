@@ -4,44 +4,66 @@
 		<h2 class="site-title services__title">Наши услуги</h2>
 		<div class="services__list">
 			<?php
-			$main_page_id = get_option('page_for_posts');
-			$services = carbon_get_post_meta($main_page_id, 'home_services');
-			foreach ($services as $service) :
-				$image_id = $service['service_image']; // Assuming this is the image ID
-				$image = get_image_data($image_id, 'medium');
+			$posts = get_posts([
+				'numberposts' => 0,
+				'orderby'     => 'date',
+				'order'       => 'DESC',
+				'post_type'   => 'service_list',
+				'suppress_filters' => true,
+			]);
+			foreach ($posts as $post) :
+				setup_postdata($post);
+				$service = get_carbon_page_meta($post->ID, [
+					'img_service',
+					'link',
+					'age',
+					'services',
+				]);
+				extract($service);
+				$image = get_image_data($img_service, 'medium');
 			?>
 				<div class="services__list-item">
 					<div class="services__list-item-wrapper">
 						<div class="services__list-header">
 							<div class="services__list-img-wrapper">
-								<img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" class="services__list-item-img" loading="lazy">
+								<?php if (!empty($image)) : ?>
+									<img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" class="services__list-item-img" loading="lazy">
+								<?php endif; ?>
 							</div>
 							<div class="services__list-title">
-								<p class="services__list-title-name"><?php echo $service['service_title']; ?></p>
-								<div class="services__list-title-year">
-									<img src="<?php bloginfo('template_directory') ?>/assets/img/minified-svg/laughing.svg" alt="smile" class="services__list-title-smile" width="24" height="24">
-									<p class="services__list-title-smile-text">
-										Возраст: <?php echo $service['service_age']; ?>.
-									</p>
-								</div>
+								<a href="<?php echo esc_url($link); ?>">
+									<p class="services__list-title-name"><?php the_title(); ?></p>
+								</a>
+								<?php if (!empty($age)) : ?>
+									<div class="services__list-title-year">
+										<img src="<?php bloginfo('template_directory') ?>/assets/img/minified-svg/laughing.svg" alt="smile" class="services__list-title-smile" width="24" height="24">
+										<p class="services__list-title-smile-text">
+											Возраст: <?php echo esc_html($age); ?>.
+										</p>
+									</div>
+								<?php endif; ?>
 							</div>
 						</div>
 						<div class="services__list-content">
-							<p><?php echo $service['service_description']; ?></p>
-							<div class="services__list-content-info">
-								<img src="<?php bloginfo('template_directory') ?>/assets/img/minified-svg/grid-row-2 copy.svg" alt="img" class="services__list-content-info-img" width="24" height="24">
-								<p class="services__list-content-info-text">
-									Услуги: <?php echo $service['service_services']; ?>.
-								</p>
-							</div>
+							<?php the_content(); ?>
+							<?php if (!empty($services)) : ?>
+								<div class="services__list-content-info">
+									<img src="<?php bloginfo('template_directory') ?>/assets/img/minified-svg/grid-row-2 copy.svg" alt="img" class="services__list-content-info-img" width="24" height="24">
+									<p class="services__list-content-info-text">
+										Услуги: <?php echo esc_html($services); ?>.
+									</p>
+								</div>
+							<?php endif; ?>
 						</div>
 						<div class="services__list-btn">
-							<div class="site-button services__list-item-right-button" data-type="2" data-email="<?php // the_field('email_title'); 
-																																																	?>">Записаться</div>
+							<div class="site-button services__list-item-right-button">Записаться</div>
 						</div>
 					</div>
 				</div>
-			<?php endforeach; ?>
+			<?php
+			endforeach;
+			wp_reset_postdata();
+			?>
 		</div>
 
 		<?php if (is_front_page() || is_home()): ?>

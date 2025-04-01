@@ -47,6 +47,7 @@ function ormas_register_fields()
     'neurocorrecrion',
     'neuro-diagnostic',
     'services',
-    'materials'
+    'materials',
+    'our-services'
   ], 'inc/custom-fields');
 }

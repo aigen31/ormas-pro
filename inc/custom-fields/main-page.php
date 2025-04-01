@@ -7,15 +7,9 @@ Container::make('post_meta', 'Главная страница')
   ->where('post_type', '=', 'page')
   ->where('post_id', '=', get_option('page_for_posts'))
   ->add_fields([
-    Field::make('complex', 'home_services', 'Услуги')
-      ->set_layout('tabbed-horizontal')
-      ->add_fields([
-        Field::make('text', 'service_title', 'Заголовок')->set_width(20),
-        Field::make('text', 'service_age', 'Возраст для занятий')->set_width(20),
-        Field::make('text', 'service_services', 'Услуги')->set_width(20),
-        Field::make('image', 'service_image', 'Изображение')->set_type('image')->set_width(20),
-        Field::make('textarea', 'service_description', 'Описание')->set_width(100),
-      ]),
+    Field::make('separator', 'service_list_separator', 'Список услуг'),
+    Field::make('html', 'service_list', 'Список услуг')
+      ->set_html('<p>Для редактирования списка услуг <a href="' . admin_url('edit.php?post_type=service_list') . '">перейдите по ссылке</a></p>'),
     Field::make('separator', 'specialists_separator', 'Специалисты'),
     Field::make('html', 'specialists', 'Специалисты')
       ->set_html('<p>Для редактирования списка специалистов <a href="' . admin_url('edit.php?post_type=specialists') . '">перейдите по ссылке</a></p>'),
