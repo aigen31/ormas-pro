@@ -129,19 +129,19 @@ jQuery(document).ready(function ($) {
 	var themePath = $("meta[property='themePath']").attr("content");
 
 	$(".services__list-item-right-button").on("click", function () {
-		$(".services__poopup").removeClass("hidden");
+		$(".how-work__poopup").removeClass("hidden");
 		$(".consultation-overlay").removeClass("hidden");
 		$("body").css({ overflow: "hidden" });
-		$(".services__poopup").find(".poopup__inputs").show();
-		$(".services__poopup").find(".poopup__title").html("Записаться");
-		$(".services__poopup").find(".poopup__description").html(
+		$(".how-work__poopup").find(".poopup__inputs").show();
+		$(".how-work__poopup").find(".poopup__title").html("Записаться");
+		$(".how-work__poopup").find(".poopup__description").html(
 			"Оставьте ваши контактные данные, и наш администратор вскоре с Вами свяжется!"
 		);
 		$(".services-type").val($(this).data("type"));
 		$(".services-type-email_title").val($(this).data("email"));
 		$(document).click(function (e) {
-			var div = $(".services__poopup");
-			var divsvg = $(".services__poopup-svg");
+			var div = $(".how-work__poopup");
+			var divsvg = $(".how-work__poopup-svg");
 			if (divsvg.is(e.target)) {
 				div.addClass("hidden");
 			}
@@ -181,19 +181,19 @@ jQuery(document).ready(function ($) {
 				url: themePath + "/request.php",
 				data: formData
 			});
-			$(".services__poopup").find(".poopup__inputs").hide();
-			$(".services__poopup").find(".poopup__title").html("Спасибо за обращение!");
-			$(".services__poopup").find(".poopup__description").html("Наш администратор вскоре с Вами свяжется!");
+			$(".how-work__poopup").find(".poopup__inputs").hide();
+			$(".how-work__poopup").find(".poopup__title").html("Спасибо за обращение!");
+			$(".how-work__poopup").find(".poopup__description").html("Наш администратор вскоре с Вами свяжется!");
 		}
 	});
 
-	$(".services__poopup-svg").click(function () {
-		$(".services__poopup").addClass("hidden");
+	$(".how-work__poopup-svg").click(function () {
+		$(".how-work__poopup").addClass("hidden");
 		$(".consultation-overlay").addClass("hidden");
 		$("body").css({ overflow: "auto" });
 	});
 	$(".consultation-overlay").click(function () {
-		$(".services__poopup").addClass("hidden");
+		$(".how-work__poopup").addClass("hidden");
 		$(".consultation-overlay").addClass("hidden");
 		$("body").css({ overflow: "auto" });
 	});
