@@ -1,6 +1,6 @@
 <!-- <section class="main neuropsychology-page diagnostic-page psychological-support"> -->
 <section class="main neuropsychology-page diagnostic-page">
-  <div class="consultation-overlay hidden"></div>
+  
   <?php
   get_template_part('template-parts/direction');
   get_template_part('template-parts/neuro-diagnostic/section-1');

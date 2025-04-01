@@ -1,5 +1,5 @@
 <section class="main neuropsychology-page bos-therapy_page">
-	<div class="consultation-overlay hidden"></div>
+	
 	<?php
 	get_template_part('template-parts/direction');
 	get_template_part('template-parts/bos-therapy/section-1');

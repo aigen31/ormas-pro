@@ -1,4 +1,5 @@
 </div>
+<?php get_template_part('template-parts/feedback-popup'); ?>
 <footer class="footer" id="footer">
 	<div class="container">
 		<div class="footer__top-line">
@@ -20,7 +21,7 @@
 							</defs>
 						</svg>
 					</a>
-					<div class="footer__top-line-column-description">Нейропсихологический центр ORMAS, 2020
+					<div class="footer__top-line-column-description">Нейропсихологический центр ORMAS, <?php the_time('Y'); ?>
 						<br>Все права защищены
 					</div>
 				</div>
@@ -174,4 +175,5 @@
 </div>
 <?php wp_footer(); ?>
 </body>
+
 </html>
