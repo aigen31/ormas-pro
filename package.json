@@ -20,7 +20,10 @@
     "@wordpress/scripts": "^19.2.2",
     "dir-archiver": "^1.1.1",
     "node-sass": "^7.0.1",
-    "rtlcss": "^3.5.0"
+    "purgecss": "^7.0.2",
+    "rtlcss": "^3.5.0",
+    "stylelint": "^16.17.0",
+    "stylelint-order": "^6.0.4"
   },
   "rtlcssConfig": {
     "options": {
