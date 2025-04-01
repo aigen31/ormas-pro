@@ -81,3 +81,8 @@ require get_template_directory() . '/inc/tgm-plugin-activation.php';
  */
 require get_template_directory() . '/inc/admin-panel.php';
 
+/**
+ * Page rewrite rules
+ */
+require get_template_directory() . '/inc/rewrite-rules.php';
+
