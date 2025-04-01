@@ -2677,6 +2677,10 @@ template {
   }
 }
 
+.about__left-description--white {
+  color: #ffffff !important;
+}
+
 .about__left-title .checks svg {
   fill: #fff
 }
