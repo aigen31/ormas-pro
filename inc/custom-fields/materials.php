@@ -4,7 +4,7 @@ use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
 Container::make('post_meta', 'Материалы')
-  ->where('post_id', '=', get_page_by_path('materials')->ID)
+  ->where('post_id', '=', get_page_by_path('materialy')->ID)
   ->add_fields([
     Field::make('complex', 'materials_list', 'Список материалов')
       ->set_layout('tabbed-horizontal')
