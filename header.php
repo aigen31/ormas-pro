@@ -288,10 +288,17 @@
 				</div>
 			</div>
 			<a href="#header" class="header__bottom-arrow"></a>
-		</header>
-		<?php
-		if (function_exists('yoast_breadcrumb' || !is_page('agreement'))) : ?>
+				<?php
+		if (function_exists('yoast_breadcrumb') && !is_home() && get_post_type() != 'post') : ?>
 			<div class="container">
-				<?php yoast_breadcrumb('<div class="services-page__breadcrumbs">', '</div>'); ?>
+				<?php
+					function white_bg()
+					{
+						if (is_archive('service')) {
+							return 'services-page__breadcrumbs--wh-bg';
+						}
+					}
+yoast_breadcrumb('<div class="services-page__breadcrumbs ' . white_bg() . '">', '</div>'); ?>
 			</div>
 		<?php endif; ?>
+		</header>
