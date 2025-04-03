@@ -139,6 +139,7 @@
 				</div>
 			</div>
 
+			<div class="header__nav-wrapper">
 			<div class="header__nav-line">
 				<div class="header__nav-line-container">
 					<a href="<?php bloginfo('url') ?>">
@@ -171,6 +172,7 @@
 					<div class="header__burger-line"></div>
 					<div class="header__burger-line"></div>
 				</div>
+			</div>
 			</div>
 
 			<div class="header__burger-poopup">
