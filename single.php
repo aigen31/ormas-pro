@@ -6,7 +6,7 @@
 				<div class="post-block__left-top">
 					<div class="post-block__left-top-left">
 						<div class="post-block__left-top-left-date"><?php the_time('d.m.Y') ?></div>
-						<div class="post-block__left-top-left-views">
+						<!-- <div class="post-block__left-top-left-views">
 							<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<g clip-path="url(#clip0)">
 									<path d="M0.667969 8.00033C0.667969 8.00033 3.33464 2.66699 8.0013 2.66699C12.668 2.66699 15.3346 8.00033 15.3346 8.00033C15.3346 8.00033 12.668 13.3337 8.0013 13.3337C3.33464 13.3337 0.667969 8.00033 0.667969 8.00033Z" stroke="#808694" stroke-width="1.4"
@@ -22,7 +22,7 @@
 							<?php // if (function_exists('the_views')) {
 								// the_views();
 							// } ?>
-						</div>
+						</div> -->
 					</div>
 					<div class="post-block__left-top-right">
 						<img src="<?php bloginfo('template_directory') ?>/assets/img/general/post-social.jpg">
@@ -36,7 +36,7 @@
 				<div class="post-block__left-top">
 					<div class="post-block__left-top-left">
 						<div class="post-block__left-top-left-date">16.06.2020</div>
-						<div class="post-block__left-top-left-views">
+						<!-- <div class="post-block__left-top-left-views">
 							<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<g clip-path="url(#clip0)">
 									<path d="M0.667969 8.00033C0.667969 8.00033 3.33464 2.66699 8.0013 2.66699C12.668 2.66699 15.3346 8.00033 15.3346 8.00033C15.3346 8.00033 12.668 13.3337 8.0013 13.3337C3.33464 13.3337 0.667969 8.00033 0.667969 8.00033Z" stroke="#808694" stroke-width="1.4"
@@ -52,7 +52,7 @@
 							<?php // if (function_exists('the_views')) {
 								 // the_views();
 							 // } ?>
-						</div>
+						</div> -->
 					</div>
 
 				</div>
