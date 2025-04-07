@@ -25,9 +25,11 @@
 			<div class="consultation__input-wrapper">
 				<input type="text" placeholder="Ваше имя" class="site-input consultation__inputs-input" name="firstname">
 				<input type="email" placeholder="Email" class="site-input consultation__inputs-input" name="email">
-				<input type="hidden" value="8" name="type">
-				<input type="text" placeholder="Ваш номер телефона" class="site-input consultation__inputs-input" id="phone-mask2" name="phone">
-
+				<input type="text" placeholder="Ваш номер телефона" class="site-input consultation__inputs-input phone-mask" name="phone">
+				<input type="hidden" name="type" value="Консультация">
+				<input type="hidden" name="title" value="<?php the_page_title(); ?>">
+				<input type="hidden" name="action" value="custom_form_submit">
+				<?php wp_nonce_field('custom_form'); ?>
 				<div class="site-checkbox signup__inputs-checkbox consultation__inputs-checkbox">
 					<label>
 						<input type="checkbox">

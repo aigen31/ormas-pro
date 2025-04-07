@@ -7,14 +7,17 @@
   <div class="poopup__description">Оставьте ваши контактные данные, и наш администратор вскоре с Вами свяжется!
   </div>
   <form method="POST" class="site-inputs how-work__inputs poopup__inputs">
+    <input type="hidden" name="action" value="custom_form_submit">
+    <?php wp_nonce_field('custom_form'); ?>
     <input type="text" placeholder="Ваше имя" class="site-input poopup__inputs-input" name="firstname">
     <input type="text" placeholder="Ваша фамилия" class="site-input poopup__inputs-input" name="lastname">
     <input type="email" placeholder="Email" class="site-input poopup__inputs-input" name="email">
-    <input type="text" placeholder="Ваш номер телефона" class="site-input poopup__inputs-input" id="phone-mask3" name="phone">
-    <input type="hidden" class="how-work-type" value="5" name="type">
+    <input type="text" placeholder="Ваш номер телефона" class="site-input poopup__inputs-input phone-mask" name="phone">
+    <input type="hidden" name="type" value="Запись на услугу">
+    <input type="hidden" name="title" value="<?php the_page_title(); ?>">
     <div class="site-checkbox poopup__inputs-checkbox">
       <label>
-        <input type="checkbox">
+        <input type="checkbox" name="accept">
         <div class="site-checkbox__checkbox">
           <svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1.41 3L4 5.58L9.59 0L11 1.41L4 8.41L0 4.41L1.41 3Z" fill="#fff" />
@@ -25,6 +28,6 @@
         </div>
       </label>
     </div>
-    <button class="site-button poopup_inputs-button">Записаться</button>
+    <button type="submit" class="site-button poopup_inputs-button">Записаться</button>
   </form>
 </div>

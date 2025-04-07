@@ -21,7 +21,7 @@
 			<div class="psychological-support__block psychological-support__block--enrol">
 				<p class="psychological-support__block-text">Это лишь примерный перечень запросов. Если вы сомневаетесь, поможет ли психолог именно
 					с вашей ситуацией - заполните форму ниже. Наш администратор свяжется с вами и поможет разобраться.</p>
-				<button class="psychological-support__block-button site-button">Записаться</button>
+				<button class="psychological-support__block-button how-work__button site-button">Записаться</button>
 			</div>
 			<div class="psychological-support__block psychological-support__block--teenager">
 				<img src="<?php bloginfo('template_directory') ?>/assets/img/general/teenager.svg" alt="img" class="psychological-support__block-img psychological-support__block-img--teenager">

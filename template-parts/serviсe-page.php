@@ -97,11 +97,14 @@
 				<div class="poopup__description">Оставьте ваши контактные данные, и наш администратор вскоре с Вами свяжется!
 				</div>
 				<form action="" method="POST" class="site-inputs services__inputs poopup__inputs">
+					<input type="hidden" name="action" value="custom_form_submit">
+					<?php wp_nonce_field('custom_form'); ?>
 					<input type="text" placeholder="Ваше имя" class="site-input poopup__inputs-input" name="firstname">
 					<input type="text" placeholder="Ваша фамилия" class="site-input poopup__inputs-input" name="lastname">
 					<input type="email" placeholder="Email" class="site-input poopup__inputs-input" name="email">
-					<input type="text" placeholder="Ваш номер телефона" class="site-input poopup__inputs-input" id="phone-mask3" name="phone">
-					<input type="hidden" class="services-type" value="1" name="type">
+					<input type="text" placeholder="Ваш номер телефона" class="site-input poopup__inputs-input phone-mask" name="phone">
+					<input type="hidden" name="type" value="Запись на услугу">
+					<input type="hidden" name="title" value="<?php the_page_title(); ?>">
 					<div class="site-checkbox poopup__inputs-checkbox">
 						<label>
 							<input type="checkbox">

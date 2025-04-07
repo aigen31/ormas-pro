@@ -9,8 +9,8 @@
  */
 
 if (! defined('_S_VERSION')) {
-	// Replace the version number of the theme on each release.
-	define('_S_VERSION', '0.0.2');
+  // Replace the version number of the theme on each release.
+  define('_S_VERSION', '0.0.2');
 }
 
 /**
@@ -22,15 +22,15 @@ if (! defined('_S_VERSION')) {
  */
 function ormas_pro_setup()
 {
-	/**
-	 * Nav Menus
-	 */
-	require get_template_directory() . '/inc/nav-menus.php';
+  /**
+   * Nav Menus
+   */
+  require get_template_directory() . '/inc/nav-menus.php';
 
-	/**
-	 * Add Theme Support
-	 */
-	require get_template_directory() . '/inc/add-theme-support.php';
+  /**
+   * Add Theme Support
+   */
+  require get_template_directory() . '/inc/add-theme-support.php';
 }
 add_action('after_setup_theme', 'ormas_pro_setup');
 
@@ -55,8 +55,8 @@ require get_template_directory() . '/inc/post-types.php';
 add_action('after_setup_theme', 'crb_load');
 function crb_load()
 {
-	require_once('vendor/autoload.php');
-	\Carbon_Fields\Carbon_Fields::boot();
+  require_once('vendor/autoload.php');
+  \Carbon_Fields\Carbon_Fields::boot();
 }
 require get_template_directory() . '/inc/custom-fields.php';
 
@@ -86,3 +86,7 @@ require get_template_directory() . '/inc/admin-panel.php';
  */
 require get_template_directory() . '/inc/rewrite-rules.php';
 
+/**
+ * Send mail
+ */
+require get_template_directory() . '/inc/mail.php';

@@ -26,7 +26,7 @@ if (!empty($how_work_items)) :
 			</ul>
 			<?php get_template_part('template-parts/warning'); ?>
 			<div class="how-work__button-wrapper">
-				<button class="site-button psychological-support-how-work-button">Записаться на консультацию</и>
+				<button class="site-button how-work__button">Записаться на консультацию</и>
 			</div>
 		</div>
 	</div>

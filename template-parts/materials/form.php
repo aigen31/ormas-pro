@@ -1,5 +1,5 @@
 <section class="materials-form">
-<img class="wave-six" src="<?php bloginfo('template_directory') ?>/assets/img/general/wave-6.png">
+	<img class="wave-six" src="<?php bloginfo('template_directory') ?>/assets/img/general/wave-6.png">
 	<div class="container">
 		<div class="materials-form__wrapper">
 			<div class="materials-form__item">
@@ -20,11 +20,12 @@
 					<div class="poopup__description">Наш администратор вскоре с Вами свяжется!</div>
 				</div>
 				<div class="footer__top-line-column-title">Остались вопросы?</div>
-				<form action="" method="POST" class="site-inputs footer__top-line-column-inputs-material">
+				<form method="POST" class="site-inputs footer__top-line-column-inputs-material">
 					<input type="text" placeholder="Ваше имя" class="site-input footer__top-line-column-inputs-input" name="firstname">
 					<input type="email" placeholder="Email" class="site-input footer__top-line-column-inputs-input" name="email">
 					<textarea type="textarea" placeholder="Коментрарий" class="site-input footer__top-line-column-inputs-textarea" name="text"></textarea>
-					<input type="hidden" value="6" name="type">
+					<input type="hidden" name="type" value="Вопрос">
+					<input type="hidden" name="title" value="<?php the_page_title(); ?>">
 					<button class="site-button footer__top-line-column-inputs-button">Отправить</button>
 					<div class="site-checkbox footer__top-line-column-inputs-checkbox">
 						<label>

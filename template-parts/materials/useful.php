@@ -25,7 +25,9 @@ if (!empty($materials)) :
 						<?php endif; ?>
 					</div>
 
-					<form action="" method="POST" class="form-help-book useful__right" enctype="multipart/form-data">
+					<form method="POST" class="form-help-book useful__right" enctype="multipart/form-data">
+						<input type="hidden" name="action" value="custom_form_submit">
+						<?php wp_nonce_field('custom_form'); ?>
 						<div class="useful__right-title"><?php echo esc_html($material['material_title']) ?></div>
 						<?php if (!empty($material['material_description'])) : ?>
 							<div class="useful__right-description"><?php echo wp_kses_post($material['material_description']) ?></div>
@@ -40,6 +42,8 @@ if (!empty($materials)) :
 							<input type="hidden" name="materials__title" value="<?php echo esc_attr($material['material_title']) ?>">
 							<input type="hidden" name="materials__mail-title" value="<?php echo esc_attr($material['material_mail_title']) ?>">
 							<input type="hidden" name="materials__text-mail" value="<?php echo esc_attr($material['material_mail_text']) ?>">
+							<input type="hidden" name="material" value="<?php echo esc_attr($material['material_title']); ?>">
+							<input type="hidden" name="title" value="<?php the_page_title(); ?>">
 							<button class="site-button useful__right-button">Скачать</button>
 							<div class="site-checkbox footer__top-line-column-inputs-checkbox">
 								<label>

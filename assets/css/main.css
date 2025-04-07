@@ -2438,7 +2438,7 @@ template {
 
 .about {
   background: #8fbbf5;
-  padding-top: 40px;
+  /* padding-top: 40px; */
   position: relative
 }
 
@@ -4710,7 +4710,7 @@ div#services section.servise-page-table {
 }
 
 .post .container {
-  padding-top: 120px;
+  /* padding-top: 120px; */
   position: relative
 }
 
@@ -5992,7 +5992,7 @@ screen and (max-width:800px) and (orientation:landscape) {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 101
+  z-index: 100
 }
 
 .consultation-overlay.hidden {
@@ -7528,9 +7528,9 @@ screen and (max-width:800px) and (orientation:landscape) {
 
 @media screen and (max-width:1024px) {
   .header.page-service.header {
-    display: -webkit-box;
+    /* display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
+    display: flex; */
     padding-right: 40px;
     width: 100%;
     -webkit-box-pack: justify;
@@ -7706,6 +7706,13 @@ screen and (max-width:800px) and (orientation:landscape) {
   padding-bottom: 20px;
 }
 
+@media screen and (max-width: 1024px) {
+  .services-page__breadcrumbs {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
 .services-page__breadcrumbs-list {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7716,6 +7723,7 @@ screen and (max-width:800px) and (orientation:landscape) {
   padding-left: 0;
   padding-top: 20px
 }
+
 
 @media screen and (max-width:768px) {
   .services-page__breadcrumbs-list {
@@ -7738,6 +7746,10 @@ screen and (max-width:800px) and (orientation:landscape) {
   color: #2e1464
 }
 
+.services-page__breadcrumbs .services-page__separator {
+  color: #ffffff;
+}
+
 .services-page__breadcrumbs-item:last-child,
 .services-page__breadcrumbs .breadcrumb_last {
   margin-right: 0
@@ -7751,7 +7763,8 @@ screen and (max-width:800px) and (orientation:landscape) {
   text-decoration: none
 }
 
-.services-page__breadcrumbs--wh-bg span a {
+.services-page__breadcrumbs--wh-bg span a,
+.services-page__breadcrumbs--wh-bg .services-page__separator {
   color: #808694;
 }
 
@@ -8575,7 +8588,7 @@ screen and (max-width:800px) and (orientation:landscape) {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   width: 1120px;
-  z-index: 101
+  z-index: 102
 }
 
 @media screen and (max-width:930px) {

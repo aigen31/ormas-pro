@@ -49,7 +49,7 @@
 				<div class="banner_form">
 					<div class="banner__popup poopup hidden">
 						<svg style="cursor: pointer;" class="banner__popup-svg" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path clip-rule="evenodd" d="M7.29289 8.6957L10.6194 12L7.29289 15.3043C6.90237 15.6922 6.90237 16.3212 7.29289 16.7091C7.68342 17.097 8.31658 17.097 8.70711 16.7091L12 13.4382L15.2929 16.7091C15.6834 17.097 16.3166 17.097 16.7071 16.7091C17.0976 16.3212 17.0976 15.6922 16.7071 15.3043L13.3806 12L16.7071 8.6957C17.0976 8.30778 17.0976 7.67885 16.7071 7.29094C16.3166 6.90302 15.6834 6.90302 15.2929 7.29094L12 10.5618L8.70711 7.29094C8.31658 6.90302 7.68342 6.90302 7.29289 7.29094C6.90237 7.67885 6.90237 8.30778 7.29289 8.6957Z"></path>
+							<path clip-rule="evenodd" d="M7.29289 8.6957L10.6194 12L7.29289 15.3043C6.90237 15.6922 6.90237 16.3212 7.29289 16.7091C7.68342 17.097 8.31658 17.097 8.70711 16.7091L12 13.4382L15.2929 16.7091C15.6834 17.097 16.3166 17.097 16.7071 16.7091C17.0976 16.3212 17.0976 15.6922 16.7071 15.3043L13.3806 12L16.7071 8.6957C17.0976 8.30778 17.0976 7.67885 16.7071 7.29094C16.3166 6.90302 15.6834 6.90302 15.2929 7.29094L12 10.5618L8.70711 7.29094C8.31658 6.90302 7.68342 6.90302 7.29289 7.29094C6.90237 7.67885 6.90237 8.30778 7.29289 8.6957Z"></path>
 						</svg>
 						<div class="poopup__title">Спасибо за обращение!</div>
 						<div class="poopup__description">Наш администратор вскоре с Вами свяжется!</div>
@@ -58,21 +58,24 @@
 					<div class="banner_form_title">
 						Записаться на консультацию
 					</div>
-					<form action="" method="POST" class="site-inputs">
+					<form method="POST" class="site-inputs">
+						<input type="hidden" name="action" value="custom_form_submit">
+						<?php wp_nonce_field('custom_form'); ?>
 						<input type="text" placeholder="Ваше имя" class="site-input" name="firstname">
 						<input type="email" placeholder="Email" class="site-input" name="email">
-						<input type="text" placeholder="Ваш номер телефона" class="site-input" id="phone-mask2" name="phone">
-						<input type="hidden" value="6" name="type">
+						<input type="text" placeholder="Ваш номер телефона" class="site-input phone-mask" name="phone">
+						<input type="hidden" name="type" value="Запись на консультацию">
+						<input type="hidden" name="title" value="<?php the_page_title(); ?>">
 						<div class="site-checkbox">
 							<label>
 								<input type="checkbox">
 								<div class="site-checkbox__checkbox">
 									<svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M1.41 3L4 5.58L9.59 0L11 1.41L4 8.41L0 4.41L1.41 3Z" fill="#fff"></path>
-								</svg>
+										<path d="M1.41 3L4 5.58L9.59 0L11 1.41L4 8.41L0 4.41L1.41 3Z" fill="#fff"></path>
+									</svg>
 								</div>
 								<div class="site__checkbox-text">
-								Согласие с условиями обработки <a href="/agreement/">персональных данных</a>
+									Согласие с условиями обработки <a href="/agreement/">персональных данных</a>
 								</div>
 							</label>
 						</div>
@@ -99,48 +102,48 @@
 	}
 
 	.contacts_banner_wrapper {
-	    display: flex;
-	    flex-direction: row;
-	    flex-wrap: nowrap;
-	    gap: 80px;
-	    align-items: center;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		gap: 80px;
+		align-items: center;
 	}
 
 	.contacts_left {
-	    display: flex;
-	    flex-direction: column;
-	    width: 50%;
-	    gap: 20px;
+		display: flex;
+		flex-direction: column;
+		width: 50%;
+		gap: 20px;
 	}
 
 	.contacts_right {
-	    width: 50%;
+		width: 50%;
 	}
 
 	.contacts_item {
-	    display: flex;
-	    flex-direction: row;
-	    flex-wrap: nowrap;
-	    gap: 15px;
-	    align-items: center;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		gap: 15px;
+		align-items: center;
 	}
 
 	.contacts_icon {
-	    background: #fff;
-	    display: flex;
-	    flex-direction: row;
-	    align-items: center;
-	    justify-content: center;
-	    width: 50px;
-	    min-width: 50px;
-	    height: 50px;
-	    border-radius: 50%;
-	    box-shadow: 0px 10px 18.2px -6px #2E146426;
+		background: #fff;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		width: 50px;
+		min-width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		box-shadow: 0px 10px 18.2px -6px #2E146426;
 	}
 
 	.contacts_item span {
-	    font-size: 20px;
-	    line-height: 32px;
+		font-size: 20px;
+		line-height: 32px;
 	}
 
 	.contacts_item a {
@@ -148,38 +151,38 @@
 	}
 
 	.banner_form {
-	    background: #2E1464;
-	    padding: 30px 55px;
-	    border-radius: 10px;
+		background: #2E1464;
+		padding: 30px 55px;
+		border-radius: 10px;
 	}
 
 	.banner_form form.site-inputs {
-	    display: flex;
-	    flex-direction: column;
-	    gap: 25px;
+		display: flex;
+		flex-direction: column;
+		gap: 25px;
 	}
 
 	.banner_form input.site-input {
-	    width: 100%;
-	    padding: 15px 25px;
+		width: 100%;
+		padding: 15px 25px;
 	}
 
 	.banner_form .site-checkbox .site__checkbox-text {
-	    color: #fff;
+		color: #fff;
 	}
 
 	.banner_form .site-checkbox {
-		width: 100%!important;
+		width: 100% !important;
 	}
 
 	.banner_form .site-checkbox a {
-	    color: #fff;
+		color: #fff;
 	}
 
 	.banner_form button.site-button {
-	    margin: 0;
-	    padding: 20px 10px;
-	    min-height: 65px;
+		margin: 0;
+		padding: 20px 10px;
+		min-height: 65px;
 	}
 
 	.banner_form_title {
@@ -192,47 +195,47 @@
 	}
 
 	.whatsapp_button span {
-	    color: #fff;
-	    font-size: 16px;
-	    font-weight: 800;
-	    text-align: left;
-	    width: max-content;
+		color: #fff;
+		font-size: 16px;
+		font-weight: 800;
+		text-align: left;
+		width: max-content;
 		text-decoration: none;
 	}
 
 	.whatsapp_button {
-	    background: #48BA0A;
-	    border: none;
-	    border-radius: 4px;
-	    color: #fff;
-	    cursor: pointer;
-	    font-family: Nunito;
-	    font-weight: 800;
-	    letter-spacing: .1em;
-	    outline: none;
-	    text-align: center;
-	    text-transform: uppercase;
-	    -webkit-transition: all .2s ease;
-	    transition: all .2s ease;
-	    padding: 20px 10px;
-	    display: flex;
-	    align-items: center;
-	    justify-content: center;
-	    flex-direction: row;
-	    gap: 15px;
-	    min-height: 65px;
+		background: #48BA0A;
+		border: none;
+		border-radius: 4px;
+		color: #fff;
+		cursor: pointer;
+		font-family: Nunito;
+		font-weight: 800;
+		letter-spacing: .1em;
+		outline: none;
+		text-align: center;
+		text-transform: uppercase;
+		-webkit-transition: all .2s ease;
+		transition: all .2s ease;
+		padding: 20px 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: row;
+		gap: 15px;
+		min-height: 65px;
 		text-decoration: none;
 	}
 
 	.banner__popup.poopup:not(.hidden) {
-	    background: #fff;
-	    z-index: 111;
-	    height: max-content;
-	    position: fixed;
-	    width: max-content;
-	    top: 50%;
-	    left: 50%;
-	    transform: translate(-50%, -50%);
+		background: #fff;
+		z-index: 111;
+		height: max-content;
+		position: fixed;
+		width: max-content;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 	}
 
 	.banner__popup-svg {
@@ -251,78 +254,25 @@
 
 	@media (max-width: 820px) {
 		.contacts_banner_wrapper {
-		    flex-direction: column;
+			flex-direction: column;
 			margin-top: 40px;
 		}
 
-		.contacts_left, .contacts_right {
-		    width: 100%;
+		.contacts_left,
+		.contacts_right {
+			width: 100%;
 		}
 	}
 
 	@media screen and (max-width: 600px) {
-	    h1.about__left-title-item {
-	        font-size: 36px;
-	    }
+		h1.about__left-title-item {
+			font-size: 36px;
+		}
 	}
 
 	@media (max-width: 480px) {
 		.banner_form {
-		    padding: 20px 15px;
+			padding: 20px 15px;
 		}
 	}
 </style>
-<script>
-	$(document).ready(function () {
-		$('.banner_form .site-inputs').submit(function( event ) {
-		  let error = 0;
-		  let checked = false;
-
-		  $('.banner_form .site-input').each(function() {
-		      if($(this).val().length == 0) {
-		          $(this).addClass('error')
-		          error++
-		      } else {
-		          $(this).removeClass('error')
-		      }
-		  })
-
-		  if($('.banner_form .site-checkbox input').prop('checked') == false) {
-		      $('.banner_form .site-checkbox').addClass('error')
-		      checked = false
-		  } else {
-		      $('.banner_form .site-checkbox').removeClass('error')
-		      checked = true
-		  }
-
-		  if(error == 0 && checked) {
-		    let formData = $(this).serialize()
-		      $('.banner_form .site-input').each(function() {
-		          $(this).val('')
-		      })
-		      $('.banner_form .site-checkbox input').prop('checked', false)
-		      $('.banner__popup').removeClass('hidden')
-			  setTimeout(function () {
-				  $('.banner__popup').addClass('hidden');
-			  }, 5000);
-		      // console.log( formData)
-		      $.ajax({
-		          type: 'POST',
-		          url: `/wp-content/themes/ormas/request_contacts.php`,
-		          data: formData
-		    })
-		  }
-		  event.preventDefault()
-
-			$(document).click(function (e){
-				var div = $('.banner__popup')
-				var divsvg = $('.banner__popup .banner__popup-svg')
-
-				if (!div.is(e.target)
-				&& div.has(e.target).length === 0 || divsvg.is(e.target)) {
-					div.addClass('hidden')
-				}
-			});
-		})
-	});
-</script>

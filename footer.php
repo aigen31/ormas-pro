@@ -71,11 +71,14 @@
 				</div>
 				<div class="footer__top-line-column-title">Остались вопросы?</div>
 				<form action="" method="POST" class="site-inputs footer__top-line-column-inputs">
+					<input type="hidden" name="action" value="custom_form_submit">
+					<?php wp_nonce_field('custom_form'); ?>
 					<input type="text" placeholder="Ваше имя" class="site-input footer__top-line-column-inputs-input" name="firstname">
 					<input type="email" placeholder="Email" class="site-input footer__top-line-column-inputs-input" name="email">
-					<input type="text" placeholder="Ваш номер телефона" class="site-input footer__top-line-column-inputs-input" id="phone-mask2" name="phone">
+					<input type="text" placeholder="Ваш номер телефона" class="site-input footer__top-line-column-inputs-input phone-mask" name="phone">
 					<textarea type="textarea" placeholder="Ваш вопрос" class="site-input footer__top-line-column-inputs-textarea" name="text"></textarea>
-					<input type="hidden" value="6" name="type">
+					<input type="hidden" name="type" value="Вопрос">
+					<input type="hidden" name="title" value="<?php the_page_title(); ?>">
 					<div class="site-checkbox footer__top-line-column-inputs-checkbox">
 						<label>
 							<input type="checkbox">

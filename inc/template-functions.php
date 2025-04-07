@@ -81,3 +81,21 @@ function require_parts($parts, $path)
 		require get_template_directory() . "/{$path}/{$part}.php";
 	}
 }
+
+/**
+ * Get the title of the current page
+ * @return string The title of the current page
+ */
+function the_page_title()
+{
+	if (is_category() || is_tag() || is_author() || is_date() || is_archive()) {
+		echo get_the_archive_title();
+	} elseif (is_home()) {
+		$page_for_posts = get_option('page_for_posts');
+		echo get_the_title($page_for_posts) ?? '';
+	} elseif (is_page() || is_single()) {
+		echo get_the_title();
+	} else {
+		echo 'Заголовок';
+	}
+}

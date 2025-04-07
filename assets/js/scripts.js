@@ -126,7 +126,7 @@ jQuery(document).ready(function ($) {
 		eyeIconClick();
 	});
 
-	var themePath = $("meta[property='themePath']").attr("content");
+
 
 	$(".services__list-item-right-button").on("click", function () {
 		$(".how-work__poopup").removeClass("hidden");
@@ -178,8 +178,11 @@ jQuery(document).ready(function ($) {
 			$(".services__inputs .poopup__inputs-checkbox input").prop("checked", false);
 			$.ajax({
 				type: "POST",
-				url: themePath + "/request.php",
-				data: formData
+				url: "/wp-admin/admin-post.php",
+				data: formData,
+				success: function (data) {
+					console.log(data);
+				}
 			});
 			$(".how-work__poopup").find(".poopup__inputs").hide();
 			$(".how-work__poopup").find(".poopup__title").html("Спасибо за обращение!");
@@ -199,7 +202,7 @@ jQuery(document).ready(function ($) {
 	});
 
 	// Второй блок, судя по коду, тоже использует ту же jQuery
-	themePath = $("meta[property='themePath']").attr("content");
+
 	$(".icon__close ").on("click", function () {
 		$(this).parent().addClass("hidden");
 	});
@@ -207,22 +210,11 @@ jQuery(document).ready(function ($) {
 		$(".signup__poopup").addClass("hidden");
 	});
 
-	// Подключение маски по телефону (IMask)
-	if (document.getElementById("phone-mask1")) {
-		var phoneMask1 = IMask(document.getElementById("phone-mask1"), {
+	document.querySelectorAll(".phone-mask").forEach(function (element) {
+		IMask(element, {
 			mask: "+{7}(000)000-00-00"
 		});
-	}
-	if (document.getElementById("phone-mask2")) {
-		var phoneMask2 = IMask(document.getElementById("phone-mask2"), {
-			mask: "+{7}(000)000-00-00"
-		});
-	}
-	if (document.getElementById("phone-mask3")) {
-		var phoneMask3 = IMask(document.getElementById("phone-mask3"), {
-			mask: "+{7}(000)000-00-00"
-		});
-	}
+	});
 
 	$(".signup__inputs").submit(function (event) {
 		event.preventDefault();
@@ -255,8 +247,11 @@ jQuery(document).ready(function ($) {
 			// Здесь отправка на request.php
 			$.ajax({
 				type: "POST",
-				url: themePath + "/request.php",
-				data: formData
+				url: "/wp-admin/admin-post.php",
+				data: formData,
+				success: function (data) {
+					console.log(data);
+				}
 			});
 			$(".signup__poopup").removeClass("hidden");
 		}
@@ -271,7 +266,7 @@ jQuery(document).ready(function ($) {
 	});
 
 	// Форма useful-main-form
-	themePath = $("meta[property='themePath']").attr("content");
+
 	$(".useful-main-form").submit(function (event) {
 		event.preventDefault();
 		var formData = $(this).serialize();
@@ -288,8 +283,11 @@ jQuery(document).ready(function ($) {
 			}, 5000);
 			$.ajax({
 				type: "POST",
-				url: themePath + "/request.php",
-				data: formData
+				url: "/wp-admin/admin-post.php",
+				data: formData,
+				success: function (data) {
+					console.log(data);
+				}
 			});
 		}
 	});
@@ -351,7 +349,7 @@ jQuery(document).ready(function ($) {
 	}
 
 	// Popup консультации
-	themePath = $("meta[property='themePath']").attr("content");
+
 	$(".poopup-consultation__close").click(function () {
 		$(".poopup-consultation__poopup").addClass("consultation-hide");
 		$(".consultation__inputs").removeClass("consultation-hide");
@@ -405,8 +403,11 @@ jQuery(document).ready(function ($) {
 			$(".signup__inputs-checkbox input").prop("checked", false);
 			$.ajax({
 				type: "POST",
-				url: themePath + "/request.php",
-				data: formData
+				url: "/wp-admin/admin-post.php",
+				data: formData,
+				success: function (data) {
+					console.log(data);
+				}
 			});
 			$(".poopup-consultation__poopup").removeClass("consultation-hide");
 			$(".consultation__inputs").addClass("consultation-hide");
@@ -418,7 +419,7 @@ jQuery(document).ready(function ($) {
 	});
 
 	// Форма в footer
-	themePath = $("meta[property='themePath']").attr("content");
+
 	$(".footer .footer__popup-svg").click(function () {
 		$(".footer .footer__popup").addClass("hidden");
 	});
@@ -460,8 +461,11 @@ jQuery(document).ready(function ($) {
 			$(".footer .footer__popup").removeClass("hidden");
 			$.ajax({
 				type: "POST",
-				url: themePath + "/request.php",
-				data: formData
+				url: "/wp-admin/admin-post.php",
+				data: formData,
+				success: function (data) {
+					console.log(data);
+				}
 			});
 		}
 
@@ -614,8 +618,6 @@ jQuery(document).ready(function ($) {
 		});
 	}
 
-	// Форма form-help-book
-	themePath = $("meta[property='themePath']").attr("content");
 	var forms = document.querySelectorAll(".form-help-book");
 	if (forms) {
 		forms.forEach(function (form) {
@@ -666,8 +668,11 @@ jQuery(document).ready(function ($) {
 					}
 					$.ajax({
 						type: "POST",
-						url: themePath + "/request.php",
-						data: formData
+						url: "/wp-admin/admin-post.php",
+						data: formData,
+						success: function (data) {
+							console.log(data);
+						}
 					});
 				}
 			});
@@ -712,8 +717,11 @@ jQuery(document).ready(function ($) {
 
 			$.ajax({
 				type: "POST",
-				url: themePath + "/request.php",
-				data: formData
+				url: "/wp-admin/admin-post.php",
+				data: formData,
+				success: function (data) {
+					console.log(data);
+				}
 			}).then(() => {
 				$(this).find(".footer__popup").removeClass("hidden");
 				setTimeout(() => {
@@ -724,26 +732,7 @@ jQuery(document).ready(function ($) {
 	});
 
 	// psychological-support...
-	themePath = $("meta[property='themePath']").attr("content");
-	$(".psychological-support__block-button").on("click", function () {
-		$(".psychological-support-popup").removeClass("hidden");
-		$(".consultation-overlay").removeClass("hidden");
-		$(".psychological-support-popup .poopup__inputs-input").removeClass("error");
-		$(".psychological-support-popup .site-checkbox").removeClass("error");
-		$("body").css({ overflow: "hidden" });
-		$(".psychological-support-popup").find(".poopup__inputs").show();
-		$(".psychological-support-popup").find(".poopup__title").html("Записаться");
-		$(".psychological-support-popup").find(".poopup__description").html(
-			"Оставьте ваши контактные данные, и наш администратор вскоре с Вами свяжется!"
-		);
-		$(document).click(function (e) {
-			var div = $(".psychological-support-popup");
-			var divsvg = $(".psychological-support-popup-svg");
-			if (divsvg.is(e.target)) {
-				div.addClass("hidden");
-			}
-		});
-	});
+
 
 	$(".how-work__button").on("click", function () {
 		$(".how-work__poopup").removeClass("hidden");
@@ -788,36 +777,32 @@ jQuery(document).ready(function ($) {
 
 		if (error === 0 && checked) {
 			var formData = $(this).serialize();
+			var mailResult;
 			$(".how-work__inputs .poopup__inputs-input").each(function () {
 				$(this).val("");
 			});
 			$(".how-work__inputs .poopup__inputs-checkbox input").prop("checked", false);
 			$.ajax({
 				type: "POST",
-				url: themePath + "/request.php",
-				data: formData
+				url: "/wp-admin/admin-post.php",
+				data: formData,
+				success: function (result) {
+					result = JSON.parse(result);
+					mailResult = result;
+					console.log(mailResult);
+				}
+			}).done(function () {
+				$(".how-work__poopup").find(".poopup__inputs").hide();
+				$(".how-work__poopup").find(".poopup__title").html(mailResult ? "Спасибо за обращение!" : "Произошла ошибка при отправке");
+				$(".how-work__poopup").find(".poopup__description").html(
+					mailResult ? "Наш администратор вскоре с Вами свяжется!" : 'Произошла ошибка на стороне сайта. Обратитесь к нам по адресу <a href="mailto:info@ormas.pro">info@ormas.pro</a>, телефону <a href="tel:+74991137650">+7 (499) 113-76-50</a> или Whatsapp <a href="https://api.whatsapp.com/send/?phone=79266699546">+7 (926) 669-95-46</a>'
+				);
 			});
-			$(".how-work__poopup").find(".poopup__inputs").hide();
-			$(".how-work__poopup").find(".poopup__title").html("Спасибо за обращение!");
-			$(".how-work__poopup").find(".poopup__description").html(
-				"Наш администратор вскоре с Вами свяжется!"
-			);
 		}
 	});
 
-	$(".how-work__poopup-svg").click(function () {
-		$(".how-work__poopup").addClass("hidden");
-		$(".consultation-overlay").addClass("hidden");
-		$("body").css({ overflow: "auto" });
-	});
-	$(".consultation-overlay").click(function () {
-		$(".how-work__poopup").addClass("hidden");
-		$(".consultation-overlay").addClass("hidden");
-		$("body").css({ overflow: "auto" });
-	});
-
 	// servise-form
-	themePath = $("meta[property='themePath']").attr("content");
+
 	$(".servise-form__close").click(function () {
 		$(".servise-form__send-form").removeClass("show");
 		$(".page-service__inputs-checkbox").removeClass("error");
@@ -856,8 +841,11 @@ jQuery(document).ready(function ($) {
 			$(".servise-form__send-form").addClass("show");
 			$.ajax({
 				type: "POST",
-				url: themePath + "/request.php",
-				data: formData
+				url: "/wp-admin/admin-post.php",
+				data: formData,
+				success: function (data) {
+					console.log(data);
+				}
 			});
 			setTimeout(function () {
 				$(".page-service__inputs-checkbox").removeClass("error");
@@ -870,7 +858,7 @@ jQuery(document).ready(function ($) {
 	});
 
 	// frequent-questions
-	themePath = $("meta[property='themePath']").attr("content");
+
 	$(".frequent-questions__button").on("click", function () {
 		$(".frequent-questions__poopup").removeClass("hidden");
 		$(".consultation-overlay").removeClass("hidden");
@@ -884,7 +872,7 @@ jQuery(document).ready(function ($) {
 		);
 		$(document).click(function (e) {
 			var div = $(".frequent-questions__poopup");
-			var divsvg = $(".frequent-questions__poopup-svg");
+			var divsvg = $(".how-work__poopup-svg");
 			if (divsvg.is(e.target)) {
 				div.addClass("hidden");
 			}
@@ -941,8 +929,11 @@ jQuery(document).ready(function ($) {
 			$(".psychological-support__inputs .poopup__inputs-checkbox input").prop("checked", false);
 			$.ajax({
 				type: "POST",
-				url: themePath + "/request.php",
-				data: formData
+				url: "/wp-admin/admin-post.php",
+				data: formData,
+				success: function (data) {
+					console.log(data);
+				}
 			});
 			$(".psychological-support-popup").find(".poopup__inputs").hide();
 			$(".psychological-support-popup").find(".poopup__title").html("Спасибо за обращение!");
@@ -950,18 +941,6 @@ jQuery(document).ready(function ($) {
 				"Наш администратор вскоре с Вами свяжется!"
 			);
 		}
-	});
-
-	$(".psychological-support-popup-svg").click(function () {
-		$(".psychological-support-popup").addClass("hidden");
-		$(".consultation-overlay").addClass("hidden");
-		$("body").css({ overflow: "auto" });
-	});
-
-	$(".consultation-overlay").click(function () {
-		$(".psychological-support-popup").addClass("hidden");
-		$(".consultation-overlay").addClass("hidden");
-		$("body").css({ overflow: "auto" });
 	});
 
 	// ps-services-and-prices
@@ -1034,8 +1013,11 @@ jQuery(document).ready(function ($) {
 			$(".ps-services-and-prices-inputs .poopup__inputs-checkbox input").prop("checked", false);
 			$.ajax({
 				type: "POST",
-				url: themePath + "/request.php",
-				data: formData
+				url: "/wp-admin/admin-post.php",
+				data: formData,
+				success: function (data) {
+					console.log(data);
+				}
 			});
 			$(".ps-services-and-prices-popup").find(".poopup__inputs").hide();
 			$(".ps-services-and-prices-popup").find(".poopup__title").html("Спасибо за обращение!");
@@ -1043,18 +1025,6 @@ jQuery(document).ready(function ($) {
 				"Наш администратор вскоре с Вами свяжется!"
 			);
 		}
-	});
-
-	$(".ps-services-and-prices-svg").click(function () {
-		$(".ps-services-and-prices-popup").addClass("hidden");
-		$(".consultation-overlay").addClass("hidden");
-		$("body").css({ overflow: "auto" });
-	});
-
-	$(".consultation-overlay").click(function () {
-		$(".ps-services-and-prices-popup").addClass("hidden");
-		$(".consultation-overlay").addClass("hidden");
-		$("body").css({ overflow: "auto" });
 	});
 
 	$(".psychological-support-how-work-button").on("click", function () {
@@ -1127,8 +1097,11 @@ jQuery(document).ready(function ($) {
 			$(".psychological-support-how-work-inputs .poopup__inputs-checkbox input").prop("checked", false);
 			$.ajax({
 				type: "POST",
-				url: themePath + "/request.php",
-				data: formData
+				url: "/wp-admin/admin-post.php",
+				data: formData,
+				success: function (data) {
+					console.log(data);
+				}
 			});
 			$(".psychological-support-how-work-popup").find(".poopup__inputs").hide();
 			$(".psychological-support-how-work-popup").find(".poopup__title").html("Спасибо за обращение!");
@@ -1136,18 +1109,6 @@ jQuery(document).ready(function ($) {
 				"Наш администратор вскоре с Вами свяжется!"
 			);
 		}
-	});
-
-	$(".psychological-support-how-work-svg").click(function () {
-		$(".psychological-support-how-work-popup").addClass("hidden");
-		$(".consultation-overlay").addClass("hidden");
-		$("body").css({ overflow: "auto" });
-	});
-
-	$(".consultation-overlay").click(function () {
-		$(".psychological-support-how-work-popup").addClass("hidden");
-		$(".consultation-overlay").addClass("hidden");
-		$("body").css({ overflow: "auto" });
 	});
 
 	// Анимации при скролле
@@ -1238,4 +1199,59 @@ jQuery(document).ready(function ($) {
 			]
 		});
 	}
+
+	$('.banner_form .site-inputs').submit(function (event) {
+		event.preventDefault()
+
+		let error = 0;
+		let checked = false;
+
+		$('.banner_form .site-input').each(function () {
+			if ($(this).val().length == 0) {
+				$(this).addClass('error')
+				error++
+			} else {
+				$(this).removeClass('error')
+			}
+		})
+
+		if ($('.banner_form .site-checkbox input').prop('checked') == false) {
+			$('.banner_form .site-checkbox').addClass('error')
+			checked = false
+		} else {
+			$('.banner_form .site-checkbox').removeClass('error')
+			checked = true
+		}
+
+		if (error == 0 && checked) {
+			let formData = $(this).serialize()
+			$('.banner_form .site-input').each(function () {
+				$(this).val('')
+			})
+			$('.banner_form .site-checkbox input').prop('checked', false)
+			$('.banner__popup').removeClass('hidden')
+			setTimeout(function () {
+				$('.banner__popup').addClass('hidden');
+			}, 5000);
+			// console.log( formData)
+			$.ajax({
+				type: 'POST',
+				url: `/wp-admin/admin-post.php`,
+				data: formData,
+				success: function (data) {
+					console.log(data);
+				}
+			})
+		}
+
+		$(document).click(function (e) {
+			var div = $('.banner__popup')
+			var divsvg = $('.banner__popup .banner__popup-svg')
+
+			if (!div.is(e.target) &&
+				div.has(e.target).length === 0 || divsvg.is(e.target)) {
+				div.addClass('hidden')
+			}
+		});
+	})
 });
