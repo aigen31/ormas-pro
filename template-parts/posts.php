@@ -1,4 +1,4 @@
-<div class="post" id="post">
+<div class="post" id="news">
     <img class="wave-fourth" src="<?php bloginfo('template_directory') ?>/assets/img/general/wave4.png">
     <div class="container">
         <h2 class="site-title post__title">Статьи</h2>
@@ -12,6 +12,7 @@
                 'suppress_filters' => true,
             ]);
             foreach ($posts as $post) :
+                setup_postdata($post)
             ?>
                 <article class="post__list-article">
                     <a href="<?php the_permalink(); ?>" class="post__list-item">
@@ -28,6 +29,7 @@
                 </article>
             <?php
             endforeach;
+            wp_reset_postdata();
             ?>
         </div>
         <div class="slick-arrows">
