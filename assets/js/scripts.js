@@ -6,8 +6,8 @@ jQuery(document).ready(function ($) {
 			slidesToScroll: 1,
 			arrows: true,
 			dots: true,
-			prevArrow: document.querySelector(".news .slick-prev"),
-			nextArrow: document.querySelector(".news .slick-next"),
+			prevArrow: document.querySelector(".post .slick-prev"),
+			nextArrow: document.querySelector(".post .slick-next"),
 			responsive: [
 				{
 					breakpoint: 768,
