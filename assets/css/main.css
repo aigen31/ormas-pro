@@ -4672,7 +4672,7 @@ div#services section.servise-page-table {
   }
 }
 
-.post {
+.s-post {
   /* background: -webkit-gradient(linear, left bottom, left top, color-stop(50%, #f5f3fb), color-stop(50%, #fff)); */
   /* background: linear-gradient(0deg, #f5f3fb 50%, #fff 0); */
   /* padding-top: 60px;
@@ -4681,12 +4681,12 @@ div#services section.servise-page-table {
 }
 
 @media screen and (max-width:1024px) {
-  .post {
+  .s-post {
     padding-bottom: 40px
   }
 }
 
-.post .slick-track {
+.s-post .slick-track {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4695,27 +4695,27 @@ div#services section.servise-page-table {
   align-items: center
 }
 
-.post .slick-next,
-.post .slick-prev {
+.s-post .slick-next,
+.s-post .slick-prev {
   background: #fff;
   border: 2px solid #dbe5f1
 }
 
-.post .slick-dots li {
+.s-post .slick-dots li {
   background: #dbe5f1
 }
 
-.post .slick-arrows {
+.s-post .slick-arrows {
   margin-top: -20px
 }
 
-.post .container {
-  /* padding-top: 120px; */
+.s-post .container {
+  padding-top: 120px;
   position: relative
 }
 
 @media screen and (max-width:1024px) {
-  .post .container {
+  .s-post .container {
     padding-top: 80px
   }
 }

@@ -1,4 +1,4 @@
-<div class="post" id="news">
+<div class="s-post" id="news">
     <img class="wave-fourth" src="<?php bloginfo('template_directory') ?>/assets/img/general/wave4.png">
     <div class="container">
         <h2 class="site-title post__title">Статьи</h2>
