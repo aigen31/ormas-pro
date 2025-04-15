@@ -8,7 +8,7 @@
 				<p class="servise-page-table__header-item-text">Название услуги</p>
 			</div>
 			<div class="servise-page-table__header-item servise-page-table__header-item_time">
-				<p class="servise-page-table__header-item-text">Длит-ть</p>
+				<p class="servise-page-table__header-item-text">Длит-ть (минуты)</p>
 			</div>
 			<div class="servise-page-table__header-item servise-page-table__header-item_price">
 				<p class="servise-page-table__header-item-text">Цена ₽ очно</p>
@@ -48,29 +48,19 @@
 									</p>
 								</div>
 								<div class="servise-page-table__content-table-item-container">
-									<div class="servise-page-table__content-table-item 
-            servise-page-table__content-table-item_time">
+									<div class="servise-page-table__content-table-item servise-page-table__content-table-item_time">
 										<p class="servise-page-table__content-table-item-text">
 											<?php echo $service['service_duration']; ?>
-										</p>
-										<p class="servise-page-table__content-table-item-text-hide">
-											Длит-ть
 										</p>
 									</div>
 									<div class="servise-page-table__content-table-item servise-page-table__content-table-item_price">
 										<p class="servise-page-table__content-table-item-text">
 											<?php echo $service['service_face_to_face']; ?>
 										</p>
-										<p class="servise-page-table__content-table-item-text-hide">
-											Цена ₽ очно
-										</p>
 									</div>
 									<div class="servise-page-table__content-table-item servise-page-table__content-table-item_price-online">
 										<p class="servise-page-table__content-table-item-text">
 											<?php echo $service['service_online']; ?>
-										</p>
-										<p class="servise-page-table__content-table-item-text-hide">
-											Цена ₽ онлайн
 										</p>
 									</div>
 								</div>

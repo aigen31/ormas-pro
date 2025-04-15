@@ -19,7 +19,7 @@
                                 <p class="services-and-prices__header-item-title">Тип занятия</p>
                             </li>
                             <li class="services-and-prices__header-item">
-                                <p class="services-and-prices__header-item-title">Длительность</p>
+                                <p class="services-and-prices__header-item-title">Длит-ть (минуты)</p>
                             </li>
                             <li class="services-and-prices__header-item">
                                 <p class="services-and-prices__header-item-title">Очно</p>
