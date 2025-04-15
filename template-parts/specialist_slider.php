@@ -9,7 +9,7 @@
 				'orderby'     => 'date',
 				'order'       => 'ASC',
 				'direction'   => $direcrion_slug,
-				'post_type'   => 'specialists',
+				'post_type'   => 'team',
 				'suppress_filters' => true,
 			));
 

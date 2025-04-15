@@ -3505,25 +3505,32 @@ div#services section.servise-page-table {
   }
 }
 
-.party {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #ffeada), color-stop(50%, #fff));
-  background: linear-gradient(180deg, #ffeada 50%, #fff 0);
+.party,
+.party-page {
+  /* background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #ffeada), color-stop(50%, #fff)); */
+  /* background: linear-gradient(180deg, #ffeada 50%, #fff 0); */
   padding-top: 60px;
+  padding-bottom: 60px;
   position: relative
 }
 
 @media screen and (max-width:1024px) {
-  .party {
+
+  .party,
+  .party-page {
     padding-top: 300px
   }
 }
 
 @media screen and (max-width:768px) {
-  .party {
+
+  .party,
+  .party-page {
     padding-top: 100px
   }
 
-  .party .container {
+  .party .container,
+  .party-page .container {
     -webkit-transform: translateY(-50px);
     -ms-transform: translateY(-50px);
     transform: translateY(-50px)
@@ -3579,13 +3586,16 @@ div#services section.servise-page-table {
   }
 }
 
-.party .container {
+.party .container,
+.party-page .container {
   position: relative;
   z-index: 30
 }
 
 @media screen and (max-width:1024px) {
-  .party .container {
+
+  .party .container,
+  .party-page .container {
     -webkit-transform: translateY(-150px);
     -ms-transform: translateY(-150px);
     transform: translateY(-150px)
@@ -3593,7 +3603,9 @@ div#services section.servise-page-table {
 }
 
 @media screen and (max-width:768px) {
-  .party .container {
+
+  .party .container,
+  .party-page .container {
     padding: 0 10px;
     -webkit-transform: translateY(-50px);
     -ms-transform: translateY(-50px);
@@ -3602,13 +3614,20 @@ div#services section.servise-page-table {
 }
 
 @media screen and (max-width:450px) {
-  .party .container {
+
+  .party .container,
+  .party-page .container {
     padding: 0
   }
 }
 
+.party-page__list {
+  background: #ffeada;
+  border-radius: 10px;
+}
+
 .party__list {
-  padding-bottom: 30px
+  padding-bottom: 30px;
 }
 
 .party__list-item {
@@ -3622,7 +3641,7 @@ div#services section.servise-page-table {
   align-items: flex-start;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between
+  justify-content: space-between;
 }
 
 @media screen and (max-width:1024px) {
@@ -3669,7 +3688,7 @@ div#services section.servise-page-table {
   -ms-transform: translate(-50%);
   transform: translate(-50%);
   width: 90%;
-  z-index: 0
+  z-index: 0;
 }
 
 .party__list-item-image {
@@ -4002,12 +4021,14 @@ div#services section.servise-page-table {
   font-family: Nunito;
   font-size: 16px;
   font-weight: 800;
-  margin-top: 40px;
-  padding-bottom: 5px;
   text-transform: uppercase;
   width: -webkit-fit-content;
   width: -moz-fit-content;
-  width: fit-content
+  width: fit-content;
+  margin: 20px auto 20px;
+  text-align: center;
+  display: block;
+  text-decoration: none;
 }
 
 @media screen and (max-width:768px) {
@@ -8062,7 +8083,7 @@ screen and (max-width:800px) and (orientation:landscape) {
   max-width: 400px
 }
 
-.servise-page-table__content-table-item-text-hide {
+/* .servise-page-table__content-table-item-text-hide {
   display: none
 }
 
@@ -8077,7 +8098,7 @@ screen and (max-width:800px) and (orientation:landscape) {
     margin-top: 6px;
     text-transform: uppercase
   }
-}
+} */
 
 .servise-page-table__content-table-item-span {
   color: #3b4256;
@@ -9985,7 +10006,9 @@ screen and (max-width:800px) and (orientation:landscape) {
 .neuropsychology-slider {
   background: #8fbbf5;
   padding-bottom: 60px;
-  padding-top: 58px
+  padding-top: 58px;
+  position: relative;
+  z-index: 110;
 }
 
 @media screen and (max-width:1140px) {
@@ -10003,12 +10026,12 @@ screen and (max-width:800px) and (orientation:landscape) {
 }
 
 .neuropsychology-slider__list {
-  height: 524px
+  /* height: 524px */
 }
 
 @media screen and (max-width:980px) {
   .neuropsychology-slider__list {
-    height: 443px
+    /* height: 443px */
   }
 }
 
@@ -10026,11 +10049,15 @@ screen and (max-width:800px) and (orientation:landscape) {
 .neuropsychology-slider .party__list-item {
   margin: 0 auto;
   max-width: 352px;
-  padding: 30px 30px 62px;
+  padding: 30px 30px 30px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column
+}
+
+.neuropsychology-slider--main .party__list-item {
+  padding-bottom: 10px;
 }
 
 @media screen and (max-width:1140px) {
@@ -10086,7 +10113,8 @@ screen and (max-width:800px) and (orientation:landscape) {
 }
 
 .neuropsychology-slider .party__list-item-text {
-  height: 100px;
+  /* height: 100px; */
+  height: initial;
   width: 100%
 }
 
@@ -10106,8 +10134,9 @@ screen and (max-width:800px) and (orientation:landscape) {
   }
 }
 
-.neuropsychology-slider .slick-list {
-  padding: 0 !important
+.neuropsychology-slider__list .slick-list {
+  padding-top: 30px;
+  padding-bottom: 20px;
 }
 
 .neuropsychology-slider .slick-slide {
@@ -10115,7 +10144,8 @@ screen and (max-width:800px) and (orientation:landscape) {
 }
 
 .neuropsychology-slider .slick-arrows {
-  margin-top: 0;
+  /* margin-top: 0; */
+  margin-top: -21px;
   width: 320px
 }
 
@@ -10139,6 +10169,10 @@ screen and (max-width:800px) and (orientation:landscape) {
   .neuropsychology-slider .slick-dots {
     margin-top: 44px
   }
+}
+
+.neuropsychology-slider--main {
+  background-color: #ffeada;
 }
 
 .neuropsychology-form {

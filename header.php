@@ -59,7 +59,7 @@
 	$is_post = is_page('agreement') || is_single() && !is_singular('service_pages');
 	?>
 	<div class="site <?php echo $is_post ? 'site-post' : ''; ?>">
-		<header id="header" class="header <?php echo is_post_type_archive('service') ? 'page-service' : ''; ?> page-neuropsychology">
+		<header id="header" class="header <?php echo is_post_type_archive(['service', 'team']) ? 'page-service' : ''; ?> page-neuropsychology">
 			<div class="container header-top-line">
 				<div class="header__top-line">
 					<div class="header__top-line-left">

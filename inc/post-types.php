@@ -58,7 +58,7 @@ function register_post_types() {
     'query_var'           => true,
   ]);
 
-  register_post_type('specialists', [
+  register_post_type('team', [
     'label'  => null,
     'labels' => [
       'name'               => 'Специалисты',
