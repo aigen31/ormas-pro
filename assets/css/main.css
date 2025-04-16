@@ -7867,8 +7867,8 @@ screen and (max-width:800px) and (orientation:landscape) {
 }
 
 @media screen and (max-width:600px) {
-  .servise-page-table__header {
-    display: none
+  .servise-page-table__header .servise-page-table__header-item_name, .servise-page-table__header .servise-page-table__header-item_number {
+    display: none;
   }
 }
 
@@ -7912,6 +7912,15 @@ screen and (max-width:800px) and (orientation:landscape) {
 .servise-page-table__header-item_price-online p,
 .servise-page-table__header-item_time p {
   max-width: 55px
+}
+
+@media screen and (max-width: 600px) {
+  .servise-page-table__header-item_price, .servise-page-table__header-item_price-online, .servise-page-table__header-item_time {
+      width: 31%;
+      padding: 0px 15px;
+      text-align: left;
+      justify-content: flex-start;
+  }
 }
 
 .servise-page-table__header-item-text {
