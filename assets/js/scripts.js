@@ -201,8 +201,6 @@ jQuery(document).ready(function ($) {
 		$("body").css({ overflow: "auto" });
 	});
 
-	// Второй блок, судя по коду, тоже использует ту же jQuery
-
 	$(".icon__close ").on("click", function () {
 		$(this).parent().addClass("hidden");
 	});
@@ -364,19 +362,6 @@ jQuery(document).ready(function ($) {
 		$(".container").removeClass("active");
 		$(".consultation").removeClass("active");
 	});
-
-	// if (document.getElementById("phone-mask1")) {
-	// 	IMask(document.getElementById("phone-mask1"), { mask: "+{7}(000)000-00-00" });
-	// }
-	// if (document.querySelector(".phone-mask-service")) {
-	// 	IMask(document.querySelector(".phone-mask-service"), { mask: "+{7}(000)000-00-00" });
-	// }
-	// if (document.getElementById("phone-mask2")) {
-	// 	IMask(document.getElementById("phone-mask2"), { mask: "+{7}(000)000-00-00" });
-	// }
-	// if (document.getElementById("phone-mask3")) {
-	// 	IMask(document.getElementById("phone-mask3"), { mask: "+{7}(000)000-00-00" });
-	// }
 
 	$(".consultation__inputs").submit(function (event) {
 		event.preventDefault();
