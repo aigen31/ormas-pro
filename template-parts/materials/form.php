@@ -21,6 +21,8 @@
 				</div>
 				<div class="footer__top-line-column-title">Остались вопросы?</div>
 				<form method="POST" class="site-inputs footer__top-line-column-inputs-material">
+					<input type="hidden" name="action" value="custom_form_submit">
+					<?php wp_nonce_field('custom_form'); ?>
 					<input type="text" placeholder="Ваше имя" class="site-input footer__top-line-column-inputs-input" name="firstname">
 					<input type="email" placeholder="Email" class="site-input footer__top-line-column-inputs-input" name="email">
 					<textarea type="textarea" placeholder="Коментрарий" class="site-input footer__top-line-column-inputs-textarea" name="text"></textarea>

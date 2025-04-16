@@ -31,6 +31,8 @@
 			<?php endif; ?>
 		</div>
 		<form action="" method="POST" class="useful__right useful-main-form">
+			<input type="hidden" name="action" value="custom_form_submit">
+			<?php wp_nonce_field('custom_form'); ?>
 			<div class="useful__right-title"><?php echo $material_title; ?></div>
 			<div class="useful__right-description" data-type="<?php echo $count + 9; ?>">
 				<?php echo $material_description; ?>
@@ -49,12 +51,13 @@
 				}
 				?>
 				<input type="email" placeholder="Email" class="site-input useful__right-input useful__right-input--more" name="email">
-				<input type="hidden" name="type" value="<?php echo $count + 9; ?>">
+				<input type="hidden" name="type" value="Запрос на материал">
 				<input type="hidden" name="material_file" value="<?php echo $path; ?>">
 				<input type="hidden" name="ismaterial" value="true">
 				<input type="hidden" name="materials__title" value="<?php echo $material_title; ?>">
 				<input type="hidden" name="materials__mail-title" value="<?php echo $material_mail_title; ?>">
 				<input type="hidden" name="materials__text-mail" value='<?php echo $material_mail_text; ?>'>
+				<input type="hidden" name="title" value="<?php the_page_title(); ?>">
 				<button class="site-button useful__right-button useful__right-button--more">Скачать</button>
 				<a href="/materialy/" class="site-button useful__right-button useful__right-button--border">Смотреть все материалы</a>
 			<?php endif; ?>

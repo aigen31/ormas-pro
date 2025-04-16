@@ -43,6 +43,7 @@ if (!empty($materials)) :
 							<input type="hidden" name="materials__mail-title" value="<?php echo esc_attr($material['material_mail_title']) ?>">
 							<input type="hidden" name="materials__text-mail" value="<?php echo esc_attr($material['material_mail_text']) ?>">
 							<input type="hidden" name="material" value="<?php echo esc_attr($material['material_title']); ?>">
+							<input type="hidden" name="type" value="Запрос на материал">
 							<input type="hidden" name="title" value="<?php the_page_title(); ?>">
 							<button class="site-button useful__right-button">Скачать</button>
 							<div class="site-checkbox footer__top-line-column-inputs-checkbox">
