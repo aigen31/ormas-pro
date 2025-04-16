@@ -16,7 +16,7 @@
             ?>
                 <article class="post__list-article">
                     <a href="<?php the_permalink(); ?>" class="post__list-item">
-                        <?php the_post_thumbnail('post-thumb') ?>
+                        <?php the_post_thumbnail('post-thumb', ['loading' => 'lazy']) ?>
                         <div class="post__list-item-text">
                             <div class="flex-block-first">
                                 <span><?php the_title(); ?> </span>

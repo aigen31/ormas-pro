@@ -1,5 +1,5 @@
 <div class="neuropsychology-slider neuropsychology-slider--main" id="team">
-    <img class="wave-third" src="<?php echo get_template_directory_uri(); ?>/assets/img/general/wave3.png">
+    <img class="wave-third" src="<?php echo get_template_directory_uri(); ?>/assets/img/general/wave3.png" loading="lazy">
     <div class="container">
         <div class="site-title neuropsychology-slider__title">Наши специалисты</div>
         <div class="neuropsychology-slider__list">
