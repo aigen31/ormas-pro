@@ -212,7 +212,13 @@ jQuery(document).ready(function ($) {
 
 	document.querySelectorAll(".phone-mask").forEach(function (element) {
 		IMask(element, {
-			mask: "+{7}(000)000-00-00"
+			mask: "+{7}(000)000-00-00",
+			prepare: function (value, masked) {
+				if (value === "8" && masked.value === "") {
+					return "";
+				}
+				return value;
+			}
 		});
 	});
 
@@ -359,19 +365,18 @@ jQuery(document).ready(function ($) {
 		$(".consultation").removeClass("active");
 	});
 
-	// Повторно подключение масок (возможно тот же скрипт)
-	if (document.getElementById("phone-mask1")) {
-		IMask(document.getElementById("phone-mask1"), { mask: "+{7}(000)000-00-00" });
-	}
-	if (document.querySelector(".phone-mask-service")) {
-		IMask(document.querySelector(".phone-mask-service"), { mask: "+{7}(000)000-00-00" });
-	}
-	if (document.getElementById("phone-mask2")) {
-		IMask(document.getElementById("phone-mask2"), { mask: "+{7}(000)000-00-00" });
-	}
-	if (document.getElementById("phone-mask3")) {
-		IMask(document.getElementById("phone-mask3"), { mask: "+{7}(000)000-00-00" });
-	}
+	// if (document.getElementById("phone-mask1")) {
+	// 	IMask(document.getElementById("phone-mask1"), { mask: "+{7}(000)000-00-00" });
+	// }
+	// if (document.querySelector(".phone-mask-service")) {
+	// 	IMask(document.querySelector(".phone-mask-service"), { mask: "+{7}(000)000-00-00" });
+	// }
+	// if (document.getElementById("phone-mask2")) {
+	// 	IMask(document.getElementById("phone-mask2"), { mask: "+{7}(000)000-00-00" });
+	// }
+	// if (document.getElementById("phone-mask3")) {
+	// 	IMask(document.getElementById("phone-mask3"), { mask: "+{7}(000)000-00-00" });
+	// }
 
 	$(".consultation__inputs").submit(function (event) {
 		event.preventDefault();
