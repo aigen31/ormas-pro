@@ -9,6 +9,7 @@
           $specialist = get_carbon_page_meta(get_the_ID(), [
             'specialist_photo',
             'specialist_position',
+            'specialist_description',
             'specialist_education',
             'specialist_specialization',
             'specialist_additional_education',
@@ -25,6 +26,11 @@
               </div>
               <div class="party__list-item-text-status">
                 <?php echo $specialist_position; ?>
+              </div>
+              <div class="party__list-item-text-content">
+                <p>
+                  <?php echo $specialist_description; ?>
+                </p>
               </div>
               <div class="party__list-item-text-education">
                 <?php if ($specialist_education) : ?>
