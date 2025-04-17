@@ -3,7 +3,7 @@ use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
 Container::make('post_meta', 'Специалисты')
-    ->where('post_type', '=', 'specialists')
+    ->where('post_type', '=', 'team')
     ->add_fields([
       Field::make('image', 'specialist_photo', 'Фото')->set_type('image')->set_width(20),
       Field::make('text', 'specialist_position', 'Должность')->set_width(20),
