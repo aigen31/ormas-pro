@@ -1,15 +1,6 @@
 <div class="consultation-overlay hidden "></div>
 <div class="consultation" id="consultation">
     <div class="container container-consultation">
-        <div class="poopup-consultation__poopup consultation-hide">
-            <div class="poopup-consultation__poopup-wrapper">
-                <div class="poopup-consultation__title">Спасибо за обращение!</div>
-                <div class="poopup-consultation__description">Мы перезвоним Вам, как только освободится один из специалистов</div>
-            </div>
-            <div class="poopup-consultation__close-wrapper">
-                <div class="poopup-consultation__close"></div>
-            </div>
-        </div>
         <div class="consultation__text">
             <div class="consultation__text-title">Записаться на бесплатную консультацию</div>
             <div class="consultation__text-title consultation__text-title_hide">Нужна помощь? </div>

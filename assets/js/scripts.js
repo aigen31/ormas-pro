@@ -269,28 +269,29 @@ jQuery(document).ready(function ($) {
 		});
 	});
 
-	// Форма useful-main-form
-
 	$(".useful-main-form").submit(function (event) {
 		event.preventDefault();
 		var formData = $(this).serialize();
 		if ($(this).find("input").val().length === 0) {
 			$(this).find("input").addClass("error");
 		} else {
-			$(this).find("input").removeClass("error");
-			$(this).find("input").val("");
-			$(".useful__right-button--more").text("Мы отправим Вам материалы в ближайшее время!");
-			$(".useful__right-button--more").prop("disabled", true);
-			setTimeout(function () {
-				$(".useful__right-button--more").text("Скачать");
-				$(".useful__right-button--more").prop("disabled", false);
-			}, 5000);
 			$.ajax({
 				type: "POST",
 				url: "/wp-admin/admin-post.php",
 				data: formData,
-				success: function (data) {
-					console.log(data);
+				success: function (result) {
+					var mailResult = JSON.parse(result);
+					$(this).find("input").removeClass("error");
+					$(this).find("input").val("");
+					$(".useful__right-button--more").text(mailResult ? "Мы отправим Вам материалы в ближайшее время!" : "Произошла ошибка при отправке");
+					$(".useful__right-button--more").prop("disabled", true);
+					setTimeout(function () {
+						$(".useful__right-button--more").text("Скачать");
+						$(".useful__right-button--more").prop("disabled", false);
+					}, 5000);
+				},
+				error: function () {
+					$(".useful__right-button--more").text("Произошла ошибка при отправке");
 				}
 			});
 		}
@@ -352,18 +353,20 @@ jQuery(document).ready(function ($) {
 		});
 	}
 
-	// Popup консультации
-
-	$(".poopup-consultation__close").click(function () {
-		$(".poopup-consultation__poopup").addClass("consultation-hide");
-		$(".consultation__inputs").removeClass("consultation-hide");
-		$(".consultation__text").removeClass("consultation-hide");
-		$(".greeting").removeClass("active");
-		$(".container").removeClass("active");
-		$(".consultation").removeClass("active");
-	});
-
 	$(".consultation__inputs").submit(function (event) {
+		function displayFeedbackMessage(result) {
+			$(".container-consultation").prepend(`
+				<div class="poopup-consultation__poopup">
+						<div class="poopup-consultation__poopup-wrapper">
+								<div class="poopup-consultation__title">${result ? 'Спасибо за обращение!' : 'Произошла ошибка при отправке'}</div>
+								<div class="poopup-consultation__description">${result ? 'Мы перезвоним Вам, как только освободится один из специалистов' : 'Произошла ошибка на стороне сайта. Обратитесь к нам по адресу <a href="mailto:info@ormas.pro">info@ormas.pro</a>, телефону <a href="tel:+74991137650">+7 (499) 113-76-50</a> или Whatsapp <a href="https://api.whatsapp.com/send/?phone=79266699546">+7 (926) 669-95-46</a>'}</div>
+						</div>
+						<div class="poopup-consultation__close-wrapper">
+								<div class="poopup-consultation__close"></div>
+						</div>
+				</div>
+			`);
+		}
 		event.preventDefault();
 		var error = 0;
 		var checked = false;
@@ -395,11 +398,22 @@ jQuery(document).ready(function ($) {
 				type: "POST",
 				url: "/wp-admin/admin-post.php",
 				data: formData,
-				success: function (data) {
-					console.log(data);
+				success: function (result) {
+					var mailResult = JSON.parse(result);
+					displayFeedbackMessage(mailResult);
+					$(".poopup-consultation__close").click(function () {
+						$(".poopup-consultation__poopup").addClass("consultation-hide");
+						$(".consultation__inputs").removeClass("consultation-hide");
+						$(".consultation__text").removeClass("consultation-hide");
+						$(".greeting").removeClass("active");
+						$(".container").removeClass("active");
+						$(".consultation").removeClass("active");
+					});
+				},
+				error: function () {
+					displayFeedbackMessage(false)
 				}
 			});
-			$(".poopup-consultation__poopup").removeClass("consultation-hide");
 			$(".consultation__inputs").addClass("consultation-hide");
 			$(".consultation__text").addClass("consultation-hide");
 			$(".greeting").addClass("active");
@@ -408,12 +422,18 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	// Форма в footer
-
-	$(".footer .footer__popup-svg").click(function () {
-		$(".footer .footer__popup").addClass("hidden");
-	});
 	$(".footer__top-line-column-inputs").submit(function (event) {
+		function displayFeedbackMessage(result) {
+			$('#footer-feedback').prepend(`
+			<div class="footer__popup poopup hidden">
+				<svg style="cursor: pointer;" class="footer__popup-svg" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path clip-rule="evenodd" d="M7.29289 8.6957L10.6194 12L7.29289 15.3043C6.90237 15.6922 6.90237 16.3212 7.29289 16.7091C7.68342 17.097 8.31658 17.097 8.70711 16.7091L12 13.4382L15.2929 16.7091C15.6834 17.097 16.3166 17.097 16.7071 16.7091C17.0976 16.3212 17.0976 15.6922 16.7071 15.3043L13.3806 12L16.7071 8.6957C17.0976 8.30778 17.0976 7.67885 16.7071 7.29094C16.3166 6.90302 15.6834 6.90302 15.2929 7.29094L12 10.5618L8.70711 7.29094C8.31658 6.90302 7.68342 6.90302 7.29289 7.29094C6.90237 7.67885 6.90237 8.30778 7.29289 8.6957Z" />
+				</svg>
+				<div class="poopup__title">${result ? 'Спасибо за обращение!' : 'Произошла ошибка при отправке'}</div>
+				<div class="poopup__description">${result ? 'Наш администратор вскоре с Вами свяжется!' : 'Произошла ошибка на стороне сайта. Обратитесь к нам по адресу <a href="mailto:info@ormas.pro">info@ormas.pro</a>, телефону <a href="tel:+74991137650">+7 (499) 113-76-50</a> или Whatsapp <a href="https://api.whatsapp.com/send/?phone=79266699546">+7 (926) 669-95-46</a>'}</div>
+			</div>`)
+		}
+
 		event.preventDefault();
 		var error = 0;
 		var checked = false;
@@ -443,18 +463,27 @@ jQuery(document).ready(function ($) {
 
 		if (error === 0 && checked) {
 			var formData = $(this).serialize();
-			$(".footer .footer__top-line-column-inputs-input").each(function () {
-				$(this).val("");
-			});
-			$(".footer .footer__top-line-column-inputs-textarea").val("");
-			$(".footer .footer__top-line-column-inputs-checkbox input").prop("checked", false);
-			$(".footer .footer__popup").removeClass("hidden");
 			$.ajax({
 				type: "POST",
 				url: "/wp-admin/admin-post.php",
 				data: formData,
-				success: function (data) {
-					console.log(data);
+				success: function (result) {
+					var mailResult = JSON.parse(result);
+					$(".footer .footer__top-line-column-inputs-input").each(function () {
+						$(this).val("");
+					});
+					$(".footer .footer__top-line-column-inputs-textarea").val("");
+					$(".footer .footer__top-line-column-inputs-checkbox input").prop("checked", false);
+					displayFeedbackMessage(mailResult);
+					$(".footer__popup").removeClass("hidden");
+				},
+				done: function () {
+					$(".footer .footer__popup-svg").click(function () {
+						$(".footer .footer__popup").addClass("hidden");
+					});
+				},
+				error: function () {
+					displayFeedbackMessage(false);
 				}
 			});
 		}
@@ -612,6 +641,17 @@ jQuery(document).ready(function ($) {
 	if (forms) {
 		forms.forEach(function (form) {
 			form.addEventListener("submit", function (e) {
+				function displayFeedbackMessage(result) {
+					var buttonSend = form.querySelector(".useful__right-button");
+					if (buttonSend) {
+						buttonSend.innerText = result ? "Мы отправим Вам материалы в ближайшее время!" : "Произошла ошибка при отправке";
+						buttonSend.setAttribute("disabled", "disabled");
+						setTimeout(function () {
+							buttonSend.innerText = "Скачать";
+							buttonSend.removeAttribute("disabled");
+						}, 5000);
+					}
+				}
 				e.preventDefault();
 				var error = 0;
 				var checked = false;
@@ -647,21 +687,16 @@ jQuery(document).ready(function ($) {
 					}
 					checkbox.checked = false;
 					visibleCheckbox.classList.remove("error");
-					var buttonSend = form.querySelector(".useful__right-button");
-					if (buttonSend) {
-						buttonSend.innerText = "Мы отправим Вам материалы в ближайшее время!";
-						buttonSend.setAttribute("disabled", "disabled");
-						setTimeout(function () {
-							buttonSend.innerText = "Скачать";
-							buttonSend.removeAttribute("disabled");
-						}, 5000);
-					}
 					$.ajax({
 						type: "POST",
 						url: "/wp-admin/admin-post.php",
 						data: formData,
 						success: function (data) {
-							console.log(data);
+							var mailResult = JSON.parse(data);
+							displayFeedbackMessage(mailResult);
+						},
+						error: function () {
+							displayFeedbackMessage(false);
 						}
 					});
 				}
@@ -721,9 +756,6 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	// psychological-support...
-
-
 	$(".how-work__button").on("click", function () {
 		$(".how-work__poopup").removeClass("hidden");
 		$(".consultation-overlay").removeClass("hidden");
@@ -765,9 +797,16 @@ jQuery(document).ready(function ($) {
 			checked = true;
 		}
 
+		function displayFeedbackMessage(result) {
+			$(".how-work__poopup").find(".poopup__inputs").hide();
+			$(".how-work__poopup").find(".poopup__title").html(result ? "Спасибо за обращение!" : "Произошла ошибка при отправке");
+			$(".how-work__poopup").find(".poopup__description").html(
+				result ? "Наш администратор вскоре с Вами свяжется!" : 'Произошла ошибка на стороне сайта. Обратитесь к нам по адресу <a href="mailto:info@ormas.pro">info@ormas.pro</a>, телефону <a href="tel:+74991137650">+7 (499) 113-76-50</a> или Whatsapp <a href="https://api.whatsapp.com/send/?phone=79266699546">+7 (926) 669-95-46</a>'
+			);
+		}
+
 		if (error === 0 && checked) {
 			var formData = $(this).serialize();
-			var mailResult;
 			$(".how-work__inputs .poopup__inputs-input").each(function () {
 				$(this).val("");
 			});
@@ -777,31 +816,25 @@ jQuery(document).ready(function ($) {
 				url: "/wp-admin/admin-post.php",
 				data: formData,
 				success: function (result) {
-					result = JSON.parse(result);
-					mailResult = result;
-					console.log(mailResult);
+					var mailResult = JSON.parse(result);
+					displayFeedbackMessage(mailResult);
+				},
+				error: function () {
+					displayFeedbackMessage(false);
 				}
-			}).done(function () {
-				$(".how-work__poopup").find(".poopup__inputs").hide();
-				$(".how-work__poopup").find(".poopup__title").html(mailResult ? "Спасибо за обращение!" : "Произошла ошибка при отправке");
-				$(".how-work__poopup").find(".poopup__description").html(
-					mailResult ? "Наш администратор вскоре с Вами свяжется!" : 'Произошла ошибка на стороне сайта. Обратитесь к нам по адресу <a href="mailto:info@ormas.pro">info@ormas.pro</a>, телефону <a href="tel:+74991137650">+7 (499) 113-76-50</a> или Whatsapp <a href="https://api.whatsapp.com/send/?phone=79266699546">+7 (926) 669-95-46</a>'
-				);
 			});
 		}
 	});
 
-	// servise-form
-
-	$(".servise-form__close").click(function () {
-		$(".servise-form__send-form").removeClass("show");
-		$(".page-service__inputs-checkbox").removeClass("error");
-		$(".page-service__inputs .page-service__inputs-input").each(function () {
-			$(this).removeClass("error");
-		});
-	});
-
 	$(".page-service__inputs").submit(function (event) {
+		function displayFeedbackMessage(result) {
+			$(".servise-form").prepend(`
+				<div class="servise-form__send-form show">
+					<p class="servise-form__close"></p>
+					<p class="servise-form__title">${result ? 'Спасибо <br> за обращение!' : 'Произошла ошибка при отправке'}</p>
+					<p class="servise-form__des">${result ? 'Мы перезвоним Вам, <br> как только освободится один из специалистов' : 'Произошла ошибка на стороне сайта. Обратитесь к нам по адресу <a href="mailto:info@ormas.pro">info@ormas.pro</a>, телефону <a href="tel:+74991137650">+7 (499) 113-76-50</a> или Whatsapp <a href="https://api.whatsapp.com/send/?phone=79266699546">+7 (926) 669-95-46</a>'}</p>
+				</div>`)
+		}
 		event.preventDefault();
 		var error = 0;
 		var checked = false;
@@ -828,13 +861,26 @@ jQuery(document).ready(function ($) {
 				$(this).val("");
 			});
 			$(".page-service__inputs-checkbox input").prop("checked", false);
-			$(".servise-form__send-form").addClass("show");
+			// $(".servise-form__send-form").addClass("show");
 			$.ajax({
 				type: "POST",
 				url: "/wp-admin/admin-post.php",
 				data: formData,
 				success: function (data) {
-					console.log(data);
+					var mailResult = JSON.parse(data);
+					displayFeedbackMessage(mailResult);
+				},
+				done: function () {
+					$(".servise-form__close").click(function () {
+						$(".servise-form__send-form").removeClass("show");
+						$(".page-service__inputs-checkbox").removeClass("error");
+						$(".page-service__inputs .page-service__inputs-input").each(function () {
+							$(this).removeClass("error");
+						});
+					});
+				},
+				error: function () {
+					displayFeedbackMessage(false);
 				}
 			});
 			setTimeout(function () {
@@ -1191,6 +1237,16 @@ jQuery(document).ready(function ($) {
 	}
 
 	$('.banner_form .site-inputs').submit(function (event) {
+		function displayFeedbackMessage(result) {
+			$('.banner_form').prepend(`
+			<div class="banner__popup poopup">
+				<svg style="cursor: pointer;" class="banner__popup-svg" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path clip-rule="evenodd" d="M7.29289 8.6957L10.6194 12L7.29289 15.3043C6.90237 15.6922 6.90237 16.3212 7.29289 16.7091C7.68342 17.097 8.31658 17.097 8.70711 16.7091L12 13.4382L15.2929 16.7091C15.6834 17.097 16.3166 17.097 16.7071 16.7091C17.0976 16.3212 17.0976 15.6922 16.7071 15.3043L13.3806 12L16.7071 8.6957C17.0976 8.30778 17.0976 7.67885 16.7071 7.29094C16.3166 6.90302 15.6834 6.90302 15.2929 7.29094L12 10.5618L8.70711 7.29094C8.31658 6.90302 7.68342 6.90302 7.29289 7.29094C6.90237 7.67885 6.90237 8.30778 7.29289 8.6957Z"></path>
+				</svg>
+				<div class="poopup__title">${result ? 'Спасибо за обращение!' : 'Произошла ошибка при отправке'}</div>
+				<div class="poopup__description">${result ? 'Наш администратор вскоре с Вами свяжется!' : 'Произошла ошибка на стороне сайта.<br/> Обратитесь к нам по адресу <a href="mailto:info@ormas.pro">info@ormas.pro</a>,<br/>телефону <a href="tel:+74991137650">+7 (499) 113-76-50</a> или Whatsapp <a href="https://api.whatsapp.com/send/?phone=79266699546">+7 (926) 669-95-46</a>'}</div>
+			</div>`)
+		}
 		event.preventDefault()
 
 		let error = 0;
@@ -1223,13 +1279,16 @@ jQuery(document).ready(function ($) {
 			setTimeout(function () {
 				$('.banner__popup').addClass('hidden');
 			}, 5000);
-			// console.log( formData)
 			$.ajax({
 				type: 'POST',
 				url: `/wp-admin/admin-post.php`,
 				data: formData,
 				success: function (data) {
-					console.log(data);
+					var mailResult = JSON.parse(data);
+					displayFeedbackMessage(mailResult);
+				},
+				error: function () {
+					displayFeedbackMessage(false);
 				}
 			})
 		}

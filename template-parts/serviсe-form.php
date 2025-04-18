@@ -1,13 +1,8 @@
 <section class="servise-form _anim-items">
-  <div class="servise-form__send-form">
-    <p class="servise-form__close"></p>
-    <p class="servise-form__title">Спасибо <br> за обращение!</p>
-    <p class="servise-form__des">Мы перезвоним Вам, <br> как только освободится один из специалистов</p>
-  </div>
   <div class="servise-form__wrapper">
     <p class="servise-form__title">Нужна помощь? </p>
     <p class="servise-form__des">Заполните заявку. Мы поможем разобраться и подобрать специалиста</p>
-    <form action="" method="POST" class="site-inputs services__inputs page-service__inputs">
+    <form action="" method="POST" class="site-inputs page-service__inputs">
       <input type="hidden" name="action" value="custom_form_submit">
       <?php wp_nonce_field('custom_form'); ?>
       <input type="text" placeholder="Ваше имя" class="site-input page-service__inputs-input" name="firstname">
