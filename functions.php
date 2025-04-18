@@ -90,3 +90,8 @@ require get_template_directory() . '/inc/rewrite-rules.php';
  * Send mail
  */
 require get_template_directory() . '/inc/mail.php';
+
+/**
+ * Settings check
+ */
+require get_template_directory() . '/inc/settings-check.php';
