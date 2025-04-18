@@ -1275,7 +1275,6 @@ jQuery(document).ready(function ($) {
 				$(this).val('')
 			})
 			$('.banner_form .site-checkbox input').prop('checked', false)
-			$('.banner__popup').removeClass('hidden')
 			setTimeout(function () {
 				$('.banner__popup').addClass('hidden');
 			}, 5000);
@@ -1283,8 +1282,8 @@ jQuery(document).ready(function ($) {
 				type: 'POST',
 				url: `/wp-admin/admin-post.php`,
 				data: formData,
-				success: function (data) {
-					var mailResult = JSON.parse(data);
+				success: function (result) {
+					var mailResult = JSON.parse(result);
 					displayFeedbackMessage(mailResult);
 				},
 				error: function () {
