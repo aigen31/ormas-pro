@@ -17,12 +17,16 @@ Container::make('post_meta', 'Главная страница')
     Field::make('text', 'material_title', 'Заголовок материала'),
     Field::make('textarea', 'material_description', 'Описание'),
     Field::make('text', 'material_link', 'Ссылка')->set_width(50),
-    Field::make('file', 'material_file', 'Файл материала')->set_width(50),
+    Field::make('complex', 'material_file_list', 'Список файлов')
+      ->set_layout('tabbed-horizontal')
+      ->add_fields([
+        Field::make('file', 'material_file', 'Файл материала')
+      ]),
     Field::make('image', 'material_image', 'Изображение материала')->set_type('image'),
     Field::make('text', 'material_position_top', 'Позиция изображения сверху (в px)')->set_width(50),
     Field::make('text', 'material_position_left', 'Позиция изображения слева (в px)')->set_width(50),
     Field::make('text', 'material_mail_title', 'Заголовок письма'),
-    Field::make('textarea', 'material_mail_text', 'Текст письма'),
+    Field::make('rich_text', 'material_mail_text', 'Текст письма'),
     Field::make('complex', 'reviews_list', 'Список отзывов')
       ->set_layout('tabbed-horizontal')
       ->add_fields([

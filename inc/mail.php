@@ -31,6 +31,7 @@ function ormas_handle_custom_form()
     'Имя' => sanitize_text_field($_POST['firstname'] ?? ''),
     'Фамилия' => sanitize_text_field($_POST['lastname'] ?? ''),
     'Email' => sanitize_email($_POST['email'] ?? ''),
+    'Email' => sanitize_email($_POST['email_to'] ?? ''),
     'Телефон' => sanitize_text_field($_POST['phone'] ?? ''),
     'Сообщение' => sanitize_textarea_field($_POST['text'] ?? ''),
     'Заявка на получение материала' => sanitize_textarea_field($_POST['material'] ?? ''),
@@ -44,10 +45,41 @@ function ormas_handle_custom_form()
       $body .= $field . ': ' . $value . '<br>';
     }
   }
-
   $mail = wp_mail(SMTP_TO_EMAIL, $subject, $body, $headers);
 
-  echo json_encode($mail);
+  if ($_POST['ismaterial'] === 'true') {
+    $post_id = absint($_POST['post_id']);
+    $attachments = [];
+    if ($_POST['single_mode'] === 'true') {
+      $materials = carbon_get_post_meta(get_option('page_for_posts'), 'material_file_list');
+      if (!empty($materials)) {
+        foreach ($materials as $file) {
+          $file = get_attached_file($file['material_file']);
+          $attachments[] = $file;
+        }
+      }
+    } else {
+      $materials = carbon_get_post_meta($post_id, 'materials_list');
+      if (!empty($materials)) {
+        foreach ($materials as $material) {
+          foreach ($material['material_file_list'] as $file) {
+            $file = get_attached_file($file['material_file']);
+            $attachments[] = $file;
+          }
+        }
+      }
+    }
+    if (!empty($attachments)) {
+      wp_mail(
+        sanitize_email($_POST['email_to']),
+        sanitize_text_field($_POST['materials__mail-title']),
+        wp_kses_post($_POST['materials__text-mail']),
+        $headers,
+        $attachments
+      );
+    }
+  }
 
+  echo json_encode($mail);
   exit;
 }

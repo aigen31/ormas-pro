@@ -36,8 +36,8 @@ if (!empty($materials)) :
 						<?php if (!empty($material['material_link'])) : ?>
 							<a target="_blank" href="<?php echo esc_url($material['material_link']) ?>" class="site-button useful__right-button">Подробнее</a>
 						<?php else : ?>
-							<input type="email" placeholder="Email" class="site-input useful__right-input" name="email">
-							<input type="hidden" name="material_file" value="<?php echo esc_attr($material['material_file']) ?>">
+							<input type="email" placeholder="Email" class="site-input useful__right-input" name="email_to">
+							<input type="hidden" name="post_id" value="<?php echo esc_attr($post->ID); ?>">
 							<input type="hidden" name="ismaterial" value="true">
 							<input type="hidden" name="materials__title" value="<?php echo esc_attr($material['material_title']) ?>">
 							<input type="hidden" name="materials__mail-title" value="<?php echo esc_attr($material['material_mail_title']) ?>">
