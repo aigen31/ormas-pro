@@ -5,7 +5,7 @@ if (!empty($materials)) :
 ?>
 	<div class="useful-materials inwork">
 		<div class="container">
-			<?php foreach ($materials as $material) :
+			<?php foreach ($materials as $index => $material) :
 				$image = get_image_data($material['material_image'], 'large');
 			?>
 				<div class="useful__wrapper">
@@ -38,12 +38,13 @@ if (!empty($materials)) :
 						<?php else : ?>
 							<input type="email" placeholder="Email" class="site-input useful__right-input" name="email_to">
 							<input type="hidden" name="post_id" value="<?php echo esc_attr($post->ID); ?>">
-							<input type="hidden" name="ismaterial" value="true">
+							<input type="hidden" name="ismaterial" value="<?php echo esc_attr('true'); ?>">
+							<input type="hidden" name="index" value="<?php echo esc_attr($index); ?>">
 							<input type="hidden" name="materials__title" value="<?php echo esc_attr($material['material_title']) ?>">
 							<input type="hidden" name="materials__mail-title" value="<?php echo esc_attr($material['material_mail_title']) ?>">
 							<input type="hidden" name="materials__text-mail" value="<?php echo esc_attr($material['material_mail_text']) ?>">
 							<input type="hidden" name="material" value="<?php echo esc_attr($material['material_title']); ?>">
-							<input type="hidden" name="type" value="Запрос на материал">
+							<input type="hidden" name="type" value="<?php echo esc_attr(['Запрос на материал']); ?>">
 							<input type="hidden" name="title" value="<?php the_page_title(); ?>">
 							<button class="site-button useful__right-button">Скачать</button>
 							<div class="site-checkbox footer__top-line-column-inputs-checkbox">

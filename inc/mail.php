@@ -21,6 +21,7 @@ add_action('admin_post_custom_form_submit', 'ormas_handle_custom_form');
 
 function ormas_handle_custom_form()
 {
+  // Nonce field for form validation
   if (!isset($_POST['_wpnonce']) || !wp_verify_nonce($_POST['_wpnonce'], 'custom_form')) {
     wp_die('Неверный nonce');
   }
@@ -47,6 +48,7 @@ function ormas_handle_custom_form()
   }
   $mail = wp_mail(SMTP_TO_EMAIL, $subject, $body, $headers);
 
+  // Handler for materials sendment
   if ($_POST['ismaterial'] === 'true') {
     $post_id = absint($_POST['post_id']);
     $attachments = [];
@@ -61,11 +63,10 @@ function ormas_handle_custom_form()
     } else {
       $materials = carbon_get_post_meta($post_id, 'materials_list');
       if (!empty($materials)) {
-        foreach ($materials as $material) {
-          foreach ($material['material_file_list'] as $file) {
-            $file = get_attached_file($file['material_file']);
-            $attachments[] = $file;
-          }
+        $material = $materials[$_POST['index']]['material_file_list'];
+        foreach ($material as $file) {
+          $file = get_attached_file($file["material_file"]);
+          $attachments[] = $file;
         }
       }
     }
@@ -77,6 +78,10 @@ function ormas_handle_custom_form()
         $headers,
         $attachments
       );
+
+      echo json_encode($mail);
+
+      exit;
     }
   }
 
