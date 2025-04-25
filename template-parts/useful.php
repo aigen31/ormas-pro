@@ -9,7 +9,7 @@
 		'material_title',
 		'material_description',
 		'material_link',
-		'material_file',
+		'material_file_list',
 		'material_mail_title',
 		'material_mail_text'
 	]);
@@ -40,20 +40,11 @@
 			<?php if ($material_link) : ?>
 				<a target="_blank" href="<?php echo $material_link; ?>" class="site-button useful__right-button">Подробнее</a>
 			<?php else : ?>
-				<?php
-				if ($material_file) {
-					$array = explode('/', $material_file);
-					unset($array[0]);
-					unset($array[1]);
-					unset($array[2]);
-					unset($array[3]);
-					$path = implode('/', $array);
-				}
-				?>
-				<input type="email" placeholder="Email" class="site-input useful__right-input useful__right-input--more" name="email">
+				<input type="email" placeholder="Email" class="site-input useful__right-input useful__right-input--more" name="email_to">
 				<input type="hidden" name="type" value="Запрос на материал">
-				<input type="hidden" name="material_file" value="<?php echo $path; ?>">
+				<input type="hidden" name="post_id" value="<?php echo esc_attr($post->ID); ?>">
 				<input type="hidden" name="ismaterial" value="true">
+				<input type="hidden" name="single_mode" value="true">
 				<input type="hidden" name="materials__title" value="<?php echo $material_title; ?>">
 				<input type="hidden" name="materials__mail-title" value="<?php echo $material_mail_title; ?>">
 				<input type="hidden" name="materials__text-mail" value='<?php echo $material_mail_text; ?>'>

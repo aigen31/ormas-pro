@@ -21,6 +21,7 @@ add_action('admin_post_custom_form_submit', 'ormas_handle_custom_form');
 
 function ormas_handle_custom_form()
 {
+  // Nonce field for form validation
   if (!isset($_POST['_wpnonce']) || !wp_verify_nonce($_POST['_wpnonce'], 'custom_form')) {
     wp_die('Неверный nonce');
   }
@@ -31,6 +32,7 @@ function ormas_handle_custom_form()
     'Имя' => sanitize_text_field($_POST['firstname'] ?? ''),
     'Фамилия' => sanitize_text_field($_POST['lastname'] ?? ''),
     'Email' => sanitize_email($_POST['email'] ?? ''),
+    'Email' => sanitize_email($_POST['email_to'] ?? ''),
     'Телефон' => sanitize_text_field($_POST['phone'] ?? ''),
     'Сообщение' => sanitize_textarea_field($_POST['text'] ?? ''),
     'Заявка на получение материала' => sanitize_textarea_field($_POST['material'] ?? ''),
@@ -44,10 +46,45 @@ function ormas_handle_custom_form()
       $body .= $field . ': ' . $value . '<br>';
     }
   }
-
   $mail = wp_mail(SMTP_TO_EMAIL, $subject, $body, $headers);
 
-  echo json_encode($mail);
+  // Handler for materials sendment
+  if ($_POST['ismaterial'] === 'true') {
+    $post_id = absint($_POST['post_id']);
+    $attachments = [];
+    if ($_POST['single_mode'] === 'true') {
+      $materials = carbon_get_post_meta(get_option('page_for_posts'), 'material_file_list');
+      if (!empty($materials)) {
+        foreach ($materials as $file) {
+          $file = get_attached_file($file['material_file']);
+          $attachments[] = $file;
+        }
+      }
+    } else {
+      $materials = carbon_get_post_meta($post_id, 'materials_list');
+      if (!empty($materials)) {
+        $material = $materials[$_POST['index']]['material_file_list'];
+        foreach ($material as $file) {
+          $file = get_attached_file($file["material_file"]);
+          $attachments[] = $file;
+        }
+      }
+    }
+    if (!empty($attachments)) {
+      wp_mail(
+        sanitize_email($_POST['email_to']),
+        sanitize_text_field($_POST['materials__mail-title']),
+        wp_kses_post($_POST['materials__text-mail']),
+        $headers,
+        $attachments
+      );
 
+      echo json_encode($mail);
+
+      exit;
+    }
+  }
+
+  echo json_encode($mail);
   exit;
 }
