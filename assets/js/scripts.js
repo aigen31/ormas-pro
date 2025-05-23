@@ -272,8 +272,8 @@ jQuery(document).ready(function ($) {
 	$(".useful-main-form").submit(function (event) {
 		event.preventDefault();
 		var formData = $(this).serialize();
-		if ($(this).find("input").val().length === 0) {
-			$(this).find("input").addClass("error");
+		if ($(this).find(".useful__right-input").val().length === 0) {
+			$(this).find(".useful__right-input").addClass("error");
 		} else {
 			$.ajax({
 				type: "POST",
