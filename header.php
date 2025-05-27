@@ -52,6 +52,7 @@
 	</script>
 	<!-- End Google Tag Manager -->
 	<?php wp_head(); ?>
+	<meta name="yandex-verification" content="e2760df583d8e8b5" />
 </head>
 
 <body <?php body_class('page'); ?>>
