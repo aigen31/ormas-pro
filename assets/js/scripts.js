@@ -1302,4 +1302,29 @@ jQuery(document).ready(function ($) {
 			}
 		});
 	})
+
+	var slider = $('.party__reviews-slider')
+
+	slider.slick({
+		infinite: false,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		arrows: true,
+		dots: true,
+	});
+
+	$('.party__more-btn').click(function () {
+		var duration = 300;
+		$(this).siblings('.party__more').slideToggle(duration);
+		setTimeout(function () {
+			slider.slick('setPosition');
+		}, duration)
+		$(this).toggleClass('active');
+
+		if ($(this).hasClass('active')) {
+			$(this).text('Скрыть');
+		} else {
+			$(this).text('Показать');
+		}
+	})
 });
