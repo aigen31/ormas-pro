@@ -10198,7 +10198,8 @@ screen and (max-width:800px) and (orientation:landscape) {
 
 .neuropsychology-slider__title {
   margin-bottom: 0;
-  padding-bottom: 30px
+  padding-bottom: 30px;
+  position: relative;
 }
 
 @media screen and (max-width:680px) {
@@ -10321,7 +10322,7 @@ screen and (max-width:800px) and (orientation:landscape) {
 
 @media screen and (max-width:1140px) {
   .neuropsychology-slider .slick-arrows {
-    margin-top: -80px
+    margin-top: -23px
   }
 }
 
