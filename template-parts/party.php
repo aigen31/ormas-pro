@@ -24,8 +24,8 @@
                 $image = get_image_data($specialist_photo, 'medium');
             ?>
                 <div class="party__list-item">
-                    <div class="party__list-item-shadow"></div>
-                    <div class="party__list-item-background"></div>
+                    <!-- <div class="party__list-item-shadow"></div>
+                    <div class="party__list-item-background"></div> -->
                     <div style="background-image:url(<?php echo $image['url']; ?>);" class="party__list-item-image"></div>
                     <div class="party__list-item-text">
                         <div class="party__list-item-text-title">

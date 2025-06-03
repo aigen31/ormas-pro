@@ -3789,8 +3789,6 @@ div#services section.servise-page-table {
 }
 
 .party__list-item-shadow {
-  -webkit-box-shadow: 0 15px 100px rgba(0, 0, 0, .04), 0 15px 30px rgba(0, 0, 0, .1);
-  box-shadow: 0 15px 100px rgba(0, 0, 0, .04), 0 15px 30px rgba(0, 0, 0, .1);
   height: 100%;
   left: 50%;
   position: absolute;
@@ -10221,6 +10219,7 @@ screen and (max-width:800px) and (orientation:landscape) {
 
 .neuropsychology-slider--main .party__list-item {
   padding-bottom: 10px;
+  box-shadow: 0 15px 100px rgba(0, 0, 0, .04), 0 15px 30px rgba(0, 0, 0, .1);
 }
 
 @media screen and (max-width:1140px) {
