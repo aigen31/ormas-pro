@@ -3648,6 +3648,14 @@ div#services section.servise-page-table {
   justify-content: start;
   padding-left: 30px;
   padding-right: 30px;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  .party__reviews-controls .slick-dots {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .party__reviews-controls .slick-dots .slick-active {
