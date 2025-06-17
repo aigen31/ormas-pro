@@ -1324,7 +1324,7 @@ jQuery(document).ready(function ($) {
 		if ($(this).hasClass('active')) {
 			$(this).text('Скрыть');
 		} else {
-			$(this).text('Показать');
+			$(this).text('Подробнее');
 		}
 	})
 });
