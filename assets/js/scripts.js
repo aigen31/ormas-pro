@@ -1311,6 +1311,8 @@ jQuery(document).ready(function ($) {
 		slidesToScroll: 1,
 		arrows: true,
 		dots: true,
+		appendArrows: '.party__reviews-controls',
+		appendDots: '.party__reviews-controls',
 	});
 
 	$('.party__more-btn').click(function () {

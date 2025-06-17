@@ -124,6 +124,7 @@
                             </div>
                           <?php endforeach; ?>
                         </div>
+                        <div class="party__reviews-controls"></div>
                       </div>
                     <?php endif; ?>
                   </div>
