@@ -22,7 +22,7 @@
             'specialist_reviews',
           ]);
           extract($specialist);
-          $image = get_image_data($specialist_photo, 'medium');
+          $image = get_image_data($specialist_photo, 'large');
       ?>
           <div class="party__list-item">
             <div style="background-image:url(<?php echo $image['url']; ?>);" class="party__list-item-image"></div>
