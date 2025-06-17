@@ -1303,24 +1303,27 @@ jQuery(document).ready(function ($) {
 		});
 	})
 
-	var slider = $('.party__reviews-slider')
+	var sliders = $('.party__reviews-slider')
 
-	slider.slick({
-		infinite: false,
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		arrows: true,
-		dots: true,
-		adaptiveHeight: true,
-		appendArrows: '.party__reviews-controls',
-		appendDots: '.party__reviews-controls',
-	});
+	sliders.each(function () {
+		$(this).slick({
+			infinite: false,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			arrows: true,
+			dots: true,
+			adaptiveHeight: true,
+			appendArrows: $(this).siblings('.party__reviews-controls'),
+			appendDots: $(this).siblings('.party__reviews-controls'),
+		});
+	})
+	
 
 	$('.party__more-btn').click(function () {
 		var duration = 300;
 		$(this).siblings('.party__more').slideToggle(duration);
 		setTimeout(function () {
-			slider.slick('setPosition');
+			sliders.slick('setPosition');
 		}, duration)
 		$(this).toggleClass('active');
 
