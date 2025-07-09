@@ -11944,6 +11944,14 @@ screen and (max-width:800px) and (orientation:landscape) {
   font-weight: 700;
 }
 
+.list-tags__item a:hover {
+  text-decoration: underline;
+}
+
+.post__list-article a {
+  color: rgb(0, 0, 238);
+}
+
 @media (max-width: 890px) {
   .list-tags {
     margin: 30px 0;
