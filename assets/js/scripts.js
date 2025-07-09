@@ -1302,4 +1302,35 @@ jQuery(document).ready(function ($) {
 			}
 		});
 	})
+
+	var sliders = $('.party__reviews-slider')
+
+	sliders.each(function () {
+		$(this).slick({
+			infinite: false,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			arrows: true,
+			dots: true,
+			adaptiveHeight: true,
+			appendArrows: $(this).siblings('.party__reviews-controls'),
+			appendDots: $(this).siblings('.party__reviews-controls'),
+		});
+	})
+	
+
+	$('.party__more-btn').click(function () {
+		var duration = 300;
+		$(this).siblings('.party__more').slideToggle(duration);
+		setTimeout(function () {
+			sliders.slick('setPosition');
+		}, duration)
+		$(this).toggleClass('active');
+
+		if ($(this).hasClass('active')) {
+			$(this).text('Скрыть');
+		} else {
+			$(this).text('Подробнее');
+		}
+	})
 });

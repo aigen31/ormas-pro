@@ -1,7 +1,6 @@
 <div class="about">
 	<?php
-	$image_id = carbon_get_post_meta($post->ID, 'header_image');
-	$image = get_image_data($image_id, 'large');
+	$image = !empty($args['header_image']) ? ['url' => $args['header_image']] : get_image_data(carbon_get_post_meta($post->ID, 'header_image'), 'large');
 	?>
 	<img class="wave-eight" src="<?php bloginfo('template_directory') ?>/assets/img/general/wave-8.svg">
 	<div class="container">
@@ -18,9 +17,23 @@
 						<path d="M28.4076 52.388C27.2476 52.388 26.0676 52.048 25.0376 51.348C20.5676 48.298 14.0176 48.218 9.45761 51.148C6.94761 52.758 3.63761 52.288 1.67761 50.038C-0.282387 47.788 -0.282389 44.438 1.66761 42.178C4.92761 38.398 6.80761 32.978 6.94761 26.928C7.07761 21.618 5.97761 15.908 3.49761 8.95798C2.38761 5.83798 4.00761 2.40799 7.13761 1.28799C10.2576 0.177986 13.6876 1.79799 14.8076 4.92799C17.7576 13.188 19.1076 20.478 18.9476 27.208C18.8676 30.618 18.3876 33.918 17.5276 37.018C22.5876 37.098 27.6176 38.568 31.7976 41.418C34.5376 43.288 35.2476 47.018 33.3776 49.758C32.2076 51.478 30.3276 52.388 28.4076 52.388Z" />
 					</svg>
 				</div>
-				<?php the_title('<h1 class="about__left-title-item">', '</h1>') ?>
+				<?php
+				$tags = [
+					'before' => '<h1 class="about__left-title-item">',
+					'after' => '</h1>'
+				];
+				if (is_archive()) {
+					the_archive_title($tags['before'], $tags['after']);
+				} else {
+					the_title($tags['before'], $tags['after']);
+				}
+				?>
 			</div>
-			<div class="about__left-text"><?php the_content(); ?></div>
+			<div class="about__left-text">
+				<?php
+				echo !empty($args['description']) ? $args['description'] : get_the_content();
+				?>
+			</div>
 			<div class="about__left-description <?php echo $post->post_name != 'our-services' ? '' : 'about__left-description--white'; ?>">
 				<svg width="64" height="75" viewBox="0 0 64 75" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M36.2267 74.4574C35.1675 74.4574 34.1375 73.9775 33.4527 73.1056C26.3773 64.0286 15.3633 56.7484 2.44146 52.6108C0.592132 52.0197 -0.426165 50.0417 0.170769 48.1982C0.76185 46.3489 2.73992 45.3364 4.5834 45.9217C15.4101 49.3862 25.0664 54.9049 32.5573 61.8223C33.2245 40.2098 41.3065 20.9148 57.5876 1.77783C58.8458 0.303056 61.058 0.121635 62.5386 1.37988C64.0134 2.63812 64.1948 4.85029 62.9366 6.33092C45.3622 26.9954 38.2048 46.858 39.7264 70.7295C39.8259 72.2687 38.9071 73.6908 37.4674 74.235C37.0636 74.3813 36.6422 74.4574 36.2267 74.4574Z" fill="<?php echo $post->post_name != 'our-services' ? '#2E1AB0' : '#ffffff' ?>" />
