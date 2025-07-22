@@ -35,5 +35,13 @@ Container::make('post_meta', 'Главная страница')
         Field::make('image', 'review_avatar', 'Аватар')->set_type('image')->set_value_type('url')->set_width(25),
       ]),
     Field::make('separator', 'certificates_separator', 'Сертификаты'),
-    Field::make('media_gallery', 'certificates_gallery', 'Список сертификатов')
+    Field::make('media_gallery', 'certificates_gallery', 'Список сертификатов'),
+    Field::make('separator', 'faq_separator', 'Вопрос-ответ')
+      ->set_width(100),
+    Field::make('complex', 'service_faq', 'Добавить строку')
+      ->set_layout('tabbed-horizontal')
+      ->add_fields([
+        Field::make('text', 'question', 'Вопрос')->set_width(30),
+        Field::make('textarea', 'answer', 'Ответ')->set_width(70),
+      ]),
   ]);

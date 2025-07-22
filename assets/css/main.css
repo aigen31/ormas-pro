@@ -11952,6 +11952,10 @@ screen and (max-width:800px) and (orientation:landscape) {
   color: rgb(0, 0, 238);
 }
 
+.faq__wrapper {
+    padding-bottom: 80px;
+}
+
 @media (max-width: 890px) {
   .list-tags {
     margin: 30px 0;
