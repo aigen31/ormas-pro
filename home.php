@@ -21,4 +21,6 @@ if (is_home()) {
 
 get_template_part('template-parts/certificates');
 
+get_template_part('template-parts/home-faq');
+
 get_footer();
