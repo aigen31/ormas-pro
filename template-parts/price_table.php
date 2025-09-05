@@ -1,6 +1,6 @@
 <div class="services-and-prices">
     <div class="container">
-        <div class="site-title services-and-prices__title">Услуги и цены</div>
+        <h2 class="site-title services-and-prices__title">Услуги и цены</h2>
 
         <ul class="services-and-prices__list">
             <?php

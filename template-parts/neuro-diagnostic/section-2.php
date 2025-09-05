@@ -5,7 +5,7 @@ if (!empty($steps)) :
   <section class="s s-what-is-neuropsychology">
     <div class="container">
       <h2 class="s-what-is-neuropsychology__site-title site-title">
-        Зачем проводить нейропсихологическую диагностику?
+        Что из себя представляет диагностика?
       </h2>
       <div class="s-what-is-neuropsychology__wrapper">
         <?php

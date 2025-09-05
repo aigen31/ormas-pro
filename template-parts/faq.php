@@ -2,7 +2,7 @@
     <img class="wave-ten" src="<?php bloginfo('template_directory') ?>/assets/img/general/wave-10.svg">
     <img class="wave-eleven" src="<?php bloginfo('template_directory') ?>/assets/img/general/wave-11.svg">
     <div class="container">
-        <div class="site-title frequent-questions__title">Частые вопросы родителей</div>
+        <h2 class="site-title frequent-questions__title">Частые вопросы родителей</h2>
         <div class="frequent-questions__list">
             <?php
             $faq_items = carbon_get_post_meta($post->ID, 'service_faq');

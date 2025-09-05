@@ -1,6 +1,6 @@
 <div class="neuropsychology-slider">
 	<div class="container">
-		<div class="site-title neuropsychology-slider__title">По данному направлению работают:</div>
+		<h2 class="site-title neuropsychology-slider__title">По данному направлению работают:</h2>
 		<div class="neuropsychology-slider__list">
 			<?php
 			$direcrion_slug = carbon_get_post_meta($post->ID, 'specialists_direction_slug');
