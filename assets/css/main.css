@@ -12128,8 +12128,13 @@ screen and (max-width:800px) and (orientation:landscape) {
     margin-top: 15px;
 }
 
-.poopup__inputs .smart-captcha, .consultation .smart-captcha {
+.poopup__inputs .smart-captcha, 
+.consultation .smart-captcha {
     margin: 0;
+}
+
+.faq-home {
+  margin-bottom: 80px;
 }
 
 @media (max-width: 890px) {
