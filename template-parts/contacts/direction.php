@@ -71,6 +71,7 @@
 								</div>
 							</label>
 						</div>
+						<div style="height: 100px" class="smart-captcha" data-sitekey="<?=$GLOBALS['sitekeyYandex']?>"></div>
 						<button class="site-button send_banner_form">Записаться</button>
 						<a href="https://api.whatsapp.com/send/?phone=79266699546" class="whatsapp_button"><img src="<?php bloginfo('template_directory') ?>/assets/img/general/whatsapp_white.svg" alt=""><span>Написать в WhatsApp</span></a>
 					</form>

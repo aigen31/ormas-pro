@@ -22,6 +22,8 @@
                 <input type="hidden" name="action" value="custom_form_submit">
                 <?php wp_nonce_field('custom_form'); ?>
 
+                <div style="height: 100px" class="smart-captcha" data-sitekey="<?=$GLOBALS['sitekeyYandex']?>"></div>
+                
                 <div class="site-checkbox signup__inputs-checkbox consultation__inputs-checkbox">
                     <label>
                         <input type="checkbox">
@@ -34,7 +36,8 @@
                             Согласие с условиями обработки <a href="/agreement/">персональных данных</a>
                         </div>
                     </label>
-                </div>
+                </div>                
+                 
                 <button class="site-button consultation__inputs-button">Записаться</button>
             </div>
         </form>

@@ -14,7 +14,9 @@
     <input type="email" placeholder="Email" class="site-input poopup__inputs-input" name="email">
     <input type="text" placeholder="Ваш номер телефона" class="site-input poopup__inputs-input phone-mask" name="phone">
     <input type="hidden" name="type" value="Запись на услугу">
-    <input type="hidden" name="title" value="<?php the_page_title(); ?>">
+    <input type="hidden" name="title" value="<?php the_page_title(); ?>">				
+    <div style="height: 100px" class="smart-captcha" data-sitekey="<?=$GLOBALS['sitekeyYandex']?>"></div>
+    <button type="submit" class="site-button poopup_inputs-button">Записаться</button>
     <div class="site-checkbox poopup__inputs-checkbox">
       <label>
         <input type="checkbox" name="accept">
@@ -27,7 +29,6 @@
           Согласие с условиями обработки <a href="/agreement/">персональных данных</a>
         </div>
       </label>
-    </div>
-    <button type="submit" class="site-button poopup_inputs-button">Записаться</button>
+    </div>	
   </form>
 </div>

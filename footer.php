@@ -84,7 +84,8 @@
 								Согласие с условиями обработки <a href="/agreement/">персональных данных</a>
 							</div>
 						</label>
-					</div>
+					</div> 
+					<div style="height: 100px" class="smart-captcha" data-sitekey="<?=$GLOBALS['sitekeyYandex']?>"></div>
 					<button class="site-button footer__top-line-column-inputs-button">Отправить</button>
 				</form>
 			</div>

@@ -53,6 +53,7 @@
 	<!-- End Google Tag Manager -->
 	<?php wp_head(); ?>
 	<meta name="yandex-verification" content="e2760df583d8e8b5" />
+	<script src="https://smartcaptcha.yandexcloud.net/captcha.js" defer></script>
 </head>
 
 <body <?php body_class('page'); ?>>

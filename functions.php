@@ -111,3 +111,8 @@ add_filter( 'wpseo_breadcrumb_links', function( $links ) {
     }
     return $links;
 });
+
+function my_register_globals() {
+    $GLOBALS['sitekeyYandex'] = 'ysc1_jNsNXrkPRCzgxt3g8IthECYJJzUrQxhStwlFRhps7749ac22';
+}
+add_action('init', 'my_register_globals');

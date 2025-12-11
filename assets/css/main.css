@@ -6341,7 +6341,9 @@ screen and (max-width:800px) and (orientation:landscape) {
   -ms-flex-pack: start;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  justify-content: flex-start
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
 }
 
 @media screen and (max-width:1200px) {
@@ -6353,8 +6355,6 @@ screen and (max-width:800px) and (orientation:landscape) {
 }
 
 .consultation__inputs-input {
-  margin-bottom: 32px;
-  margin-right: 27px;
   max-width: 315px;
   width: 33.333%
 }
@@ -12121,6 +12121,15 @@ screen and (max-width:800px) and (orientation:landscape) {
 
 .post__list-article a {
   color: rgb(0, 0, 238);
+}
+
+.smart-captcha,
+.neuropsychology-form .consultation__inputs .smart-captcha {
+    margin-top: 15px;
+}
+
+.poopup__inputs .smart-captcha, .consultation .smart-captcha {
+    margin: 0;
 }
 
 @media (max-width: 890px) {

@@ -34,6 +34,7 @@
 						</div>
 					</label>
 				</div>
+				<div style="height: 100px" class="smart-captcha" data-sitekey="<?=$GLOBALS['sitekeyYandex']?>"></div>
 				<button class="site-button consultation__inputs-button">Записаться</button>
 			</div>
 		</form>

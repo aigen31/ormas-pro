@@ -1,4 +1,19 @@
 jQuery(document).ready(function ($) {
+
+	function chechCaptcha(form) {
+		var smartCaptchas = document.querySelectorAll('.smart-captcha');
+		var indexCaptcha = Array.from(smartCaptchas).findIndex(captcha => {
+			return form.contains(captcha);
+		});
+		
+		var token = window.smartCaptcha.getResponse(indexCaptcha);		
+		if (!token) {
+			alert('Для защиты от спама требуется подтверждение. Пожалуйста, пройдите проверку.');
+			return false;
+		} 
+		return true;
+	}
+
 	if ($(".post__list")[0]) {
 		$(".post__list").not(".slick-initialized").slick({
 			infinite: true,
@@ -272,6 +287,16 @@ jQuery(document).ready(function ($) {
 	$(".useful-main-form").submit(function (event) {
 		event.preventDefault();
 		var formData = $(this).serialize();
+
+		if (!window.smartCaptcha) {
+			alert('Капча не загрузилась. Обновите страницу.');
+			return false;
+		}  
+
+		if(chechCaptcha(this)==false) {
+			return false;
+		}  
+
 		if ($(this).find(".useful__right-input").val().length === 0) {
 			$(this).find(".useful__right-input").addClass("error");
 		} else {
@@ -371,6 +396,15 @@ jQuery(document).ready(function ($) {
 		var error = 0;
 		var checked = false;
 
+		if (!window.smartCaptcha) {
+			alert('Капча не загрузилась. Обновите страницу.');
+			return false;
+		}  
+
+		if(chechCaptcha(this)==false) {
+			return false;
+		}  
+
 		$(".consultation__inputs .consultation__inputs-input").each(function () {
 			if ($(this).val().length === 0) {
 				$(this).addClass("error");
@@ -437,6 +471,15 @@ jQuery(document).ready(function ($) {
 		event.preventDefault();
 		var error = 0;
 		var checked = false;
+
+		if (!window.smartCaptcha) {
+			alert('Капча не загрузилась. Обновите страницу.');
+			return false;
+		}  
+
+		if(chechCaptcha(this)==false) {
+			return false;
+		}  
 
 		if ($(".footer .footer__top-line-column-inputs-textarea").val().length === 0) {
 			$(".footer .footer__top-line-column-inputs-textarea").addClass("error");
@@ -780,6 +823,16 @@ jQuery(document).ready(function ($) {
 		event.preventDefault();
 		var error = 0;
 		var checked = false;
+
+		if (!window.smartCaptcha) {
+			alert('Капча не загрузилась. Обновите страницу.');
+			return false;
+		}  
+
+		if(chechCaptcha(this)==false) {
+			return false;
+		}  
+		
 		$(".how-work__inputs .poopup__inputs-input").each(function () {
 			if ($(this).val().length === 0) {
 				$(this).addClass("error");
@@ -838,6 +891,16 @@ jQuery(document).ready(function ($) {
 		event.preventDefault();
 		var error = 0;
 		var checked = false;
+
+		if (!window.smartCaptcha) {
+			alert('Капча не загрузилась. Обновите страницу.');
+			return false;
+		}  
+
+		if(chechCaptcha(this)==false) {
+			return false;
+		}  
+
 		$(".page-service__inputs .page-service__inputs-input").each(function () {
 			if ($(this).val().length === 0) {
 				$(this).addClass("error");
@@ -1251,6 +1314,15 @@ jQuery(document).ready(function ($) {
 
 		let error = 0;
 		let checked = false;
+
+		if (!window.smartCaptcha) {
+			alert('Капча не загрузилась. Обновите страницу.');
+			return false;
+		}  
+
+		if(chechCaptcha(this)==false) {
+			return false;
+		}  
 
 		$('.banner_form .site-input').each(function () {
 			if ($(this).val().length == 0) {
