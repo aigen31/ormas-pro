@@ -114,7 +114,7 @@ function register_post_types() {
     'query_var'              => true,
   ]);
 
-  register_taxonomy('direction', ['specialists'], [
+  register_taxonomy('direction', ['team'], [
     'label' => 'Направления',
     'labels' => [
       'name'              => 'Направления',

@@ -22,6 +22,9 @@ switch ($post->post_name) {
   case 'our-services':
     get_template_part('templates/our-services');
     break;
+  case 'launch-speech':
+    get_template_part('templates/launch-speech');
+    break;
   default:
     break;
 }

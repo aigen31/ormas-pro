@@ -72,7 +72,8 @@ body {
 }
 
 .slick-track {
-  display: block;
+  /* display: block; */
+  display: flex;
   left: 0;
   margin-left: auto;
   margin-right: auto;
@@ -96,8 +97,8 @@ body {
 
 .slick-slide {
   display: none;
-  float: left;
-  height: 100%;
+  /* float: left; */
+  /* height: 100%; */
   min-height: 1px
 }
 
@@ -808,6 +809,12 @@ body {
 
 .hide {
   display: none !important
+}
+
+@media screen and (max-width: 450px) {
+  .hide-sm {
+    display: none !important
+  }
 }
 
 .poopup {
@@ -3789,7 +3796,7 @@ div#services section.servise-page-table {
   }
 }
 
-.party__list-item-background {
+/* .party__list-item-background {
   background: #ffeada;
   border-radius: 10px;
   height: 100%;
@@ -3798,9 +3805,9 @@ div#services section.servise-page-table {
   top: 0;
   width: 100%;
   z-index: 1
-}
+} */
 
-.party__list-item-shadow {
+/* .party__list-item-shadow {
   -webkit-box-shadow: 0 15px 100px rgba(0, 0, 0, .04), 0 15px 30px rgba(0, 0, 0, .1);
   box-shadow: 0 15px 100px rgba(0, 0, 0, .04), 0 15px 30px rgba(0, 0, 0, .1);
   height: 100%;
@@ -3812,7 +3819,7 @@ div#services section.servise-page-table {
   transform: translate(-50%);
   width: 90%;
   z-index: 0;
-}
+} */
 
 .party__list-item-image {
   background-position: 50%;
@@ -8886,7 +8893,8 @@ screen and (max-width:800px) and (orientation:landscape) {
 .neuropsychology-page .how-work .wave-nine,
 .neuropsychology-page .s-contact-with-problem .wave-nine,
 .neuropsychology-page .s-neuropsychology .wave-nine,
-.neuropsychology-page .s-contact-with-problem .wave-nine {
+.neuropsychology-page .s-contact-with-problem .wave-nine,
+.neuropsychology-page .speech-stages .wave-nine {
   bottom: 0;
   position: absolute;
   z-index: 0
@@ -10223,13 +10231,25 @@ screen and (max-width:800px) and (orientation:landscape) {
 }
 
 .neuropsychology-slider .party__list-item {
+  -webkit-box-shadow: 0 15px 100px rgba(0, 0, 0, .04), 0 15px 30px rgba(0, 0, 0, .1);
+  box-shadow: 0 15px 100px rgba(0, 0, 0, .04), 0 15px 30px rgba(0, 0, 0, .1);
+  background: #ffeada;
+  border-radius: 10px;
   margin: 0 auto;
   max-width: 352px;
+  height: 100%;
   padding: 30px 30px 30px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
-  flex-direction: column
+  flex-direction: column;
+  position: relative;
+}
+
+@media screen and (min-width: 680px) {
+  .neuropsychology-slider .slick-slide > div {
+    height: 100%;
+  }
 }
 
 .neuropsychology-slider--main .party__list-item {
@@ -10440,7 +10460,7 @@ screen and (max-width:800px) and (orientation:landscape) {
 
 .neuropsychology-form .consultation__text-description-item {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 26px;
   text-align: left
 }
@@ -12156,5 +12176,647 @@ screen and (max-width:800px) and (orientation:landscape) {
 @media (max-width: 470px) {
   .blog-list {
     display: block;
+  }
+}
+
+/* ============================
+   Speech Stages — Этапы развития речи
+   ============================ */
+
+.speech-stages {
+  background-color: #f5f3fb;
+  padding: 60px 0 50px;
+  overflow: hidden;
+  position: relative;
+}
+
+.speech-stages .container {
+  position: relative;
+  z-index: 100;
+}
+
+.speech-stages__title {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #2e1464;
+  line-height: 48px;
+}
+
+.speech-stages__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.speech-stages__card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 25px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  flex: 0 0 calc(50% - 15px);
+  max-width: calc(50% - 15px);
+  box-sizing: border-box;
+}
+
+.speech-stages__cube-wrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+}
+
+.speech-stages__cube-image {
+  /* width: 100%; */
+  flex: 0 0 auto;
+  height: auto;
+  display: block;
+}
+
+.speech-stages__content {
+  flex: 1 1 auto;
+  /* min-width: 0; */
+}
+
+.speech-stages__card-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2e1464;
+  margin: 0;
+}
+
+.speech-stages__card-text strong {
+  font-weight: 700;
+}
+
+.speech-stages__button-wrapper {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 30px; */
+}
+
+.speech-stages__button {
+  z-index: 100;
+}
+
+/* Tablet: <= 1024px */
+@media screen and (max-width: 1024px) {
+  .speech-stages {
+    padding: 40px 0;
+  }
+
+  .speech-stages__title {
+    margin-bottom: 30px;
+  }
+
+  .speech-stages__grid {
+    gap: 20px;
+  }
+
+  .speech-stages__card {
+    flex: 0 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+    border-radius: 13px;
+    padding: 21px;
+    gap: 15px;
+  }
+
+  .speech-stages__cube-wrapper {
+    width: 75px;
+  }
+
+  .speech-stages__card-text {
+    line-height: 22px;
+    font-size: 15px;
+  }
+
+  .speech-stages__cube-image {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+}
+
+/* Small tablet: <= 768px */
+@media screen and (max-width: 768px) {
+  .speech-stages__grid {
+    gap: 14px;
+  }
+
+  .speech-stages__card {
+    flex: 0 0 calc(50% - 7px);
+    max-width: calc(50% - 7px);
+    border-radius: 10px;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .speech-stages__cube-wrapper {
+    width: 28px;
+    flex-shrink: 0;
+  }
+
+  .speech-stages__card-text {
+    line-height: 20px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile: <= 450px */
+@media screen and (max-width: 450px) {
+  .speech-stages {
+    padding: 35px 0 30px;
+  }
+
+  .speech-stages__title {
+    margin-bottom: 20px;
+  }
+
+  .speech-stages__grid {
+    gap: 10px;
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+
+  .speech-stages__card {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .speech-stages__cube-wrapper {
+    width: 28px;
+  }
+
+  .speech-stages__cube-image {
+    width: 100%;
+  }
+
+  /* .speech-stages__button-wrapper {
+    margin-top: 20px;
+  } */
+}
+
+/* =========================================================================
+   Launch-Speech — "Как проходит работа" (section-3)
+   ========================================================================= */
+
+.ls-how-work {
+  padding: 60px 0;
+  background-color: #fde8d8;
+}
+
+.ls-how-work__title {
+  margin-top: 0;
+  margin-bottom: 60px;
+}
+
+/* --- Intro blocks (Первичный приём / Занятия) --- */
+
+.ls-how-work__intro {
+  margin-bottom: 0;
+}
+
+.ls-how-work__intro-block {
+  position: relative;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 30px 30px 32px 30px;
+  overflow: visible;
+}
+
+.ls-how-work__intro-block:not(:last-child) {
+  margin-bottom: 72px;
+}
+
+.ls-how-work__intro-text {
+  max-width: 58%;
+  position: relative;
+  z-index: 1;
+}
+
+.ls-how-work__intro-heading {
+  font-size: 24px;
+  line-height: 32px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.ls-how-work__intro-desc {
+  font-size: 16px;
+  line-height: 24px;
+  color: #3b4256;
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+.ls-how-work__intro-img {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-55%);
+  -ms-transform: translateY(-55%);
+  transform: translateY(-55%);
+  width: 34%;
+  z-index: 2;
+}
+
+.ls-how-work__intro-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+/* --- Reverse layout for even intro blocks (2n) --- */
+
+.ls-how-work__intro-block:nth-child(2n) .ls-how-work__intro-text {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.ls-how-work__intro-block:nth-child(2n) .ls-how-work__intro-img {
+  right: auto;
+  left: 0;
+}
+
+/* --- Arrow connector between intro blocks --- */
+
+.ls-how-work__arrow-connector {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 122px;
+  left: 54%;
+  z-index: 100;
+  position: absolute;
+}
+
+.ls-how-work__arrow-img {
+  height: 100%;
+  /* width: 40px; */
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+/* --- Curved arrow bridge between intro & principles --- */
+
+.ls-how-work__arrow-bridge {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 79px;
+  padding-left: 67.5%;
+  position: relative;
+  top: -9px;
+}
+
+.ls-how-work__arrow-bridge-img {
+  width: 222px;
+  height: auto;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+/* --- Principles: two independent flex columns (masonry-like) --- */
+
+.ls-how-work__grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 32px;
+  -moz-column-gap: 32px;
+  column-gap: 32px;
+}
+
+.ls-how-work__grid-col {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 0%;
+  flex: 1 1 0%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.ls-how-work__card {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 24px 25px 24px 64px;
+  position: relative;
+}
+
+.ls-how-work__card-icon {
+  width: 85px;
+  height: 85px;
+  -o-object-fit: contain;
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  right: 20px;
+  -webkit-transform: translateY(-35%);
+  -ms-transform: translateY(-35%);
+  transform: translateY(-35%);
+}
+
+.ls-how-work__card-content {
+  padding-right: 60px;
+}
+
+.ls-how-work__card-title {
+  font-size: 24px;
+  line-height: 32px;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #080234;
+}
+
+.ls-how-work__card-text {
+  font-size: 16px;
+  line-height: 24px;
+  color: #3b4256;
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+.ls-how-work__button-wrapper {
+  padding-top: 40px;
+}
+
+.ls-how-work__button {
+  padding: 20px 30px;
+  text-decoration: none;
+  z-index: 2;
+}
+
+/* ----- Responsive: <= 1024px ----- */
+
+@media screen and (max-width: 1024px) {
+  .ls-how-work__title {
+    margin-bottom: 30px;
+  }
+
+  .ls-how-work__intro-block {
+    padding: 30px 30px 10px 30px;
+    min-height: 212px;
+  }
+
+  .ls-how-work__intro-block:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  .ls-how-work__intro-text {
+    max-width: 58%;
+  }
+
+  .ls-how-work__intro-img {
+    width: 34%;
+  }
+
+  .ls-how-work__intro-block:nth-child(2n) .ls-how-work__intro-text {
+    margin-left: 0;
+  }
+
+  .ls-how-work__intro-block:nth-child(2n) .ls-how-work__intro-img {
+    left: auto;
+    right: 0;
+  }
+
+  .ls-how-work__arrow-connector {
+    height: 89px;
+  }
+
+  .ls-how-work__arrow-bridge {
+    padding-left: 17%;
+    /* margin-top: -70px; */
+    margin-bottom: 30px;
+    top: -35px;
+  }
+
+  .ls-how-work__arrow-bridge-img {
+    width: 148px;
+  }
+
+  .ls-how-work__grid {
+    -webkit-column-gap: 20px;
+    -moz-column-gap: 20px;
+    column-gap: 20px;
+  }
+
+  .ls-how-work__button-wrapper {
+    padding-top: 30px;
+  }
+}
+
+/* ----- Responsive: <= 768px ----- */
+
+@media screen and (max-width: 768px) {
+  .ls-how-work {
+    padding: 40px 0;
+  }
+
+  .ls-how-work__intro-block {
+    padding: 30px 30px 10px 30px;
+  }
+
+  .ls-how-work__intro-block:not(:last-child) {
+    margin-bottom: 30px;
+  }
+
+  .ls-how-work__intro-text {
+    max-width: 62%;
+  }
+
+  .ls-how-work__intro-img {
+    width: 36%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .ls-how-work__intro-block:nth-child(2n) .ls-how-work__intro-text {
+    margin-left: 0;
+  }
+
+  .ls-how-work__intro-block:nth-child(2n) .ls-how-work__intro-img {
+    left: auto;
+    right: 0;
+  }
+
+  .ls-how-work__arrow-connector {
+    left: 58%;
+    height: 109px;
+  }
+
+  .ls-how-work__arrow-bridge {
+    padding-left: 39%;
+    /* margin-top: -74px; */
+    margin-bottom: 0px;
+    top: -25px;
+  }
+
+  .ls-how-work__arrow-bridge-img {
+    width: 148px;
+  }
+
+  .ls-how-work__grid {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ls-how-work__grid-col {
+    display: contents;
+  }
+
+  .ls-how-work__card {
+    -webkit-box-ordinal-group: var(--card-order);
+    -ms-flex-order: var(--card-order);
+    order: var(--card-order);
+    padding: 25px 25px 22px 44px;
+  }
+
+  .ls-how-work__card-icon {
+    right: 15px;
+    top: 10px;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+  }
+
+  .ls-how-work__card-content {
+    padding-right: 70px;
+  }
+}
+
+/* ----- Responsive: <= 450px ----- */
+
+@media screen and (max-width: 450px) {
+  .ls-how-work {
+    padding: 30px 0 40px;
+  }
+
+  .ls-how-work__title {
+    margin-bottom: 24px;
+  }
+
+  .ls-how-work__intro-block {
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+    overflow: visible;
+    margin-bottom: 26px;
+  }
+
+  .ls-how-work__intro-block:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  .ls-how-work__intro-text {
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 30px;
+    max-width: 100%;
+  }
+
+  .ls-how-work__intro-heading {
+    font-family: 'Proxima Nova', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .ls-how-work__intro-desc {
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 12px;
+    color: #080234;
+  }
+
+  .ls-how-work__intro-img {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    width: 85%;
+    margin: -25px 0 0 7%;
+    z-index: 2;
+  }
+
+  .ls-how-work__intro-block:nth-child(2n) .ls-how-work__intro-text {
+    margin-left: 0;
+  }
+
+  .ls-how-work__intro-block:nth-child(2n) .ls-how-work__intro-img {
+    left: auto;
+    right: auto;
+    margin: -25px 0 0 8%;
+  }
+
+  .ls-how-work__arrow-connector {
+    display: none;
+  }
+
+  .ls-how-work__arrow-bridge {
+    display: none;
+  }
+
+  .ls-how-work__grid {
+    gap: 20px;
+  }
+
+  .ls-how-work__card {
+    padding: 25px 17px 15px 17px;
+  }
+
+  .ls-how-work__card-icon {
+    right: 10px;
+    top: 8px;
+    width: 42px;
+    height: 42px;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+  }
+
+  .ls-how-work__card-content {
+    padding-right: 30px;
+  }
+
+  .ls-how-work__card-title {
+    font-family: 'Proxima Nova', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #2e1464;
+  }
+
+  .ls-how-work__card-text {
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 28px;
+    color: #080234;
+  }
+
+  .ls-how-work__button-wrapper {
+    padding-top: 24px;
   }
 }

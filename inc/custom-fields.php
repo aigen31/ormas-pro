@@ -48,6 +48,7 @@ function ormas_register_fields()
     'neuro-diagnostic',
     'services',
     'materials',
-    'our-services'
+    'our-services',
+    'launch-speech'
   ], 'inc/custom-fields');
 }
