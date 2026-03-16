@@ -24,7 +24,7 @@
           extract($specialist);
           $image = get_image_data($specialist_photo, 'large');
       ?>
-          <div class="party__list-item">
+          <div class="party__list-item" id="team-<?php the_ID(); ?>">
             <div style="background-image:url(<?php echo $image['url']; ?>);" class="party__list-item-image"></div>
             <div class="party__list-item-text">
               <div class="party__list-item-text-title">
@@ -51,87 +51,9 @@
                     <?php echo $specialist_description; ?>
                   </p>
                 </div>
-                <?php if (!empty($specialist_additional_education) || !empty($specialist_experience)) : ?>
-                  <div class="full-width party__more">
-                    <?php
-                    if (!empty($specialist_additional_services)) : ?>
-                      <div class="full-width">
-                        <span>Услуги:</span>
-                        <span>
-                          <ul>
-                            <?php foreach ($specialist_additional_services as $edu) : ?>
-                              <li>
-                                <?php echo $edu['specialist_additional_services_title']; ?>
-                              </li>
-                            <?php endforeach; ?>
-                          </ul>
-                        </span>
-                      </div>
-                    <?php endif; ?>
-                    <?php
-                    if (!empty($specialist_additional_education)) : ?>
-                      <div class="full-width">
-                        <span>Дополнительное образование:</span>
-                        <span>
-                          <ul>
-                            <?php foreach ($specialist_additional_education as $edu) : ?>
-                              <li>
-                                <?php echo $edu['specialist_additional_education_title']; ?>
-                              </li>
-                            <?php endforeach; ?>
-                          </ul>
-                        </span>
-                      </div>
-                    <?php endif; ?>
-                    <?php
-                    if (!empty($specialist_experience)) : ?>
-                      <div class="full-width">
-                        <span>Опыт работы:</span>
-                        <span>
-                          <ul>
-                            <?php foreach ($specialist_experience as $exp) : ?>
-                              <li>
-                                <?php echo $exp['specialist_experience_title']; ?>
-                              </li>
-                            <?php endforeach; ?>
-                          </ul>
-                        </span>
-                      </div>
-                    <?php endif; ?>
-                    <?php
-                    if (!empty($specialist_reviews)) : ?>
-                      <div class="party__reviews-slider__wrapper">
-                        <div class="party__reviews-slider">
-                          <?php foreach ($specialist_reviews as $review) : ?>
-                            <div class="party__reviews-slider-item">
-                              <?php if (!empty($review['specialist_reviews_rating'])) : ?>
-                                <div class="party__reviews-slider-rating">
-                                  <?php for ($i = 0; $i < $review['specialist_reviews_rating']; $i++) : ?>
-                                    <img class="party__reviews-slider-rating-star" src="<?php echo get_template_directory_uri(); ?>/assets/img/general/star.svg" alt="">
-                                  <?php endfor; ?>
-                                </div>
-                              <?php endif; ?>
-                              <?php if (!empty($review['specialist_reviews_title'])) : ?>
-                                <p class="party__reviews-slider-rating-title">
-                                  <?php echo $review['specialist_reviews_title']; ?>
-                                </p>
-                              <?php endif; ?>
-                              <?php if (!empty($review['specialist_reviews_content'])) : ?>
-                                <p class="party__reviews-slider-rating-content">
-                                  “<?php echo $review['specialist_reviews_content'] ?>”
-                                </p>
-                              <?php endif; ?>
-                            </div>
-                          <?php endforeach; ?>
-                        </div>
-                        <div class="party__reviews-controls"></div>
-                      </div>
-                    <?php endif; ?>
-                  </div>
-                  <div class="party__more-btn">
-                    подробнее
-                  </div>
-                <?php endif; ?>
+                <a href="<?php echo get_permalink(); ?>" class="party__list-item-text-more">
+                  подробнее
+                </a>
               </div>
             </div>
           </div>

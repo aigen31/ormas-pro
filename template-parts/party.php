@@ -34,7 +34,7 @@
                         <div class="party__list-item-text-status">
                             <?php echo $specialist_position; ?>
                         </div>
-                        <a href="<?php echo get_post_type_archive_link('team'); ?>" class="party__list-item-text-more" tabindex="0">Подробнее</a>
+                        <a href="<?php echo get_permalink(); ?>" class="party__list-item-text-more" tabindex="0">Подробнее</a>
                     </div>
                 </div>
             <?php
