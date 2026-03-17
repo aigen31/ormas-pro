@@ -49,6 +49,7 @@ function ormas_register_fields()
     'services',
     'materials',
     'our-services',
-    'launch-speech'
+    'launch-speech',
+    'blog'
   ], 'inc/custom-fields');
 }

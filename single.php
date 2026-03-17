@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<? $author_id = carbon_get_post_meta(get_the_ID(), 'article_author'); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="post-block">
 		<div class="container">
@@ -25,7 +26,30 @@
 						</div> -->
 					</div>
 					<div class="post-block__left-top-right">
-						<img src="<?php bloginfo('template_directory') ?>/assets/img/general/post-social.jpg">
+						<?php if (!empty($author_id)):
+							$author_name = get_the_title($author_id);
+							$author_photo = carbon_get_post_meta($author_id, 'specialist_photo');
+							$author_specialization = carbon_get_post_meta($author_id, 'specialist_position');
+							?>
+							<a href="<?=get_permalink($author_id)?>" class="article-author-box">
+								<div class="author-info">
+									<?php if ($author_photo) : ?>
+										<div class="author-photo">
+											<?php echo wp_get_attachment_image($author_photo, 'medium'); ?>
+										</div>
+									<?php endif; ?>
+									
+									<div class="author-details">
+										<div class="author-name"><?php echo esc_html($author_name); ?></div>
+										<?php if ($author_specialization) : ?>
+											<div class="author-specialization">
+												<?php echo esc_html($author_specialization); ?>
+											</div>
+										<?php endif; ?>
+									</div>
+								</div>
+							</a>
+						<?php endif; ?>
 					</div>
 				</div>
 
