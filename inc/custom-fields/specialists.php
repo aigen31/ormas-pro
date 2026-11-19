@@ -12,7 +12,7 @@ Container::make('post_meta', 'Специалисты')
     Field::make('separator', 'certificates_separator', 'Сертификаты'),
     Field::make('media_gallery', 'certificates_specialist', 'Список сертификатов'),
     Field::make('textarea', 'specialist_description', 'Описание')->set_width(100),
-    Field::make('gallery', 'specialist_certificates', 'Сертификаты')->set_width(100),
+    Field::make('media_gallery', 'specialist_certificates', 'Сертификаты')->set_width(100),
     Field::make('complex', 'specialist_additional_services', 'Услуги')
       ->add_fields([
         Field::make('text', 'specialist_additional_services_title', 'Название')->set_width(100)
