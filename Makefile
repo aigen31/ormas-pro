@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-.PHONY: up down reset logs ps test wp
+.PHONY: up down reset logs ps test seed wp
 
 up:
 	./bin/dev-up.sh
@@ -20,6 +20,9 @@ ps:
 
 test:
 	./bin/smoke-test.sh
+
+seed:
+	./bin/seed-demo.sh
 
 wp:
 	@if [ -z "$(CMD)" ]; then \

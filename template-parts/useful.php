@@ -34,7 +34,7 @@
 			<input type="hidden" name="action" value="custom_form_submit">
 			<?php wp_nonce_field('custom_form'); ?>
 			<div class="useful__right-title"><?php echo $material_title; ?></div>
-			<div class="useful__right-description" data-type="<?php echo $count + 9; ?>">
+			<div class="useful__right-description" data-type="<?php echo (int) ($count ?? 0) + 9; ?>">
 				<?php echo $material_description; ?>
 			</div>
 			<?php if ($material_link) : ?>
