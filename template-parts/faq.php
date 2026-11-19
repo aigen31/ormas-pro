@@ -1,11 +1,45 @@
-<div class="frequent-questions">
+<?php
+$faq_items = carbon_get_post_meta($post->ID, 'service_faq');
+$faq_schema_entities = [];
+
+if (!empty($faq_items)) {
+    foreach ($faq_items as $item) {
+        $question = trim(wp_strip_all_tags((string) ($item['question'] ?? '')));
+        $answer = trim(wp_strip_all_tags((string) ($item['answer'] ?? '')));
+
+        if ($question === '' || $answer === '') {
+            continue;
+        }
+
+        $faq_schema_entities[] = [
+            '@type' => 'Question',
+            'name' => $question,
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text' => $answer,
+            ],
+        ];
+    }
+}
+
+if (!empty($faq_schema_entities)) {
+    $faq_schema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'FAQPage',
+        '@id' => get_permalink() . '#faq',
+        'mainEntity' => $faq_schema_entities,
+    ];
+
+    echo '<script type="application/ld+json">' . wp_json_encode($faq_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>';
+}
+?>
+<div class="frequent-questions" id="faq">
     <img class="wave-ten" src="<?php bloginfo('template_directory') ?>/assets/img/general/wave-10.svg">
     <img class="wave-eleven" src="<?php bloginfo('template_directory') ?>/assets/img/general/wave-11.svg">
     <div class="container">
         <h2 class="site-title frequent-questions__title">Частые вопросы родителей</h2>
         <div class="frequent-questions__list">
             <?php
-            $faq_items = carbon_get_post_meta($post->ID, 'service_faq');
             if (!empty($faq_items)) :
                 foreach ($faq_items as $item) :
             ?>

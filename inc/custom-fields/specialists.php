@@ -9,8 +9,10 @@ Container::make('post_meta', 'Специалисты')
     Field::make('image', 'specialist_photo', 'Фото')->set_type('image')->set_width(20),
     Field::make('text', 'specialist_position', 'Должность')->set_width(20),
     Field::make('text', 'specialist_education', 'Образование')->set_width(20),
-    Field::make('text', 'specialist_specialization', 'Специализация')->set_width(20),
+    Field::make('separator', 'certificates_separator', 'Сертификаты'),
+    Field::make('media_gallery', 'certificates_specialist', 'Список сертификатов'),
     Field::make('textarea', 'specialist_description', 'Описание')->set_width(100),
+    Field::make('gallery', 'specialist_certificates', 'Сертификаты')->set_width(100),
     Field::make('complex', 'specialist_additional_services', 'Услуги')
       ->add_fields([
         Field::make('text', 'specialist_additional_services_title', 'Название')->set_width(100)

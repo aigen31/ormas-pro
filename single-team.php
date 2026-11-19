@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?           
+<?php
 
 $specialist = get_carbon_page_meta(get_the_ID(), [
 	'specialist_photo',
@@ -11,9 +11,41 @@ $specialist = get_carbon_page_meta(get_the_ID(), [
 	'specialist_experience',
 	'specialist_additional_services',
 	'specialist_reviews',
+	'certificates_specialist',
 ]);
 extract($specialist);
-$image = get_image_data($specialist_photo, 'large'); ?>
+$image = get_image_data($specialist_photo, 'large');
+
+$person_job_titles = array_values(array_filter(array_map('trim', preg_split('/[,;]+/u', wp_strip_all_tags((string) $specialist_position)))));
+$person_education = trim(wp_strip_all_tags((string) $specialist_education));
+$person_specialization = trim(wp_strip_all_tags((string) $specialist_specialization));
+
+$person_schema = [
+	'@context' => 'https://schema.org',
+	'@type' => 'Person',
+	'name' => get_the_title(),
+];
+
+if (!empty($person_job_titles)) {
+	$person_schema['jobTitle'] = $person_job_titles;
+}
+
+$person_schema['worksFor'] = [
+	'@id' => 'https://ormas.pro/#organization',
+];
+
+if ($person_education !== '') {
+	$person_schema['alumniOf'] = [
+		'@type' => 'EducationalOrganization',
+		'name' => $person_education,
+	];
+
+	if ($person_specialization !== '') {
+		$person_schema['alumniOf']['description'] = 'Специальность: ' . $person_specialization;
+	}
+}
+echo '<script type="application/ld+json">' . wp_json_encode($person_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>';
+?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="post-block single-team__container">
         <div class="container">
@@ -28,13 +60,13 @@ $image = get_image_data($specialist_photo, 'large'); ?>
                 <div class="party__list-item-text-education">
                     <?php if ($specialist_education) : ?>
                     <div class="party__attributes">
-                        <span>Образование:</span>
+                        <h2 class="span_h2">Образование:</h2>
                         <span><?php echo $specialist_education; ?></span>
                     </div>
                     <?php endif; ?>
                     <?php if ($specialist_specialization) : ?>
                     <div class="party__attributes">
-                        <span>Специализация:</span>
+                        <h2 class="span_h2">Специализация:</h2>
                         <span><?php echo $specialist_specialization; ?></span>
                     </div>
                     <?php endif; ?>
@@ -48,7 +80,7 @@ $image = get_image_data($specialist_photo, 'large'); ?>
                         <?php
 						if (!empty($specialist_additional_services)) : ?>
                         <div class="full-width">
-                            <span>Услуги:</span>
+                            <h2 class="span_h2">Услуги:</h2>
                             <span>
                                 <ul>
                                     <?php foreach ($specialist_additional_services as $edu) : ?>
@@ -63,7 +95,7 @@ $image = get_image_data($specialist_photo, 'large'); ?>
                         <?php
 						if (!empty($specialist_additional_education)) : ?>
                         <div class="full-width">
-                            <span>Дополнительное образование:</span>
+                            <h2 class="span_h2">Дополнительное образование:</h2>
                             <span>
                                 <ul>
                                     <?php foreach ($specialist_additional_education as $edu) : ?>
@@ -90,8 +122,38 @@ $image = get_image_data($specialist_photo, 'large'); ?>
                             </span>
                         </div>
                         <?php endif; ?>
+                        <?php if (!empty($certificates_specialist)) : ?>
+                            <div class="certificates inwork" id="certificates">
+                                <div class="container">
+                                    <div class="certificates__wrapper" style="max-width: 100%;">
+                                        <h2>Дипломы и сертификаты</h2>
+                                        <div class="certificates__list">
+                                            <?php
+                                            foreach ($certificates_specialist as $key => $certificate) :
+                                                $image = get_image_data($certificate, 'large');
+                                            ?>
+                                                <div class="certificates__list-item" style="width: 100%; display: inline-block;">
+                                                <div class="certificates__list-item-image">
+                                                    <a href="<?php echo $image['url']; ?>" class="image-popup-vertical-fit">
+                                                    <img src="<?php echo $image['url']; ?>" alt="Сертификат <?=$key?>" class="certificate__image" loading="lazy">
+                                                    </a>
+                                                </div>
+                                                </div>
+                                            <?php
+                                            endforeach;
+                                            ?>
+                                        </div>
+                                        <div class="slick-arrows">
+                                            <div class="slick-prev"></div>
+                                            <div class="slick-next"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                         <?php
 						if (!empty($specialist_reviews)) : ?>
+                        <h2>Отзывы</h2>
                         <div class="party__reviews-slider__wrapper">
                             <div class="party__reviews-slider">
                                 <?php foreach ($specialist_reviews as $review) : ?>

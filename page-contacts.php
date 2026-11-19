@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<?php ormas_medical_organization_schema(); ?>
 <section class="main neuropsychology-page contacts_page">
 	<div class="consultation-overlay hidden "></div>
 	<?php get_template_part('template-parts/contacts/direction'); ?>

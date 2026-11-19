@@ -1,10 +1,117 @@
-<div class="services-and-prices">
+<?php
+$prices_id = carbon_get_post_meta($post->ID, 'price_ids');
+$service_offers = [];
+
+if (!empty($prices_id)) {
+    foreach ($prices_id as $price_id) {
+        $prices = carbon_get_post_meta($price_id['price_id'], 'service_prices');
+
+        if (empty($prices)) {
+            continue;
+        }
+
+        foreach ($prices as $price) {
+            $service_title = trim(wp_strip_all_tags((string) ($price['service_title'] ?? '')));
+            $service_subtitle = trim(wp_strip_all_tags((string) ($price['service_subtitle'] ?? '')));
+            $service_duration = trim(wp_strip_all_tags((string) ($price['service_duration'] ?? '')));
+            $service_description_parts = [];
+
+            if ($service_duration !== '') {
+                $service_description_parts[] = 'Длительность ' . $service_duration;
+            }
+
+            if ($service_subtitle !== '') {
+                $service_description_parts[] = $service_subtitle;
+            }
+
+            foreach ([
+                'service_face_to_face' => 'очно',
+                'service_online' => 'онлайн',
+            ] as $price_field => $format) {
+                $service_price = preg_replace('/[^\d]/', '', (string) ($price[$price_field] ?? ''));
+
+                if ($service_title === '' || $service_price === '') {
+                    continue;
+                }
+
+                $offer = [
+                    '@type' => 'Offer',
+                    'name' => $service_title . ' (' . $format . ')',
+                    'price' => $service_price,
+                    'priceCurrency' => 'RUB',
+                ];
+
+                if (!empty($service_description_parts)) {
+                    $offer['description'] = implode('. ', $service_description_parts);
+                }
+
+                $service_offers[] = $offer;
+            }
+        }
+    }
+}
+
+if (!empty($service_offers)) {
+    $service_schema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Service',
+        '@id' => get_permalink() . '#service',
+        'name' => get_the_title(),
+        'description' => trim(wp_strip_all_tags(get_the_content())),
+        'provider' => [
+            '@type' => 'MedicalClinic',
+            '@id' => 'https://ormas.pro/#organization',
+            'name' => 'Центр детской нейропсихологии ORMAS',
+            'url' => 'https://ormas.pro/',
+            'telephone' => '+79266699546',
+            'address' => [
+                '@type' => 'PostalAddress',
+                'streetAddress' => 'Мичуринский проспект д. 19, корпус 1',
+                'addressLocality' => 'Москва',
+                'postalCode' => '119192',
+                'addressCountry' => 'RU',
+            ],
+            'geo' => [
+                '@type' => 'GeoCoordinates',
+                'latitude' => 55.697934,
+                'longitude' => 37.504948,
+            ],
+            'openingHoursSpecification' => [
+                '@type' => 'OpeningHoursSpecification',
+                'dayOfWeek' => [
+                    'Monday',
+                    'Tuesday',
+                    'Wednesday',
+                    'Thursday',
+                    'Friday',
+                    'Saturday',
+                    'Sunday',
+                ],
+                'opens' => '10:00',
+                'closes' => '20:00',
+            ],
+            'priceRange' => '$$',
+        ],
+        'audience' => [
+            '@type' => 'Audience',
+            'audienceType' => 'Дети, Школьники, Дошкольники',
+        ],
+        'hasOfferCatalog' => [
+            '@type' => 'OfferCatalog',
+            'name' => 'Прайс-лист на услуги: ' . get_the_title(),
+            'itemListElement' => $service_offers,
+        ],
+    ];
+
+    echo '<script type="application/ld+json">' . wp_json_encode($service_schema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>';
+}
+?>
+<div class="services-and-prices" id="service">
     <div class="container">
         <h2 class="site-title services-and-prices__title">Услуги и цены</h2>
 
         <ul class="services-and-prices__list">
             <?php
-            $prices_id = carbon_get_post_meta($post->ID, 'price_ids');
             foreach ($prices_id as $price_id) :
                 $prices = carbon_get_post_meta($price_id['price_id'], 'service_prices');
             ?>
@@ -46,13 +153,13 @@
                                             </div>
 
                                             <p class="services-and-prices__summary-list-item-text"><?php echo $price['service_duration']; ?>
-                                                <span class="services-and-prices__summary-list-item-text-title">длительность</span>
+                                                <span class="services-and-prices__summary-list-item-text-title"><noindex>длительность</noindex></span>
                                             </p>
                                             <p class="services-and-prices__summary-list-item-text"><?php echo $price['service_face_to_face']; ?>
-                                                <span class="services-and-prices__summary-list-item-text-title">цена очно</span>
+                                                <span class="services-and-prices__summary-list-item-text-title"><noindex>цена очно</noindex></span>
                                             </p>
                                             <p class="services-and-prices__summary-list-item-text"><?php echo $price['service_online']; ?>
-                                                <span class="services-and-prices__summary-list-item-text-title">цена онлайн</span>
+                                                <span class="services-and-prices__summary-list-item-text-title"><noindex>цена онлайн</noindex></span>
                                             </p>
                                         </li>
                                 <?php

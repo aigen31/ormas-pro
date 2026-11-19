@@ -1,3 +1,22 @@
+/* Токен SmartCaptcha берётся из виджета конкретной формы и уходит на сервер
+   вместе с остальными данными — серверная проверка в inc/mail.php. */
+function ormasCaptchaToken(form) {
+	var el = (form && form.jquery) ? form[0] : form;
+	if (!el || !el.querySelectorAll || !window.smartCaptcha) return '';
+	var captchas = document.querySelectorAll('.smart-captcha');
+	var index = Array.prototype.slice.call(captchas).findIndex(function (captcha) {
+		return el.contains(captcha);
+	});
+	if (index < 0) return '';
+	try { return window.smartCaptcha.getResponse(index) || ''; } catch (e) { return ''; }
+}
+
+function ormasFormData(form) {
+	var data = jQuery(form).serialize();
+	var token = ormasCaptchaToken(form);
+	return token ? data + '&smart_token=' + encodeURIComponent(token) : data;
+}
+
 jQuery(document).ready(function ($) {
 
 	function chechCaptcha(form) {
@@ -186,7 +205,7 @@ jQuery(document).ready(function ($) {
 		}
 
 		if (error === 0 && checked) {
-			var formData = $(this).serialize();
+			var formData = ormasFormData(this);
 			$(".services__inputs .poopup__inputs-input").each(function () {
 				$(this).val("");
 			});
@@ -223,18 +242,198 @@ jQuery(document).ready(function ($) {
 		$(".signup__poopup").addClass("hidden");
 	});
 
-	document.querySelectorAll(".phone-mask").forEach(function (element) {
-		IMask(element, {
-			mask: "+{7}(000)000-00-00",
-			prepare: function (value, masked) {
-				if (value === "8" && masked.value === "") {
-					return "";
-				}
-				return value;
+	function ensureForeignPhonePopup() {
+		if ($(".phone-country-popup").length && $(".phone-country-popup-overlay").length) {
+			return;
+		}
+
+		$("body").append(`
+			<div class="phone-country-popup-overlay hidden"></div>
+			<div class="phone-country-popup poopup hidden" role="dialog" aria-modal="true" aria-labelledby="phone-country-popup-title">
+				<button type="button" class="phone-country-popup__close" aria-label="Закрыть"></button>
+				<div class="phone-country-popup__title" id="phone-country-popup-title">Если Вы находитесь не в России, пожалуйста, напишите нам</div>
+				<div class="phone-country-popup__socials">
+					<a href="https://api.whatsapp.com/send/?phone=79266699546" target="_blank" rel="noopener" aria-label="WhatsApp">
+						<svg width="44" height="44" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M15.17 4.80163C13.7983 3.42913 11.9742 2.67246 10.0308 2.67163C6.025 2.67163 2.76583 5.92913 2.765 9.9333C2.76333 11.2075 3.0975 12.46 3.73416 13.5641L2.70333 17.3275L6.555 16.3175C7.62083 16.8975 8.81417 17.2016 10.0275 17.2016H10.0308C14.035 17.2016 17.2942 13.9433 17.2958 9.93913C17.2967 7.99913 16.5417 6.17496 15.17 4.80163Z" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" />
+							<path d="M10.9125 11.2999L11.2508 10.9641C11.5617 10.6558 12.0533 10.6166 12.4117 10.8683C12.7583 11.1116 13.0717 11.3299 13.3633 11.5333C13.8267 11.8549 13.8825 12.5149 13.4833 12.9133L13.1842 13.2124" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" />
+							<path d="M6.7875 6.81583L7.08667 6.51666C7.485 6.11833 8.145 6.17416 8.46667 6.63666C8.66917 6.92833 8.8875 7.24166 9.13167 7.58833C9.38333 7.94666 9.345 8.43833 9.03583 8.74916L8.7 9.08749" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" />
+							<path d="M13.1842 13.2126C11.95 14.4409 9.87583 13.3976 8.23833 11.7593" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" />
+							<path d="M8.24 11.7618C6.6025 10.1234 5.55917 8.05008 6.7875 6.81592" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" />
+							<path d="M8.7 9.0874C8.96584 9.50657 9.30667 9.92157 9.69167 10.3066L9.69334 10.3082C10.0783 10.6932 10.4933 11.0341 10.9125 11.2999" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" />
+						</svg>
+					</a>
+					<a href="https://t.me/ormas_center" target="_blank" rel="noopener" aria-label="Telegram">
+						<svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path d="M21.1453 6.41983L18.2478 19.6583C18.0291 20.5925 17.4592 20.8251 16.6493 20.3852L12.2342 17.2332L10.1041 19.2185C9.8682 19.4471 9.67138 19.6378 9.2167 19.6378L9.53422 15.2818L17.7163 8.11875C18.0723 7.81179 17.6389 7.64103 17.1636 7.94866L7.04824 14.1198L2.69349 12.7989C1.74642 12.5125 1.72928 11.8813 2.891 11.4408L19.9239 5.08303C20.7125 4.79666 21.4025 5.25312 21.1453 6.4205V6.41983Z" fill="#FFFFFF" />
+						</svg>
+					</a>
+				</div>
+			</div>
+		`);
+	}
+
+	function openForeignPhonePopup() {
+		ensureForeignPhonePopup();
+		$(".phone-country-popup").removeClass("hidden");
+		$(".phone-country-popup-overlay").removeClass("hidden");
+	}
+
+	function closeForeignPhonePopup() {
+		$(".phone-country-popup").addClass("hidden");
+		$(".phone-country-popup-overlay").addClass("hidden");
+	}
+
+	var activeIntlTelInput = null;
+
+	function getIntlSelectedCountry(input) {
+		var phoneInstance = $(input).data("intlTelInput");
+
+		if (!phoneInstance) {
+			return null;
+		}
+
+		if (typeof phoneInstance.getSelectedCountry === "function") {
+			return phoneInstance.getSelectedCountry();
+		}
+
+		if (typeof phoneInstance.getSelectedCountryData === "function") {
+			return phoneInstance.getSelectedCountryData();
+		}
+
+		return null;
+	}
+
+	function maybeOpenForeignPhonePopup(input) {
+		var countryData = getIntlSelectedCountry(input);
+
+		if (countryData && countryData.iso2 && countryData.iso2 !== "ru") {
+			openForeignPhonePopup();
+		}
+	}
+
+	function updateIntlPhoneValue(input) {
+		var phoneInstance = $(input).data("intlTelInput");
+
+		if (!phoneInstance) {
+			return;
+		}
+
+		var phoneNumber = typeof phoneInstance.getNumber === "function" ? phoneInstance.getNumber() : "";
+
+		if (phoneNumber) {
+			input.value = phoneNumber;
+		}
+	}
+
+	function initPhoneCountryFields(context) {
+		$(context).find(".phone-mask").addBack(".phone-mask").each(function () {
+			var $input = $(this);
+			var input = this;
+
+			if ($input.data("phoneCountryReady") || typeof window.intlTelInput === "undefined") {
+				return;
+			}
+
+			$input.data("phoneCountryReady", true);
+			$input.attr({
+				type: "tel",
+				inputmode: "tel",
+				autocomplete: "tel"
+			});
+
+			var phoneInstance = window.intlTelInput(input, {
+				initialCountry: "ru",
+				separateDialCode: true,
+				formatAsYouType: true
+			});
+
+			$input.data("intlTelInput", phoneInstance);
+
+			$input.on("focus.intlTelInput click.intlTelInput", function () {
+				activeIntlTelInput = input;
+			});
+
+			input.addEventListener("countrychange", function () {
+				activeIntlTelInput = input;
+				maybeOpenForeignPhonePopup(input);
+			});
+
+			var $form = $input.closest("form");
+
+			if ($form.length && !$form.data("intlTelInputSubmitReady")) {
+				$form.data("intlTelInputSubmitReady", true);
+				$form.on("submit.intlTelInput", function () {
+					$(this).find(".phone-mask").each(function () {
+						updateIntlPhoneValue(this);
+					});
+				});
 			}
 		});
+	}
+
+	document.addEventListener("countrychange", function (event) {
+		if (event.target && event.target.classList && event.target.classList.contains("phone-mask")) {
+			activeIntlTelInput = event.target;
+			maybeOpenForeignPhonePopup(event.target);
+		}
+	}, true);
+
+	document.addEventListener("submit", function (event) {
+		$(event.target).find(".phone-mask").each(function () {
+			updateIntlPhoneValue(this);
+		});
+	}, true);
+
+	initPhoneCountryFields(document);
+
+	if (window.MutationObserver) {
+		new MutationObserver(function (mutations) {
+			mutations.forEach(function (mutation) {
+				mutation.addedNodes.forEach(function (node) {
+					if (node.nodeType === 1) {
+						initPhoneCountryFields(node);
+					}
+				});
+			});
+		}).observe(document.body, { childList: true, subtree: true });
+	}
+
+	if (typeof window.intlTelInput === "undefined") {
+		setTimeout(function () {
+			initPhoneCountryFields(document);
+		}, 500);
+	}
+
+	$(document).on("focus click", ".phone-mask", function () {
+		activeIntlTelInput = this;
 	});
 
+	$(document).on("mousedown click", ".iti__selected-country", function () {
+		var input = $(this).closest(".iti").find(".phone-mask")[0];
+
+		if (input) {
+			activeIntlTelInput = input;
+		}
+	});
+
+	$(document).on("click", ".iti__country", function () {
+		var input = activeIntlTelInput;
+
+		setTimeout(function () {
+			maybeOpenForeignPhonePopup(input);
+		}, 0);
+	});
+
+	$(document).on("click", ".phone-country-popup__close, .phone-country-popup-overlay", function () {
+		closeForeignPhonePopup();
+	});
+
+	$(document).on("keyup", function (event) {
+		if (event.key === "Escape" || event.keyCode === 27) {
+			closeForeignPhonePopup();
+		}
+	});
 	$(".signup__inputs").submit(function (event) {
 		event.preventDefault();
 		var error = 0;
@@ -258,7 +457,7 @@ jQuery(document).ready(function ($) {
 		}
 
 		if (error === 0 && checked) {
-			var formData = $(this).serialize();
+			var formData = ormasFormData(this);
 			$(".signup__inputs .signup__inputs-input").each(function () {
 				$(this).val("");
 			});
@@ -286,7 +485,7 @@ jQuery(document).ready(function ($) {
 
 	$(".useful-main-form").submit(function (event) {
 		event.preventDefault();
-		var formData = $(this).serialize();
+		var formData = ormasFormData(this);
 
 		if (!window.smartCaptcha) {
 			alert('Капча не загрузилась. Обновите страницу.');
@@ -423,7 +622,7 @@ jQuery(document).ready(function ($) {
 		}
 
 		if (error === 0 && checked) {
-			var formData = $(this).serialize();
+			var formData = ormasFormData(this);
 			$(".consultation__inputs .consultation__inputs-input").each(function () {
 				$(this).val("");
 			});
@@ -456,7 +655,91 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	$(".footer__top-line-column-inputs").submit(function (event) {
+	$(".reviews__top-line-column-inputs-material").submit(function (event) {
+		function displayFeedbackMessage(result) {
+			$('#reviews-feedback').prepend(`
+			<div class="reviews__popup poopup hidden">
+				<svg style="cursor: pointer;" class="reviews__popup-svg" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path clip-rule="evenodd" d="M7.29289 8.6957L10.6194 12L7.29289 15.3043C6.90237 15.6922 6.90237 16.3212 7.29289 16.7091C7.68342 17.097 8.31658 17.097 8.70711 16.7091L12 13.4382L15.2929 16.7091C15.6834 17.097 16.3166 17.097 16.7071 16.7091C17.0976 16.3212 17.0976 15.6922 16.7071 15.3043L13.3806 12L16.7071 8.6957C17.0976 8.30778 17.0976 7.67885 16.7071 7.29094C16.3166 6.90302 15.6834 6.90302 15.2929 7.29094L12 10.5618L8.70711 7.29094C8.31658 6.90302 7.68342 6.90302 7.29289 7.29094C6.90237 7.67885 6.90237 8.30778 7.29289 8.6957Z" />
+				</svg>
+				<div class="poopup__title">${result ? 'Спасибо за обращение!' : 'Произошла ошибка при отправке'}</div>
+				<div class="poopup__description">${result ? 'Наш администратор вскоре с Вами свяжется!' : 'Произошла ошибка на стороне сайта. Обратитесь к нам по адресу <a href="mailto:info@ormas.pro">info@ormas.pro</a>, телефону <a href="tel:+74991137650">+7 (499) 113-76-50</a> или Whatsapp <a href="https://api.whatsapp.com/send/?phone=79266699546">+7 (926) 669-95-46</a>'}</div>
+			</div>`)
+		}
+
+		event.preventDefault();
+		var error = 0;
+		var checked = false;
+
+		if (!window.smartCaptcha) {
+			alert('Капча не загрузилась. Обновите страницу.');
+			return false;
+		}  
+
+		if(chechCaptcha(this)==false) {
+			return false;
+		}  
+
+		if ($(".reviews_page_form .reviews__top-line-column-inputs-textarea").val().length === 0) {
+			$(".reviews_page_form .reviews__top-line-column-inputs-textarea").addClass("error");
+		} else {
+			$(".reviews_page_form .reviews__top-line-column-inputs-textarea").removeClass("error");
+		}
+
+		$(".reviews .reviews__top-line-column-inputs-input").each(function () {
+			if ($(this).val().length === 0) {
+				$(this).addClass("error");
+				error++;
+			} else {
+				$(this).removeClass("error");
+			}
+		});
+
+		if ($(".reviews_page_form .reviews__top-line-column-inputs-checkbox input").prop("checked") === false) {
+			$(".reviews_page_form .reviews__top-line-column-inputs-checkbox").addClass("error");
+			checked = false;
+		} else {
+			$(".reviews_page_form .reviews__top-line-column-inputs-checkbox").removeClass("error");
+			checked = true;
+		}
+
+		if (error === 0 && checked) {
+			var formData = ormasFormData(this);
+			$.ajax({
+				type: "POST",
+				url: "/wp-admin/admin-post.php",
+				data: formData,
+				success: function (result) {
+					var mailResult = JSON.parse(result);
+					$(".reviews_page_form .reviews__top-line-column-inputs-input").each(function () {
+						$(this).val("");
+					});
+					$(".reviews_page_form .reviews__top-line-column-inputs-textarea").val("");
+					$(".reviews_page_form .reviews__top-line-column-inputs-checkbox input").prop("checked", false);
+					displayFeedbackMessage(mailResult);
+					$(".reviews__popup").removeClass("hidden");
+				},
+				done: function () {
+					$(".reviews_page_form .reviews__popup-svg").click(function () {
+						$(".reviews_page_form .reviews__popup").addClass("hidden");
+					});
+				},
+				error: function () {
+					displayFeedbackMessage(false);
+				}
+			});
+		}
+
+		$(document).click(function (e) {
+			var div = $(".reviews_page_form .reviews__popup");
+			var divsvg = $(".reviews_page_form .reviews__popup-svg");
+			if ((!div.is(e.target) && div.has(e.target).length === 0) || divsvg.is(e.target)) {
+				div.addClass("hidden");
+			}
+		});
+	});
+
+	$(".footer__top-line-column-inputs").submit(function (event) { 
 		function displayFeedbackMessage(result) {
 			$('#footer-feedback').prepend(`
 			<div class="footer__popup poopup hidden">
@@ -505,7 +788,7 @@ jQuery(document).ready(function ($) {
 		}
 
 		if (error === 0 && checked) {
-			var formData = $(this).serialize();
+			var formData = ormasFormData(this);
 			$.ajax({
 				type: "POST",
 				url: "/wp-admin/admin-post.php",
@@ -721,7 +1004,7 @@ jQuery(document).ready(function ($) {
 					}
 				}
 				if (error === 0 && checked) {
-					var formData = $(form).serialize();
+					var formData = ormasFormData(form);
 					if (inputs) {
 						inputs.forEach(function (input) {
 							input.value = "";
@@ -776,7 +1059,7 @@ jQuery(document).ready(function ($) {
 		}
 
 		if (error === 0 && checked) {
-			var formData = $(this).serialize();
+			var formData = ormasFormData(this);
 			$(this).find(".footer__top-line-column-inputs-input").each(function () {
 				$(this).val("");
 			});
@@ -859,7 +1142,7 @@ jQuery(document).ready(function ($) {
 		}
 
 		if (error === 0 && checked) {
-			var formData = $(this).serialize();
+			var formData = ormasFormData(this);
 			$(".how-work__inputs .poopup__inputs-input").each(function () {
 				$(this).val("");
 			});
@@ -919,7 +1202,7 @@ jQuery(document).ready(function ($) {
 		}
 
 		if (error === 0 && checked) {
-			var formData = $(this).serialize();
+			var formData = ormasFormData(this);
 			$(".page-service__inputs .page-service__inputs-input").each(function () {
 				$(this).val("");
 			});
@@ -1021,7 +1304,7 @@ jQuery(document).ready(function ($) {
 		}
 
 		if (error === 0 && checked) {
-			var formData = $(this).serialize();
+			var formData = ormasFormData(this);
 			$(".psychological-support__inputs .poopup__inputs-input").each(function () {
 				$(this).val("");
 			});
@@ -1105,7 +1388,7 @@ jQuery(document).ready(function ($) {
 		}
 
 		if (error === 0 && checked) {
-			var formData = $(this).serialize();
+			var formData = ormasFormData(this);
 			$(".ps-services-and-prices-inputs .poopup__inputs-input").each(function () {
 				$(this).val("");
 			});
@@ -1189,7 +1472,7 @@ jQuery(document).ready(function ($) {
 		}
 
 		if (error === 0 && checked) {
-			var formData = $(this).serialize();
+			var formData = ormasFormData(this);
 			$(".psychological-support-how-work-inputs .poopup__inputs-input").each(function () {
 				$(this).val("");
 			});
@@ -1342,7 +1625,7 @@ jQuery(document).ready(function ($) {
 		}
 
 		if (error == 0 && checked) {
-			let formData = $(this).serialize()
+			let formData = ormasFormData(this)
 			$('.banner_form .site-input').each(function () {
 				$(this).val('')
 			})
@@ -1406,3 +1689,4 @@ jQuery(document).ready(function ($) {
 		}
 	})
 });
+

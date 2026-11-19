@@ -142,7 +142,8 @@
 				</section>
 			</div>
 		<?php else: ?>
-			<?php if (get_field('all_services', 'options')['subtype']) : ?>
+			<?php /* переписано с ACF на Carbon Fields: all_services — текстовая опция (URL прайса) */ ?>
+			<?php if (carbon_get_theme_option('all_services')) : ?>
 				<div class="services__all-service-btn">
 					<a href="/service/" class="services__all-service-btn-link">
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

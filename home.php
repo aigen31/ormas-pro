@@ -1,6 +1,8 @@
 <?php
 get_header();
 
+ormas_medical_organization_schema();
+
 get_template_part('template-parts/about');
 
 get_template_part('template-parts/greeting');

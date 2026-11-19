@@ -27,9 +27,9 @@
 					<div class="party__list-item-background"></div>
 					<div style="background-image:url(<?php echo $image['url']; ?>);" class="party__list-item-image"></div>
 					<div class="party__list-item-text">
-						<div class="party__list-item-text-title">
+						<a href="<?php the_permalink(); ?>" class="party__list-item-text-title">
 							<?php the_title(); ?>
-						</div>
+						</a>
 						<div class="party__list-item-text-status">
 							<?php echo $specialist_position; ?>
 						</div>
