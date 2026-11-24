@@ -30,7 +30,7 @@ function ormas_pro_enqueue_assets()
         'ormas-pro-header-v8',
         get_template_directory_uri() . '/assets/css/header-v8.css',
         array('ormas-pro-style'),
-        file_exists($header_v8_path) ? filemtime($header_v8_path) : _S_VERSION
+        ormas_pro_asset_version('/assets/css/header-v8.css')
     );
 
     // Палитра и компоненты главной по макету v8 — только на главной странице.
