@@ -58,7 +58,6 @@
 </head>
 
 <body <?php body_class('page'); ?>>
-	<!--DBG home=<?php echo (int) is_home(); ?> front=<?php echo (int) is_front_page(); ?> pfp=<?php echo (int) get_option('page_for_posts'); ?>-->
 	<?php
 	$is_post = is_page('agreement') || is_single() && !is_singular('service_pages');
 	?>
