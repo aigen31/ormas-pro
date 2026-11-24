@@ -31,6 +31,8 @@ PROD_THEME_SUBDIR="${PROD_THEME:-wp-content/themes/ormas-pro}"
 PROD_BRANCH="${PROD_BRANCH:-master}"
 PROD_URL="${PROD_URL:-https://ormas.pro}"
 PROD_GIT_URL="${PROD_GIT_URL:-https://github.com/aigen31/ormas-pro.git}"
+# SQL migrations that DROP/TRUNCATE are refused unless explicitly allowed.
+MIGRATIONS_ALLOW_DESTRUCTIVE="${MIGRATIONS_ALLOW_DESTRUCTIVE:-0}"
 PROD_SSH_KEY="${PROD_SSH_KEY:-}"
 PROD_SSH_PASS="${PROD_SSH_PASS:-}"
 
@@ -68,10 +70,10 @@ fi
 
 run_remote() {
 	"${SSH[@]}" "$PROD_SSH" bash -s -- \
-		"$REMOTE_THEME" "$PROD_SITE" "$PROD_BRANCH" "$PROD_URL" "$PROD_GIT_URL" "$@" <<'REMOTE'
+		"$REMOTE_THEME" "$PROD_SITE" "$PROD_BRANCH" "$PROD_URL" "$PROD_GIT_URL" "$MIGRATIONS_ALLOW_DESTRUCTIVE" "$@" <<'REMOTE'
 set -euo pipefail
 
-THEME="$1"; SITE="$2"; BRANCH="$3"; URL="$4"; GIT_URL="$5"; shift 5
+THEME="$1"; SITE="$2"; BRANCH="$3"; URL="$4"; GIT_URL="$5"; ALLOW_DESTRUCTIVE="$6"; shift 6
 CMD="${1:-status}"; shift || true
 
 cd "$THEME"
@@ -133,6 +135,9 @@ apply_migrations() {
 		prev="$(applied_sha "$base")"
 		[[ "$prev" == "$sha" ]] && continue
 		[[ -n "$prev" ]] && fail "migration $base was already applied with a different checksum"
+		if [[ "$f" == *.sql ]] && grep -Eqi '(^|;)[[:space:]]*(drop|truncate)[[:space:]]' "$f"; then
+			[[ "$ALLOW_DESTRUCTIVE" == "1" ]] || fail "migration $base contains DROP/TRUNCATE; rerun with MIGRATIONS_ALLOW_DESTRUCTIVE=1 if this is intentional"
+		fi
 		echo ">> applying $base"
 		case "$f" in
 			*.sql) wpcmd db query < "$f" ;;

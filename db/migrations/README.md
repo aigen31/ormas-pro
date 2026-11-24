@@ -28,3 +28,12 @@ Check what is pending on production without changing anything:
 make prod-status       # code + pending migrations
 make prod-migrate-dry  # pending migrations only
 ```
+
+Safety
+
+- Production data is **never** replaced by a dump from the test environment. Only the
+  explicit migration files in this directory are executed, one by one, and only once.
+- `DROP` / `TRUNCATE` in a migration is refused at runtime unless the deploy is run with
+  `MIGRATIONS_ALLOW_DESTRUCTIVE=1`.
+- Write migrations additively: `INSERT ... ON DUPLICATE KEY UPDATE`, `ADD COLUMN IF NOT
+  EXISTS`, fill options only when they are empty. Never `DELETE` production rows.
