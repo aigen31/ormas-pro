@@ -24,6 +24,12 @@ while [ ! -f "$WP_PATH/wp-config.php" ]; do
   sleep 2
 done
 
+# Imported production content must not be overwritten by the demo bootstrap.
+if [ -f "$WP_PATH/.ormas-content-migrated" ]; then
+  log "Migrated content detected; skipping demo bootstrap."
+  exit 0
+fi
+
 i=0
 until wp db check --path="$WP_PATH" >/dev/null 2>&1; do
   i=$((i + 1))

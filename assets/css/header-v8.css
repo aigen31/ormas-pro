@@ -1,0 +1,366 @@
+/*
+ * Шапка v8: общая геометрия, логотип, типографика и отступы для всех шаблонов.
+ * Цвета и иконки НЕ переопределяются — на главной их даёт home-v8.css (body.home),
+ * на остальных страницах — мастерские стили main.css.
+ */
+
+/* ----- Контейнеры и строки ----- */
+.header.page-neuropsychology .header-top-line,
+.header.page-neuropsychology .header__nav-line-container {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 1120px;
+	padding-left: 0;
+	padding-right: 0;
+	width: 1120px;
+}
+
+@media screen and (max-width: 1180px) {
+	.header.page-neuropsychology .header-top-line,
+	.header.page-neuropsychology .header__nav-line-container {
+		max-width: 100%;
+		width: 100%;
+	}
+}
+
+.header.page-neuropsychology .header-top-line {
+	box-sizing: border-box;
+	display: block;
+	height: 56px;
+	padding: 0;
+}
+
+.header.page-neuropsychology .header-top-line > .header__top-line {
+	align-items: center;
+	display: flex;
+	height: 100%;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.header.page-neuropsychology .header__nav-wrapper {
+	display: flex;
+}
+
+.header.page-neuropsychology .header__nav-line {
+	align-items: center;
+	box-sizing: border-box;
+	display: flex;
+	height: 116px;
+	padding: 0;
+	width: 100%;
+}
+
+.header.page-neuropsychology .header__nav-line-container {
+	align-items: center;
+	display: flex;
+	flex: 1 1 auto;
+	min-height: 88px;
+	width: 100%;
+}
+
+/* ----- Логотип ----- */
+.header.page-neuropsychology .header__nav-line-container > a:has(.logo-header-img--v8) {
+	align-items: center;
+	display: flex;
+	height: auto;
+	overflow: visible;
+	width: auto;
+}
+
+.header.page-neuropsychology img.logo-header-img--v8 {
+	display: block;
+	height: 88px !important;
+	max-height: none !important;
+	position: static;
+	width: auto !important;
+}
+
+/* ----- Контакты и меню ----- */
+.header.page-neuropsychology .header__top-line,
+.header.page-neuropsychology .header__top-line a,
+.header.page-neuropsychology .header__top-line .site-mail,
+.header.page-neuropsychology .header__top-line .site-phone {
+	font-size: 15px;
+	line-height: 20px;
+}
+
+.header.page-neuropsychology .header__top-line-left {
+	align-items: center;
+	display: flex;
+	gap: 24px;
+}
+
+.header.page-neuropsychology .header__top-line-left > a {
+	align-items: center;
+	display: flex;
+	gap: 8px;
+	margin: 0;
+}
+
+.header.page-neuropsychology .header__nav {
+	display: flex;
+	flex-grow: 0;
+	flex-shrink: 0;
+	justify-content: flex-start;
+	margin-left: auto;
+	width: auto;
+}
+
+.header.page-neuropsychology .header__nav > li {
+	flex: 0 0 auto;
+}
+
+.header.page-neuropsychology .header__nav > li > a {
+	font-size: 17px;
+	line-height: 22px;
+	text-decoration: none;
+}
+
+/* ----- Соцсети: ровный ряд справа ----- */
+.header.page-neuropsychology .social {
+	align-items: center;
+	display: flex;
+	gap: 24px;
+	justify-content: flex-end;
+}
+
+.header.page-neuropsychology .social .social__link,
+.header.page-neuropsychology .social a {
+	align-items: center;
+	display: flex;
+	height: 24px;
+	justify-content: center;
+	margin: 0;
+	width: 24px;
+}
+
+.header.page-neuropsychology .header__top-line-right {
+	margin-left: auto;
+}
+
+/* ----- Скрываем лишние элементы старой шапки (крошки и стрелка «вверх») ----- */
+.header.page-neuropsychology > .container:not(.header-top-line) {
+	display: none !important;
+}
+
+.header.page-neuropsychology .header__bottom-arrow {
+	display: none !important;
+}
+
+/* ----- Брейкпоинты ----- */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+	.header.page-neuropsychology .header-top-line {
+		align-items: center;
+		display: flex;
+		height: 44px;
+		padding: 0;
+	}
+
+	.header.page-neuropsychology .header__nav-line {
+		height: 56px;
+	}
+
+	.header.page-neuropsychology .header__nav-line-container {
+		min-height: 56px;
+		padding-left: 42px;
+		padding-right: 42px;
+	}
+
+	.header.page-neuropsychology .header__top-line {
+		display: flex !important;
+		height: auto;
+		order: 0;
+		width: auto !important;
+	}
+
+	.header.page-neuropsychology .header__nav {
+		display: flex !important;
+	}
+
+	.header.page-neuropsychology .header__nav > li {
+		margin-right: 20px;
+	}
+
+	.header.page-neuropsychology .header__nav > li > a {
+		font-size: 15px;
+		line-height: 20px;
+	}
+
+	.header.page-neuropsychology .header-burger {
+		display: none !important;
+	}
+
+	.header.page-neuropsychology img.logo-header-img--v8 {
+		height: 44px !important;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.header.page-neuropsychology .header__nav-line {
+		align-items: center;
+		display: flex;
+		height: 84px;
+		padding: 0;
+	}
+
+	.header.page-neuropsychology .header__nav-line-container {
+		min-height: 72px;
+		padding-left: 36px;
+		padding-right: 36px;
+	}
+
+	.header.page-neuropsychology img.logo-header-img--v8 {
+		height: 72px !important;
+	}
+
+	.header.page-neuropsychology .header-burger {
+		align-items: center;
+		display: flex !important;
+		justify-content: flex-end;
+		padding-right: 36px;
+	}
+
+	.header.page-neuropsychology .header__burger {
+		align-items: center;
+		box-sizing: border-box;
+		cursor: pointer;
+		display: flex;
+		flex: 0 0 auto;
+		flex-direction: column;
+		gap: 6px;
+		height: 48px;
+		justify-content: center;
+		margin: 0;
+		padding: 0;
+		position: relative;
+		width: 48px;
+		z-index: 9;
+	}
+
+	.header.page-neuropsychology .header__burger-line {
+		display: block;
+		height: 2px;
+		margin: 0 !important;
+		width: 24px;
+	}
+}
+
+@media screen and (max-width: 450px) {
+	.header.page-neuropsychology .header__nav-line {
+		height: 72px;
+	}
+
+	.header.page-neuropsychology .header__nav-line-container {
+		min-height: 64px;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	.header.page-neuropsychology img.logo-header-img--v8 {
+		height: 64px !important;
+	}
+
+	.header.page-neuropsychology .header-burger {
+		padding-right: 15px;
+	}
+
+	.header.page-neuropsychology .header__burger {
+		gap: 5px;
+		height: 44px;
+		width: 44px;
+	}
+
+	.header.page-neuropsychology .header__burger-line {
+		width: 22px;
+	}
+}
+
+/* Старые шаблоны: мастерский margin-right у svg не должен складываться с gap */
+body:not(.home) .header.page-neuropsychology .header__top-line-left > a > svg {
+	margin-right: 0 !important;
+}
+
+/* ----- ≤768: как на главной — только лого и бургер ----- */
+@media screen and (max-width: 768px) {
+	.header.page-neuropsychology .header-top-line {
+		display: none !important;
+	}
+
+	.header.page-neuropsychology .header__nav {
+		display: none !important;
+	}
+
+	.header.page-neuropsychology .header-burger {
+		display: flex !important;
+	}
+}
+
+/* ===== Старые страницы: новая иконка YouTube в старой палитре ===== */
+body:not(.home) .header.page-neuropsychology .social__link--youtube > svg {
+	display: none !important;
+}
+
+body:not(.home) .header.page-neuropsychology .social__link--youtube {
+	color: #fff;
+}
+
+body:not(.home) .header.page-neuropsychology .social__link--youtube::before {
+	background-color: currentColor;
+	content: "";
+	display: block;
+	height: 24px;
+	-webkit-mask-image: url(../img/v8/icons/youtube.svg);
+	-webkit-mask-position: center;
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-size: contain;
+	mask-image: url(../img/v8/icons/youtube.svg);
+	mask-position: center;
+	mask-repeat: no-repeat;
+	mask-size: contain;
+	width: 24px;
+}
+
+/* На белой шапке архивов услуг иконка серая, как остальные мастерские */
+body:not(.home) .header.page-service .social__link--youtube {
+	color: #808694;
+}
+
+/* ----- 769–1024: показываем все контакты, как на главной ----- */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+	.header.page-neuropsychology .header__top-line-mail,
+	.header.page-neuropsychology .header__top-line-phone,
+	.header.page-neuropsychology .header__top-line-wp {
+		display: flex !important;
+		align-items: center;
+	}
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+	.header.page-neuropsychology .header-top-line {
+		padding: 0 42px;
+	}
+
+	.header.page-neuropsychology .header__top-line-right {
+		align-items: center;
+		display: flex !important;
+	}
+}
+
+/* Архив услуг:ページ-service перебивает контейнер — возвращаем общий ритм */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+	.header.page-service.page-neuropsychology .header-top-line {
+		margin: 0 auto !important;
+		max-width: 1120px !important;
+		padding: 0 42px !important;
+		width: 1120px !important;
+	}
+
+	.header.page-service.page-neuropsychology .header__nav-line-container {
+		margin: 0 auto !important;
+		max-width: 1120px !important;
+		padding-left: 42px !important;
+		padding-right: 42px !important;
+		width: 1120px !important;
+	}
+}

@@ -3,9 +3,15 @@ get_header();
 
 ormas_medical_organization_schema();
 
-get_template_part('template-parts/about');
+?>
+<div class="v8-hero-band">
+<?php
+get_template_part('template-parts/v8/hero');
 
-get_template_part('template-parts/greeting');
+get_template_part('template-parts/v8/advantages');
+?>
+</div>
+<?php
 
 get_template_part('template-parts/services');
 

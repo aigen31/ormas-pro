@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1920" height="1201" viewBox="0 0 1920 1201" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 40">
+<mask id="mask0_0_45" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1920" height="1201">
+<rect id="Rectangle 16" width="1920" height="1201" fill="#FFEADA"/>
+</mask>
+<g mask="url(#mask0_0_45)">
+<rect id="Rectangle 17" width="1920" height="1201" fill="#C9C5EE"/>
+<rect id="Rectangle 15" y="833" width="1920" height="368" fill="#FFEADA"/>
+<path id="Vector 5" d="M384.935 357C206.684 162.723 28 129.5 -320 235.5L-320 1013.5H2240V283C1774.5 64.5 1517.12 263.135 1217.59 418C912 576 545.5 532 384.935 357Z" fill="#FFEADA"/>
+<path id="Vector" d="M1128.39 79.061C1248.44 75.3779 1237.28 158.996 1363.7 74.9343C1490.13 -9.12729 1658.36 0.116585 1631.01 137.867C1603.66 275.617 1580.96 236.372 1622.75 376.186C1664.55 515.999 1592.31 586.113 1512.32 629.98C1432.34 673.847 1413.76 662.457 1311.07 621.726C1208.38 580.996 1033.96 664.521 939.523 539.192C845.088 413.863 825.995 88.3461 1128.39 79.061Z" fill-rule="evenodd" clip-rule="evenodd" fill="#FFDAC5"/>
+</g>
+</g>
+</svg>

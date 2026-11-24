@@ -128,11 +128,11 @@
 										</div>
 									</div>
 								</div>
-								<? if ($count == 5): ?>
+								<?php if (!(is_home() || is_front_page()) && $count == 5) : ?>
 									<div class="price__btn-more">
 										<div class="party__list-item-text-more" onclick="this.parentNode.remove(); return false;">Развернуть</div>
 									</div>
-								<? endif; ?>
+								<?php endif; ?>
 								<?php $count++; ?>
 							<?php
 							endforeach;
@@ -140,6 +140,11 @@
 						</div>
 					</div>
 				</section>
+				<?php if ((is_home() || is_front_page()) && is_array($services) && count($services) > 5) : ?>
+					<div class="price__btn-more price__btn-more--outside">
+						<div class="party__list-item-text-more" onclick="this.closest('.home-price').classList.add('is-expanded'); this.parentNode.remove(); return false;">Развернуть</div>
+					</div>
+				<?php endif; ?>
 			</div>
 		<?php else: ?>
 			<?php /* переписано с ACF на Carbon Fields: all_services — текстовая опция (URL прайса) */ ?>

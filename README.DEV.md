@@ -15,6 +15,9 @@ make up
 
 После запуска:
 
+- Публичный адрес: <https://ormas.dev.inteli-dev.ru> (Traefik + Let's Encrypt,
+  A-запись домена смотрит на сервер)
+- Локально на сервере: <http://localhost:8083> (редиректит на публичный адрес)
 - Сайт: <http://localhost:8083>
 - Админка: <http://localhost:8083/wp-admin/>
   - логин: `admin`

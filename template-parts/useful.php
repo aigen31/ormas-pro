@@ -37,7 +37,12 @@
 			<div class="useful__right-description" data-type="<?php echo (int) ($count ?? 0) + 9; ?>">
 				<?php echo $material_description; ?>
 			</div>
-			<?php if ($material_link) : ?>
+			<?php
+			// По макету v8 главная всегда показывает форму с полем Email и двумя
+			// кнопками. На остальных страницах поведение прежнее.
+			$show_material_form = is_front_page() || empty($material_link);
+			?>
+			<?php if (! $show_material_form) : ?>
 				<a target="_blank" href="<?php echo $material_link; ?>" class="site-button useful__right-button">Подробнее</a>
 			<?php else : ?>
 				<input type="email" placeholder="Email" class="site-input useful__right-input useful__right-input--more" name="email_to">
@@ -51,7 +56,7 @@
 				<input type="hidden" name="title" value="<?php the_page_title(); ?>">
 				<div style="height: 100px" class="smart-captcha" data-sitekey="<?=$GLOBALS['sitekeyYandex']?>"></div>
 				<button class="site-button useful__right-button useful__right-button--more">Скачать</button>
-				<a href="/materialy/" class="site-button useful__right-button useful__right-button--border">Смотреть все материалы</a>
+				<a href="<?php echo esc_url($material_link ? $material_link : '/materialy/'); ?>" class="site-button useful__right-button useful__right-button--border">Смотреть все материалы</a>
 			<?php endif; ?>
 		</form>
 	</div>

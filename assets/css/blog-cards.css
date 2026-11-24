@@ -1,0 +1,41 @@
+/*
+ * Карточки блога (/blog/): квадратные изображения.
+ * Подключается только на шаблоне Blog, остальные страницы не затрагивает.
+ */
+.page-template-blog .blog-list {
+	display: grid;
+	gap: 24px;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.page-template-blog .blog-list .post__list-article {
+	background: #fff;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.page-template-blog .blog-list .post__list-item {
+	display: block;
+	text-decoration: none;
+}
+
+.page-template-blog .blog-list .post__list-item img {
+	aspect-ratio: 1 / 1;
+	display: block;
+	height: auto;
+	object-fit: cover;
+	width: 100%;
+}
+
+.page-template-blog .blog-list .post__list-item-text {
+	box-sizing: border-box;
+	height: auto;
+	padding: 20px 24px 24px;
+	width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+	.page-template-blog .blog-list {
+		grid-template-columns: 1fr;
+	}
+}

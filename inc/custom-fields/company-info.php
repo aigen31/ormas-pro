@@ -7,6 +7,7 @@ Container::make('theme_options', 'Информация о компании')
   ->add_fields([
     Field::make('text', 'options_email', 'Почта')->set_width(50),
     Field::make('text', 'options_number', 'Номер телефона')->set_width(50),
+    Field::make('text', 'options_number_second', 'Второй номер телефона (шапка главной)')->set_width(50),
     Field::make('text', 'options_whatsapp', 'WhatsApp')->set_width(20),
     Field::make('text', 'options_vk', 'VK')->set_width(20),
     Field::make('text', 'options_dzen', 'Дзен')->set_width(20),

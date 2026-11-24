@@ -2,3 +2,6 @@ vendor
 node_modules
 *.zip
 .env
+.migration/
+.agents/
+.deploy-tmp/

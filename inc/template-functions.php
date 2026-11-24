@@ -14,6 +14,11 @@
  */
 function ormas_pro_body_classes($classes)
 {
+	// Adds a class of home to the front page and the posts page.
+	if (is_front_page() || is_home()) {
+		$classes[] = 'home';
+	}
+
 	// Adds a class of hfeed to non-singular pages.
 	if (! is_singular()) {
 		$classes[] = 'hfeed';

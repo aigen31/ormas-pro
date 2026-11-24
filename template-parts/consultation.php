@@ -1,13 +1,20 @@
+<?php
+$main_page_id   = get_option('page_for_posts');
+$form_title     = carbon_get_post_meta($main_page_id, 'form_title');
+$form_text_1    = carbon_get_post_meta($main_page_id, 'form_text_1');
+$form_text_2    = carbon_get_post_meta($main_page_id, 'form_text_2');
+$form_btn_text  = carbon_get_post_meta($main_page_id, 'form_button_text');
+?>
 <div class="consultation" id="consultation">
     <div class="container container-consultation">
         <div class="consultation__text">
-            <div class="consultation__text-title">Записаться на бесплатную консультацию</div>
+            <div class="consultation__text-title"><?php echo esc_html($form_title ? $form_title : 'Записаться на бесплатную консультацию'); ?></div>
             <div class="consultation__text-description">
                 <p class="consultation__text-description-item">
-                    Не знаете, какой специалист Вам нужен? Просто заполните данную форму и мы перезвоним.
+                    <?php echo esc_html($form_text_1 ? $form_text_1 : 'Не знаете, какой специалист Вам нужен? Просто заполните данную форму и мы перезвоним.'); ?>
                 </p>
                 <p class="consultation__text-description-item">
-                    Расскажите нашему сотруднику, что Вас беспокоит. Он сориентирует в выборе специалиста и подробно ответит на все Ваши вопросы.
+                    <?php echo esc_html($form_text_2 ? $form_text_2 : 'Расскажите нашему сотруднику, что Вас беспокоит. Он сориентирует в выборе специалиста и подробно ответит на все Ваши вопросы.'); ?>
                 </p>
 
             </div>
@@ -38,7 +45,7 @@
                     </label>
                 </div>                
                  
-                <button class="site-button consultation__inputs-button">Записаться</button>
+                <button class="site-button consultation__inputs-button"><?php echo esc_html($form_btn_text ? $form_btn_text : 'Записаться'); ?></button>
             </div>
         </form>
     </div>

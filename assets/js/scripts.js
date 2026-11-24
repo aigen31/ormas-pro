@@ -40,6 +40,7 @@ jQuery(document).ready(function ($) {
 			slidesToScroll: 1,
 			arrows: true,
 			dots: true,
+			appendDots: $(".s-post .slick-arrows"),
 			prevArrow: document.querySelector(".s-post .slick-prev"),
 			nextArrow: document.querySelector(".s-post .slick-next"),
 			responsive: [
@@ -524,12 +525,13 @@ jQuery(document).ready(function ($) {
 	// Certificates
 	if ($(".certificates")[0]) {
 		if ($(".certificates__list")[0]) {
-			$(".certificates__list").slick({
+			$(".certificates__list").not(".slick-initialized").slick({
 				infinite: true,
 				slidesToShow: 3,
 				slidesToScroll: 1,
 				arrows: true,
 				dots: true,
+				appendDots: $("body.home").length ? $(".certificates .slick-arrows") : $(".certificates__list"),
 				prevArrow: document.querySelector(".certificates .slick-prev"),
 				nextArrow: document.querySelector(".certificates .slick-next"),
 				responsive: [
