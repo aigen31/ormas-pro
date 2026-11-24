@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-.PHONY: up down reset logs ps test seed wp
+.PHONY: up down reset logs ps test seed wp prod-status prod-migrations prod-migrate-dry prod-deploy prod-rollback prod-ssh
 
 up:
 	./bin/dev-up.sh

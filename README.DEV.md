@@ -84,3 +84,39 @@ make seed
 
 Форма обратной связи отправляет письма через Mailpit. После отправки формы
 письмо появится на <http://localhost:8026>.
+
+## Production deploy (SSH)
+
+Production runs on an aaPanel server: WordPress at `/www/wwwroot/ormas.pro`, the theme is a
+git clone at `wp-content/themes/ormas-pro` tracking `master` on GitHub.
+
+Credentials are intentionally **not** stored in the repo. Pass one of:
+
+```bash
+export PROD_SSH_PASS='...'        # password (temporary askpass helper is created)
+export PROD_SSH_KEY=~/.ssh/key    # or an ssh key
+```
+
+Commands (all go through `bin/prod-deploy.sh`):
+
+```bash
+make prod-status        # read-only: branch, HEAD, remote HEAD, dirty state, pending migrations
+make prod-migrate-dry   # read-only: list pending DB migrations
+make prod-deploy        # pull origin/master (reset), apply migrations, flush caches, health-check
+make prod-migrations    # apply pending migrations only (no code update)
+make prod-rollback      # reset theme code to the latest prod-backup-* tag + health-check
+make prod-ssh           # interactive shell on the server
+```
+
+What `prod-deploy` does on the server:
+
+1. refuses to run if the prod theme has tracked local changes;
+2. fetches the branch over the public HTTPS URL (prod has no GitHub write credentials);
+3. tags the current commit as `prod-backup-<timestamp>` (rollback point);
+4. `git checkout -f <branch> && git reset --hard origin/<branch>`;
+5. applies pending migrations from `db/migrations/` (see its README);
+6. flushes WP cache/transients/rewrite rules and opcache;
+7. checks that `https://ormas.pro` answers 200/301/302, otherwise exits non-zero.
+
+Code rollback does **not** roll back applied DB migrations — migrations must therefore be
+idempotent/forward-only (see `db/migrations/README.md`).
